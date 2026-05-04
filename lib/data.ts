@@ -1,0 +1,280 @@
+import type { Call, ScheduleItem, Customer, CallStatus, PillTone } from "./types";
+
+export const TONE_BY_STATUS: Record<CallStatus, PillTone> = {
+  live: "live",
+  booked: "booked",
+  escalated: "escalated",
+  quote: "info",
+  filtered: "info",
+};
+
+export const LABEL_BY_STATUS: Record<CallStatus, string> = {
+  live: "On the line",
+  booked: "Booked",
+  escalated: "Escalated",
+  quote: "Quote sent",
+  filtered: "Filtered",
+};
+
+// ── Today's calls ─────────────────────────────────────────────────────────
+export const CALLS: Call[] = [
+  {
+    id: "c-204", time: "10:42 AM", duration: "3:14",
+    caller: "Marisol Vega", phone: "(415) 555-0184",
+    issue: "Kitchen sink backed up, water on the floor",
+    status: "live", outcome: null,
+    address: "1924 Folsom St, SF",
+    avatarTone: "amber",
+    date: "Today",
+  },
+  {
+    id: "c-203", time: "10:11 AM", duration: "2:48",
+    caller: "Dean Holloway", phone: "(510) 555-0142",
+    issue: "Water heater leaking from base — pilot still on",
+    status: "booked", outcome: "Booked Thu Nov 6 · 2:00 PM",
+    address: "342 Alcatraz Ave, Oakland",
+    avatarTone: "sage",
+    date: "Today",
+  },
+  {
+    id: "c-202", time: "9:47 AM", duration: "1:22",
+    caller: "Karen Ng", phone: "(415) 555-0177",
+    issue: "Garbage disposal humming, won't spin",
+    status: "booked", outcome: "Booked Wed Nov 5 · 9:30 AM",
+    address: "88 Geary Blvd, SF",
+    avatarTone: "sage",
+    date: "Today",
+  },
+  {
+    id: "c-201", time: "9:20 AM", duration: "4:06",
+    caller: "Robert Tessier", phone: "(650) 555-0118",
+    issue: "Burst pipe in crawlspace — main water shut off",
+    status: "escalated", outcome: "Flagged urgent — texted you 9:24",
+    address: "47 Edgewood Rd, San Mateo",
+    avatarTone: "slate",
+    date: "Today",
+  },
+  {
+    id: "c-200", time: "8:53 AM", duration: "2:11",
+    caller: "Patel Residence", phone: "(415) 555-0163",
+    issue: "Quote request — replacing two outdoor hose bibs",
+    status: "quote", outcome: "Quote requested — emailed",
+    address: "210 Lake St, SF",
+    avatarTone: "neutral",
+    date: "Today",
+  },
+  {
+    id: "c-199", time: "8:30 AM", duration: "0:58",
+    caller: "Unknown", phone: "(415) 555-0102",
+    issue: "Solicitor — water filtration sales",
+    status: "filtered", outcome: "Filtered — no callback",
+    address: null,
+    avatarTone: "neutral",
+    date: "Today",
+  },
+];
+
+// ── Older calls — last 7 days, used by /calls ─────────────────────────────
+export const OLDER_CALLS: Call[] = [
+  {
+    id: "c-198", time: "5:42 PM", duration: "3:01",
+    caller: "Lila Schmidt", phone: "(415) 555-0119",
+    issue: "Dishwasher leaking from the door seal",
+    status: "booked", outcome: "Booked Mon Nov 10 · 11:00 AM",
+    address: "1207 Hayes St, SF",
+    avatarTone: "sage",
+    date: "Yesterday",
+  },
+  {
+    id: "c-197", time: "3:28 PM", duration: "2:14",
+    caller: "Aaron Brick", phone: "(415) 555-0188",
+    issue: "Toilet running constantly, fill valve issue",
+    status: "booked", outcome: "Booked Fri Nov 7 · 1:30 PM",
+    address: "44 Capp St, SF",
+    avatarTone: "sage",
+    date: "Yesterday",
+  },
+  {
+    id: "c-196", time: "2:14 PM", duration: "1:48",
+    caller: "Greg Patel", phone: "(415) 555-0163",
+    issue: "Followup — outdoor hose bibs quote",
+    status: "quote", outcome: "Quote sent — pending decision",
+    address: "210 Lake St, SF",
+    avatarTone: "neutral",
+    date: "Yesterday",
+  },
+  {
+    id: "c-195", time: "11:02 AM", duration: "0:42",
+    caller: "Unknown", phone: "(415) 555-0207",
+    issue: "Robocall — auto warranty",
+    status: "filtered", outcome: "Filtered — no callback",
+    address: null,
+    avatarTone: "neutral",
+    date: "Yesterday",
+  },
+  {
+    id: "c-194", time: "9:17 AM", duration: "4:32",
+    caller: "Sandra Liu", phone: "(415) 555-0145",
+    issue: "Water pressure low across whole house",
+    status: "booked", outcome: "Booked Sat Nov 8 · 10:00 AM",
+    address: "1422 Funston Ave, SF",
+    avatarTone: "sage",
+    date: "Yesterday",
+  },
+  {
+    id: "c-193", time: "4:51 PM", duration: "2:22",
+    caller: "Marcus Otieno", phone: "(415) 555-0192",
+    issue: "Faucet handle broke — kitchen",
+    status: "booked", outcome: "Booked Tue Nov 11 · 9:00 AM",
+    address: "640 Cole St, SF",
+    avatarTone: "sage",
+    date: "Mon, Nov 3",
+  },
+  {
+    id: "c-192", time: "1:09 PM", duration: "5:18",
+    caller: "Holloway Property Mgmt", phone: "(510) 555-0142",
+    issue: "Six unit building — annual inspection",
+    status: "quote", outcome: "Quote sent — multi-unit",
+    address: "Multiple — Oakland",
+    avatarTone: "slate",
+    date: "Mon, Nov 3",
+  },
+  {
+    id: "c-191", time: "10:48 AM", duration: "3:55",
+    caller: "Yuki Watanabe", phone: "(650) 555-0166",
+    issue: "Sewer backup — basement",
+    status: "escalated", outcome: "Flagged urgent — same-day fit-in",
+    address: "812 Hillsdale Blvd, San Mateo",
+    avatarTone: "slate",
+    date: "Mon, Nov 3",
+  },
+  {
+    id: "c-190", time: "8:19 AM", duration: "1:34",
+    caller: "Karen Ng", phone: "(415) 555-0177",
+    issue: "Followup — disposal scheduled?",
+    status: "booked", outcome: "Confirmed Wed slot",
+    address: "88 Geary Blvd, SF",
+    avatarTone: "sage",
+    date: "Mon, Nov 3",
+  },
+  {
+    id: "c-189", time: "3:07 PM", duration: "2:08",
+    caller: "Rashida Chen", phone: "(415) 555-0224",
+    issue: "Shower drain slow, gurgling noise",
+    status: "booked", outcome: "Booked Thu Nov 6 · 8:00 AM",
+    address: "2104 Divisadero St, SF",
+    avatarTone: "sage",
+    date: "Sun, Nov 2",
+  },
+  {
+    id: "c-188", time: "11:33 AM", duration: "0:51",
+    caller: "Unknown", phone: "(800) 555-0019",
+    issue: "Telemarketer — solar panels",
+    status: "filtered", outcome: "Filtered — blocked number",
+    address: null,
+    avatarTone: "neutral",
+    date: "Sun, Nov 2",
+  },
+  {
+    id: "c-187", time: "9:42 AM", duration: "3:42",
+    caller: "Tomás Riveiro", phone: "(415) 555-0258",
+    issue: "Hot water inconsistent — tankless system",
+    status: "booked", outcome: "Booked Mon Nov 10 · 8:00 AM",
+    address: "990 Sanchez St, SF",
+    avatarTone: "sage",
+    date: "Sun, Nov 2",
+  },
+];
+
+export const ALL_CALLS: Call[] = [...CALLS, ...OLDER_CALLS];
+
+// ── Schedule (today + tomorrow window) ────────────────────────────────────
+export const SCHEDULE: ScheduleItem[] = [
+  { time: "11:30 AM", label: "On-site — Folsom St", note: "ETA 35 min", tone: "live" },
+  { time: "1:15 PM",  label: "On-site — Alcatraz Ave", note: "Water heater swap", tone: "neutral" },
+  { time: "3:00 PM",  label: "Window — Geary Blvd", note: "Disposal repair", tone: "neutral" },
+  { time: "4:30 PM",  label: "Buffer", note: "Hold for overflow", tone: "muted" },
+];
+
+export const SCHEDULE_TOMORROW: ScheduleItem[] = [
+  { time: "8:00 AM",  label: "On-site — Divisadero St", note: "Shower drain · Rashida C.", tone: "neutral" },
+  { time: "10:00 AM", label: "On-site — Funston Ave", note: "Whole-house pressure · Sandra L.", tone: "neutral" },
+  { time: "1:30 PM",  label: "On-site — Capp St", note: "Toilet fill valve · Aaron B.", tone: "neutral" },
+  { time: "3:30 PM",  label: "Buffer", note: "Hold for overflow", tone: "muted" },
+];
+
+// ── Customers (deduped from calls) ────────────────────────────────────────
+export const CUSTOMERS: Customer[] = [
+  {
+    id: "u-501",
+    name: "Karen Ng", phone: "(415) 555-0177",
+    address: "88 Geary Blvd, SF",
+    callCount: 3, lastCall: "Today, 9:47 AM",
+    lastIssue: "Garbage disposal — booked Wed Nov 5",
+    avatarTone: "sage",
+  },
+  {
+    id: "u-502",
+    name: "Dean Holloway", phone: "(510) 555-0142",
+    address: "342 Alcatraz Ave, Oakland",
+    callCount: 4, lastCall: "Today, 10:11 AM",
+    lastIssue: "Water heater leak — booked Thu Nov 6",
+    avatarTone: "sage",
+  },
+  {
+    id: "u-503",
+    name: "Patel Residence", phone: "(415) 555-0163",
+    address: "210 Lake St, SF",
+    callCount: 2, lastCall: "Today, 8:53 AM",
+    lastIssue: "Hose bib quote — pending",
+    avatarTone: "neutral",
+  },
+  {
+    id: "u-504",
+    name: "Marisol Vega", phone: "(415) 555-0184",
+    address: "1924 Folsom St, SF",
+    callCount: 1, lastCall: "Today, 10:42 AM",
+    lastIssue: "Kitchen sink backup — on the line now",
+    avatarTone: "amber",
+  },
+  {
+    id: "u-505",
+    name: "Robert Tessier", phone: "(650) 555-0118",
+    address: "47 Edgewood Rd, San Mateo",
+    callCount: 2, lastCall: "Today, 9:20 AM",
+    lastIssue: "Burst pipe — escalated",
+    avatarTone: "slate",
+  },
+  {
+    id: "u-506",
+    name: "Lila Schmidt", phone: "(415) 555-0119",
+    address: "1207 Hayes St, SF",
+    callCount: 1, lastCall: "Yesterday, 5:42 PM",
+    lastIssue: "Dishwasher seal — booked Mon Nov 10",
+    avatarTone: "sage",
+  },
+  {
+    id: "u-507",
+    name: "Aaron Brick", phone: "(415) 555-0188",
+    address: "44 Capp St, SF",
+    callCount: 1, lastCall: "Yesterday, 3:28 PM",
+    lastIssue: "Toilet fill valve — booked Fri Nov 7",
+    avatarTone: "sage",
+  },
+  {
+    id: "u-508",
+    name: "Sandra Liu", phone: "(415) 555-0145",
+    address: "1422 Funston Ave, SF",
+    callCount: 1, lastCall: "Yesterday, 9:17 AM",
+    lastIssue: "Whole-house pressure — booked Sat Nov 8",
+    avatarTone: "sage",
+  },
+  {
+    id: "u-509",
+    name: "Yuki Watanabe", phone: "(650) 555-0166",
+    address: "812 Hillsdale Blvd, San Mateo",
+    callCount: 1, lastCall: "Mon Nov 3, 10:48 AM",
+    lastIssue: "Sewer backup — same-day fit-in",
+    avatarTone: "slate",
+  },
+];

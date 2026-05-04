@@ -1,0 +1,442 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Smart Reception · Design System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="tokens.css" />
+  <link rel="stylesheet" href="app.css" />
+  <style>
+    @keyframes srPulse {
+      0% { transform: scale(1); opacity: .35; }
+      70% { transform: scale(2.2); opacity: 0; }
+      100% { transform: scale(2.2); opacity: 0; }
+    }
+  </style>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel" src="tweaks-panel.jsx"></script>
+  <script type="text/babel" src="foundations.v2.jsx"></script>
+  <script type="text/babel" src="components.jsx"></script>
+  <script type="text/babel" src="patterns.jsx"></script>
+
+  <script type="text/babel">
+    const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+      "density": "regular",
+      "radius": 10,
+      "showWordmark": true
+    }/*EDITMODE-END*/;
+
+    function App() {
+      const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
+
+      // Live radius override
+      React.useEffect(() => {
+        document.documentElement.style.setProperty('--sr-radius-md', t.radius + 'px');
+        document.documentElement.style.setProperty('--sr-radius-lg', (t.radius + 4) + 'px');
+        document.documentElement.style.setProperty('--sr-radius-xl', (t.radius + 10) + 'px');
+      }, [t.radius]);
+
+      return (
+        <div data-palette="linen" data-density={t.density}>
+          <div className="sr-page">
+
+            {/* TOC */}
+            <div className="sr-toc">
+              <span className="sr-toc-brand">Smart Reception · Design System</span>
+              <a href="#brand">Brand</a>
+              <a href="#color">Color</a>
+              <a href="#type">Type</a>
+              <a href="#foundations">Foundations</a>
+              <a href="#components">Components</a>
+              <a href="#onboarding">Onboarding</a>
+              <a href="#calls">Call UI</a>
+            </div>
+
+            {/* HERO */}
+            <section className="sr-hero" id="brand" style={{ marginTop: 48 }}>
+              <div>
+                <div className="sr-hero-eyebrow">v0.1 · May 2026 · Levenson Design</div>
+                <h1>A calm, capable receptionist for the people who keep things working.</h1>
+                <p className="sr-hero-lead">
+                  Smart Reception answers calls for plumbers, electricians, contractors, and the trades. The brand is warm, plain-spoken, and confident — built so a busy operator can set it up between jobs without thinking twice.
+                </p>
+                <div style={{ display: 'flex', gap: 12, marginTop: 32 }}>
+                  <Button variant="primary" size="lg">Start onboarding</Button>
+                  <Button variant="secondary" size="lg">Listen to a sample call</Button>
+                </div>
+              </div>
+              <div className="sr-hero-meta">
+                <div className="sr-hero-meta-row">
+                  <span className="sr-hero-meta-label">Wordmark</span>
+                  <Wordmark size="md" />
+                </div>
+                <div className="sr-hero-meta-row">
+                  <span className="sr-hero-meta-label">Type</span>
+                  <span>Plus Jakarta Sans · Figtree · JetBrains Mono</span>
+                </div>
+                <div className="sr-hero-meta-row">
+                  <span className="sr-hero-meta-label">Mood</span>
+                  <span>Warm · grounded · low-jargon · premium without the polish</span>
+                </div>
+                <div className="sr-hero-meta-row">
+                  <span className="sr-hero-meta-label">Audience</span>
+                  <span>Service operators on a laptop or phone, often between jobs</span>
+                </div>
+              </div>
+            </section>
+
+            {/* WORDMARK */}
+            <section className="sr-section" id="logo">
+              <div className="sr-section-head">
+                <div>
+                  <div className="sr-section-num">01 · Wordmark</div>
+                  <h2>Mark</h2>
+                </div>
+                <p className="sr-section-blurb">
+                  A typographic mark paired with a soundwave glyph — a quiet nod to the AI listening in. The bars are asymmetric on purpose: the brand has personality, but it doesn't show off.
+                </p>
+              </div>
+
+              <div className="sr-grid-2">
+                <div className="sr-spec">
+                  <div className="sr-spec-stage" style={{ minHeight: 220, justifyContent: 'center' }}>
+                    <Wordmark size="xl" />
+                  </div>
+                  <div className="sr-spec-foot"><span>Primary · light surface</span><span>56px</span></div>
+                </div>
+                <div className="sr-spec">
+                  <div className="sr-spec-stage" style={{ minHeight: 220, justifyContent: 'center', background: 'var(--sr-color-brand)' }}>
+                    <Wordmark size="xl" tone="inverse" />
+                  </div>
+                  <div className="sr-spec-foot"><span>On brand surface</span><span>56px</span></div>
+                </div>
+              </div>
+
+              <div className="sr-subsection-head">Sizes & glyph</div>
+              <div className="sr-spec">
+                <div className="sr-spec-stage" style={{ gap: 40, justifyContent: 'space-around' }}>
+                  <Wordmark size="sm" />
+                  <Wordmark size="md" />
+                  <Wordmark size="lg" />
+                  <SoundGlyph size={48} color="var(--sr-color-brand)" />
+                  <SoundGlyph size={48} color="var(--sr-color-accent)" animated />
+                </div>
+                <div className="sr-spec-foot"><span>sm · md · lg · glyph · glyph (listening)</span></div>
+              </div>
+            </section>
+
+            {/* COLOR */}
+            <section className="sr-section" id="color">
+              <div className="sr-section-head">
+                <div>
+                  <div className="sr-section-num">02 · Color</div>
+                  <h2>Linen &amp; Slate</h2>
+                </div>
+                <p className="sr-section-blurb">
+                  Slate-blue brand on a soft linen canvas, with a warm amber accent for actions. It reads as dependable on first call — premium without going corporate, calming without going clinical.
+                </p>
+              </div>
+              <ColorSection />
+            </section>
+
+            {/* TYPE */}
+            <section className="sr-section" id="type">
+              <div className="sr-section-head">
+                <div>
+                  <div className="sr-section-num">03 · Typography</div>
+                  <h2>Friendly, readable, never shouty</h2>
+                </div>
+                <p className="sr-section-blurb">
+                  Plus Jakarta Sans handles display and headings — soft, humanist, slightly geometric. Figtree carries body copy with a calm, even rhythm. JetBrains Mono is reserved for numbers, codes, and timestamps where precision matters.
+                </p>
+              </div>
+              <TypeSection />
+            </section>
+
+            {/* FOUNDATIONS */}
+            <section className="sr-section" id="foundations">
+              <div className="sr-section-head">
+                <div>
+                  <div className="sr-section-num">04 · Foundations</div>
+                  <h2>Spacing, radii, elevation, motion</h2>
+                </div>
+                <p className="sr-section-blurb">
+                  4px spacing scale. Radii lean soft — never sharp — to support the calm tone. Shadows stay low and warm; motion is short and purposeful. Nothing should feel like it's competing for attention.
+                </p>
+              </div>
+              <FoundationsSection />
+            </section>
+
+            {/* COMPONENTS */}
+            <section className="sr-section" id="components">
+              <div className="sr-section-head">
+                <div>
+                  <div className="sr-section-num">05 · Components</div>
+                  <h2>The working set</h2>
+                </div>
+                <p className="sr-section-blurb">
+                  Buttons, inputs, and feedback. Built with generous hit targets (44–52px) for users who often interact one-handed on a phone, and clear focus states for anyone who relies on the keyboard.
+                </p>
+              </div>
+
+              <div className="sr-subsection-head">Buttons</div>
+              <div className="sr-spec">
+                <div className="sr-spec-stage">
+                  <Button variant="primary" size="lg">Start onboarding</Button>
+                  <Button variant="brand" size="lg">Save changes</Button>
+                  <Button variant="secondary" size="lg">Cancel</Button>
+                  <Button variant="ghost" size="lg">Skip for now</Button>
+                  <Button variant="danger" size="lg">Delete agent</Button>
+                </div>
+                <div className="sr-spec-foot"><span>Primary · Brand · Secondary · Ghost · Danger</span><span>lg · 52px</span></div>
+              </div>
+              <div className="sr-spec" style={{ marginTop: 16 }}>
+                <div className="sr-spec-stage">
+                  <Button variant="primary" size="md">Continue</Button>
+                  <Button variant="secondary" size="md">Back</Button>
+                  <Button variant="primary" size="sm">Test call</Button>
+                  <Button variant="primary" size="md" disabled>Disabled</Button>
+                </div>
+                <div className="sr-spec-foot"><span>md · sm · disabled</span></div>
+              </div>
+
+              <div className="sr-subsection-head">Form controls</div>
+              <FormDemo />
+
+              <div className="sr-subsection-head">Badges</div>
+              <div className="sr-spec">
+                <div className="sr-spec-stage">
+                  <Badge tone="brand" dot>Agent live</Badge>
+                  <Badge tone="success">Booked</Badge>
+                  <Badge tone="warning">Needs follow-up</Badge>
+                  <Badge tone="danger" dot>Emergency</Badge>
+                  <Badge tone="info">Quoted</Badge>
+                  <Badge tone="neutral">Draft</Badge>
+                </div>
+                <div className="sr-spec-foot"><span>Status badges</span></div>
+              </div>
+
+              <div className="sr-subsection-head">Alerts</div>
+              <div className="sr-spec">
+                <div className="sr-spec-stage sr-spec-stage--column">
+                  <Alert tone="success" title="Agent is live">
+                    Calls to (415) 555-0148 are now answered by Eleanor.
+                  </Alert>
+                  <Alert tone="info" title="Heads up">
+                    We'll forward emergencies to your cell. You can change that in Settings.
+                  </Alert>
+                  <Alert tone="warning" title="Calendar not connected">
+                    Connect Google Calendar so we can book customers automatically.
+                  </Alert>
+                  <Alert tone="danger" title="Couldn't reach that number">
+                    Want to try again, or skip for now? You can add it later.
+                  </Alert>
+                </div>
+                <div className="sr-spec-foot"><span>Tone-paired feedback · onboarding-aware copy</span></div>
+              </div>
+
+              <div className="sr-subsection-head">Cards · Tabs</div>
+              <div className="sr-grid-2">
+                <Card elevated>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+                    <span style={{ fontFamily: 'var(--sr-font-mono)', fontSize: 11, letterSpacing: '.08em', textTransform: 'uppercase', color: 'var(--sr-color-text-subtle)' }}>This week</span>
+                    <h4 style={{ fontFamily: 'var(--sr-font-display)', fontSize: 24, letterSpacing: '-0.01em' }}>34 calls answered</h4>
+                    <p style={{ color: 'var(--sr-color-text-muted)', fontSize: 14, lineHeight: 1.5 }}>
+                      18 booked · 12 quoted · 4 follow-ups. You'd have missed 9 calls without an agent.
+                    </p>
+                    <div style={{ marginTop: 8 }}>
+                      <Progress value={68} label="Capture rate" />
+                    </div>
+                  </div>
+                </Card>
+                <Card padded={false}>
+                  <div style={{ padding: 20, borderBottom: '1px solid var(--sr-color-border-subtle)' }}>
+                    <Tabs value="overview" onChange={() => {}} options={[
+                      { value: 'overview', label: 'Overview' },
+                      { value: 'transcript', label: 'Transcript' },
+                      { value: 'recording', label: 'Recording' },
+                    ]} />
+                  </div>
+                  <div style={{ padding: 20, color: 'var(--sr-color-text-muted)', fontSize: 14, lineHeight: 1.55 }}>
+                    Tabs use a soft pill thumb that slides on selection — calm motion, no surprises.
+                  </div>
+                </Card>
+              </div>
+
+              <div className="sr-subsection-head">Navigation</div>
+              <div className="sr-spec">
+                <div className="sr-spec-stage sr-spec-stage--column">
+                  <TopNav />
+                </div>
+                <div className="sr-spec-foot"><span>Top navigation · desktop chrome</span></div>
+              </div>
+              <div className="sr-spec" style={{ marginTop: 16 }}>
+                <div className="sr-spec-stage" style={{ alignItems: 'flex-start' }}>
+                  <SideNav />
+                  <div style={{ flex: 1, minWidth: 280, padding: '20px 16px', color: 'var(--sr-color-text-muted)', fontSize: 14, lineHeight: 1.55 }}>
+                    The side nav is reserved for the operator dashboard. Sage-soft active state pulls focus without being loud; the accent badge counts only on items that need attention (live calls, missed callbacks).
+                  </div>
+                </div>
+                <div className="sr-spec-foot"><span>Side navigation · operator app</span></div>
+              </div>
+            </section>
+
+            {/* ONBOARDING */}
+            <section className="sr-section" id="onboarding">
+              <div className="sr-section-head">
+                <div>
+                  <div className="sr-section-num">06 · Onboarding</div>
+                  <h2>The most important screens</h2>
+                </div>
+                <p className="sr-section-blurb">
+                  Designed for someone who avoids software when they can. One decision per screen, a clear "Continue", and a way to skip. Copy is a coworker — never a wizard, never a robot.
+                </p>
+              </div>
+
+              <div className="sr-subsection-head">Stepper</div>
+              <div className="sr-spec">
+                <div className="sr-spec-stage" style={{ padding: '40px 32px' }}>
+                  <Stepper steps={['Your business', 'How we answer', 'Schedule & calendar', 'Go live']} current={1} />
+                </div>
+                <div className="sr-spec-foot"><span>4-step onboarding · current step uses the accent</span></div>
+              </div>
+
+              <div className="sr-subsection-head">Step screen</div>
+              <div className="sr-spec">
+                <div className="sr-spec-stage sr-spec-stage--column" style={{ padding: '48px 32px', background: 'var(--sr-color-bg)' }}>
+                  <OnboardingStep />
+                </div>
+                <div className="sr-spec-foot"><span>Step 2 · greeting & voice</span></div>
+              </div>
+
+              <div className="sr-subsection-head">Empty state</div>
+              <div className="sr-spec">
+                <div className="sr-spec-stage sr-spec-stage--column">
+                  <EmptyState />
+                </div>
+                <div className="sr-spec-foot"><span>Dashboard · no calls yet</span></div>
+              </div>
+            </section>
+
+            {/* CALLS */}
+            <section className="sr-section" id="calls">
+              <div className="sr-section-head">
+                <div>
+                  <div className="sr-section-num">07 · Call UI</div>
+                  <h2>Listen, transcribe, hand off</h2>
+                </div>
+                <p className="sr-section-blurb">
+                  The live call card is the operator's window into a conversation in progress. They should be able to glance, understand, and step in within five seconds. The agent avatar quietly animates while listening.
+                </p>
+              </div>
+
+              <div className="sr-subsection-head">Live call</div>
+              <div className="sr-spec">
+                <div className="sr-spec-stage sr-spec-stage--column">
+                  <LiveCallCard />
+                </div>
+                <div className="sr-spec-foot"><span>Live call · in-progress · operator-facing</span></div>
+              </div>
+
+              <div className="sr-subsection-head">Today's calls</div>
+              <div className="sr-spec">
+                <div className="sr-spec-stage sr-spec-stage--column">
+                  <CallList />
+                </div>
+                <div className="sr-spec-foot"><span>Recent activity · status-tagged</span></div>
+              </div>
+
+              <div className="sr-subsection-head">Agent avatars</div>
+              <div className="sr-spec">
+                <div className="sr-spec-stage" style={{ gap: 32 }}>
+                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8 }}>
+                    <AgentAvatar size={72} />
+                    <span style={{ fontSize: 12, color: 'var(--sr-color-text-subtle)', fontFamily: 'var(--sr-font-mono)' }}>idle</span>
+                  </div>
+                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8 }}>
+                    <AgentAvatar size={72} listening />
+                    <span style={{ fontSize: 12, color: 'var(--sr-color-text-subtle)', fontFamily: 'var(--sr-font-mono)' }}>listening</span>
+                  </div>
+                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8 }}>
+                    <AgentAvatar size={48} />
+                    <span style={{ fontSize: 12, color: 'var(--sr-color-text-subtle)', fontFamily: 'var(--sr-font-mono)' }}>md</span>
+                  </div>
+                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8 }}>
+                    <AgentAvatar size={36} />
+                    <span style={{ fontSize: 12, color: 'var(--sr-color-text-subtle)', fontFamily: 'var(--sr-font-mono)' }}>sm</span>
+                  </div>
+                </div>
+                <div className="sr-spec-foot"><span>Avatar states</span></div>
+              </div>
+            </section>
+
+            <footer style={{ marginTop: 64, paddingTop: 32, borderTop: '1px solid var(--sr-color-border-subtle)', display: 'flex', justifyContent: 'space-between', fontSize: 13, color: 'var(--sr-color-text-subtle)', fontFamily: 'var(--sr-font-mono)' }}>
+              <span>Smart Reception · v0.1</span>
+              <span>Linen &amp; Slate</span>
+            </footer>
+          </div>
+
+          <TweaksPanel title="Smart Reception">
+            <TweakSection label="Density" />
+            <TweakRadio label="Hit targets" value={t.density}
+              options={['compact', 'regular', 'comfy']}
+              onChange={(v) => setTweak('density', v)} />
+            <TweakSection label="Shape" />
+            <TweakSlider label="Base radius" value={t.radius}
+              min={0} max={20} unit="px"
+              onChange={(v) => setTweak('radius', v)} />
+          </TweaksPanel>
+        </div>
+      );
+    }
+
+    function FormDemo() {
+      const [name, setName] = React.useState("Pete's Plumbing");
+      const [phone, setPhone] = React.useState('(415) 555-0148');
+      const [hours, setHours] = React.useState('weekdays');
+      const [voicemail, setVoicemail] = React.useState(true);
+      const [emergency, setEmergency] = React.useState(false);
+      return (
+        <div className="sr-spec">
+          <div className="sr-spec-stage sr-spec-stage--column" style={{ padding: 32 }}>
+            <div className="sr-grid-2">
+              <Input label="Business name" value={name} onChange={(e) => setName(e.target.value)} />
+              <Input label="Forwarding number" value={phone} onChange={(e) => setPhone(e.target.value)} leading="☎" hint="Where we'll send emergencies." />
+            </div>
+            <div className="sr-grid-2">
+              <Select label="Hours" value={hours} onChange={(e) => setHours(e.target.value)} options={[
+                { value: 'weekdays', label: 'Weekdays · 8am–6pm' },
+                { value: 'extended', label: 'Extended · 7am–9pm daily' },
+                { value: 'always', label: '24/7' },
+              ]} />
+              <Input label="Service area" value="" onChange={() => {}} placeholder="ZIP codes — comma separated" optional />
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 14, padding: 16,
+                          background: 'var(--sr-color-bg-sunken)', borderRadius: 'var(--sr-radius-md)' }}>
+              <Toggle checked={voicemail} onChange={setVoicemail}
+                      label="Take voicemails after hours"
+                      desc="If you'd rather not pick up, we'll record and email you a summary." />
+              <Toggle checked={emergency} onChange={setEmergency}
+                      label="Forward emergencies to my cell"
+                      desc="We'll only call you for true emergencies — burst pipes, no heat, etc." />
+            </div>
+          </div>
+          <div className="sr-spec-foot"><span>Inputs · select · toggles · grouped settings</span></div>
+        </div>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+  </script>
+</body>
+</html>

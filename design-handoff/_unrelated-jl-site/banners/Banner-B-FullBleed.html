@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>FB Banner — Full Bleed</title>
+<link rel="stylesheet" href="banners.css">
+<style>
+  body { display: grid; place-items: center; min-height: 100vh; }
+  .fb .photo {
+    position: absolute; inset: 0;
+    background-image: url('assets/justin-portrait.jpg');
+    background-size: cover; background-position: 30% 32%;
+    filter: contrast(1.05) brightness(0.78);
+  }
+  .fb .scrim { position: absolute; inset: 0;
+    background:
+      linear-gradient(90deg, rgba(32,50,53,0.0) 0%, rgba(32,50,53,0.55) 38%, rgba(32,50,53,0.96) 70%);
+  }
+  .fb .text { position: absolute; right: 50px; top: 50%; transform: translateY(-50%); text-align: right; }
+  .fb .name {
+    font-family: 'Galano Grotesque'; font-weight: 500;
+    font-size: 60px; letter-spacing: 0.09em; line-height: 1;
+    color: #E6E7E8; margin: 0;
+  }
+  .fb .tick { width: 48px; height: 1px; background: #8a9298; margin: 18px 0 18px auto; }
+  .fb .sub {
+    font-family: 'Messina Sans Mono'; font-weight: 400;
+    font-size: 13px; letter-spacing: 0.42em; text-transform: uppercase;
+    color: #9aa2a8; margin: 0;
+  }
+  .fb .jl {
+    position: absolute; left: 36px; top: 36px;
+    width: 40px; height: 40px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .fb .jl img { width: 100%; filter: brightness(0) invert(1); opacity: 0.85; }
+</style></head><body>
+<div class="banner fb" data-screen-label="B Full Bleed">
+  <div class="photo"></div>
+  <div class="scrim"></div>
+  <div class="jl"><img src="assets/jl-mark.png" alt=""></div>
+  <div class="text">
+    <h1 class="name">JUSTIN LEVENSON</h1>
+    <div class="tick"></div>
+    <p class="sub">From the Center</p>
+  </div>
+</div></body></html>

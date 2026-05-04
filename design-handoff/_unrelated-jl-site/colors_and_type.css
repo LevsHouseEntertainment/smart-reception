@@ -1,0 +1,316 @@
+/* ============================================================
+   Justin Levenson Design System — Colors & Typography
+   ============================================================
+   FONT STATUS (May 2026): Using free Google Fonts as PERMANENT
+   PLACEHOLDERS until licensed brand fonts are purchased.
+
+     ROLE         CURRENT (free)        FUTURE (licensed)
+     ───────────  ────────────────────  ──────────────────────────
+     Primary/UI   Plus Jakarta Sans 500  Galano Grotesque Medium
+     Header       DM Mono 400            Messina Sans Mono Regular
+     Body         Space Grotesk 400      Halyard Display Regular
+
+   When brand fonts are licensed, swap only the values of
+   --font-primary / --font-header / --font-body below — no other
+   structural changes needed. The local Galano Grotesque /
+   Messina Sans Mono @font-face declarations are retained but
+   unreferenced; remove the Google Fonts @import once licensed
+   fonts replace them.
+   ============================================================ */
+
+/* ✅ Google Fonts — placeholder font system */
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400&family=Plus+Jakarta+Sans:wght@500;600;700&family=Space+Grotesk:wght@400;500;600&display=swap');
+
+/* ── Galano Grotesque ──────────────────────────────────────── */
+@font-face { font-family: 'Galano Grotesque'; src: url('fonts/Fontspring-DEMO-GalanoGrotesque-Thin.otf'); font-weight: 100; font-style: normal; }
+@font-face { font-family: 'Galano Grotesque'; src: url('fonts/Fontspring-DEMO-GalanoGrotesque-ThinItalic.otf'); font-weight: 100; font-style: italic; }
+@font-face { font-family: 'Galano Grotesque'; src: url('fonts/Fontspring-DEMO-GalanoGrotesque-ExtraLight.otf'); font-weight: 200; font-style: normal; }
+@font-face { font-family: 'Galano Grotesque'; src: url('fonts/Fontspring-DEMO-GalanoGrotesque-ExtraLightItalic.otf'); font-weight: 200; font-style: italic; }
+@font-face { font-family: 'Galano Grotesque'; src: url('fonts/Fontspring-DEMO-GalanoGrotesque-Light.otf'); font-weight: 300; font-style: normal; }
+@font-face { font-family: 'Galano Grotesque'; src: url('fonts/Fontspring-DEMO-GalanoGrotesque-LightItalic.otf'); font-weight: 300; font-style: italic; }
+@font-face { font-family: 'Galano Grotesque'; src: url('fonts/Fontspring-DEMO-GalanoGrotesque-Regular.otf'); font-weight: 400; font-style: normal; }
+@font-face { font-family: 'Galano Grotesque'; src: url('fonts/Fontspring-DEMO-GalanoGrotesque-Italic.otf'); font-weight: 400; font-style: italic; }
+@font-face { font-family: 'Galano Grotesque'; src: url('fonts/Fontspring-DEMO-GalanoGrotesque-Medium.otf'); font-weight: 500; font-style: normal; }
+@font-face { font-family: 'Galano Grotesque'; src: url('fonts/Fontspring-DEMO-GalanoGrotesque-MediumItalic.otf'); font-weight: 500; font-style: italic; }
+@font-face { font-family: 'Galano Grotesque'; src: url('fonts/Fontspring-DEMO-GalanoGrotesque-SemiBold.otf'); font-weight: 600; font-style: normal; }
+@font-face { font-family: 'Galano Grotesque'; src: url('fonts/Fontspring-DEMO-GalanoGrotesque-SemiBoldItalic.otf'); font-weight: 600; font-style: italic; }
+@font-face { font-family: 'Galano Grotesque'; src: url('fonts/Fontspring-DEMO-GalanoGrotesque-Bold.otf'); font-weight: 700; font-style: normal; }
+@font-face { font-family: 'Galano Grotesque'; src: url('fonts/Fontspring-DEMO-GalanoGrotesque-BoldItalic.otf'); font-weight: 700; font-style: italic; }
+@font-face { font-family: 'Galano Grotesque'; src: url('fonts/Fontspring-DEMO-GalanoGrotesque-ExtraBold.otf'); font-weight: 800; font-style: normal; }
+@font-face { font-family: 'Galano Grotesque'; src: url('fonts/Fontspring-DEMO-GalanoGrotesque-ExtraBoldItalic.otf'); font-weight: 800; font-style: italic; }
+@font-face { font-family: 'Galano Grotesque'; src: url('fonts/Fontspring-DEMO-GalanoGrotesque-Heavy.otf'); font-weight: 900; font-style: normal; }
+@font-face { font-family: 'Galano Grotesque'; src: url('fonts/Fontspring-DEMO-GalanoGrotesque-HeavyItalic.otf'); font-weight: 900; font-style: italic; }
+
+/* ── Galano Grotesque Alt ──────────────────────────────────── */
+@font-face { font-family: 'Galano Grotesque Alt'; src: url('fonts/Fontspring-DEMO-galanogrotesquealt-thin.otf'); font-weight: 100; font-style: normal; }
+@font-face { font-family: 'Galano Grotesque Alt'; src: url('fonts/Fontspring-DEMO-galanogrotesquealt-thinitalic.otf'); font-weight: 100; font-style: italic; }
+@font-face { font-family: 'Galano Grotesque Alt'; src: url('fonts/Fontspring-DEMO-galanogrotesquealt-extralight.otf'); font-weight: 200; font-style: normal; }
+@font-face { font-family: 'Galano Grotesque Alt'; src: url('fonts/Fontspring-DEMO-galanogrotesquealt-extralightitalic.otf'); font-weight: 200; font-style: italic; }
+@font-face { font-family: 'Galano Grotesque Alt'; src: url('fonts/Fontspring-DEMO-galanogrotesquealt-light.otf'); font-weight: 300; font-style: normal; }
+@font-face { font-family: 'Galano Grotesque Alt'; src: url('fonts/Fontspring-DEMO-galanogrotesquealt-lightitalic.otf'); font-weight: 300; font-style: italic; }
+@font-face { font-family: 'Galano Grotesque Alt'; src: url('fonts/Fontspring-DEMO-galanogrotesquealt-regular.otf'); font-weight: 400; font-style: normal; }
+@font-face { font-family: 'Galano Grotesque Alt'; src: url('fonts/Fontspring-DEMO-galanogrotesquealt-italic.otf'); font-weight: 400; font-style: italic; }
+@font-face { font-family: 'Galano Grotesque Alt'; src: url('fonts/Fontspring-DEMO-galanogrotesquealt-medium.otf'); font-weight: 500; font-style: normal; }
+@font-face { font-family: 'Galano Grotesque Alt'; src: url('fonts/Fontspring-DEMO-galanogrotesquealt-mediumitalic.otf'); font-weight: 500; font-style: italic; }
+@font-face { font-family: 'Galano Grotesque Alt'; src: url('fonts/Fontspring-DEMO-galanogrotesquealt-semibold.otf'); font-weight: 600; font-style: normal; }
+@font-face { font-family: 'Galano Grotesque Alt'; src: url('fonts/Fontspring-DEMO-galanogrotesquealt-semibolditalic.otf'); font-weight: 600; font-style: italic; }
+@font-face { font-family: 'Galano Grotesque Alt'; src: url('fonts/Fontspring-DEMO-galanogrotesquealt-bold.otf'); font-weight: 700; font-style: normal; }
+@font-face { font-family: 'Galano Grotesque Alt'; src: url('fonts/Fontspring-DEMO-galanogrotesquealt-bolditalic.otf'); font-weight: 700; font-style: italic; }
+@font-face { font-family: 'Galano Grotesque Alt'; src: url('fonts/Fontspring-DEMO-galanogrotesquealt-extrabold.otf'); font-weight: 800; font-style: normal; }
+@font-face { font-family: 'Galano Grotesque Alt'; src: url('fonts/Fontspring-DEMO-galanogrotesquealt-extrabolditalic.otf'); font-weight: 800; font-style: italic; }
+@font-face { font-family: 'Galano Grotesque Alt'; src: url('fonts/Fontspring-DEMO-galanogrotesquealt-heavy.otf'); font-weight: 900; font-style: normal; }
+@font-face { font-family: 'Galano Grotesque Alt'; src: url('fonts/Fontspring-DEMO-galanogrotesquealt-heavyitalic.otf'); font-weight: 900; font-style: italic; }
+
+/* ============================================================
+   COLOR TOKENS — Exact brand palette (from brand guide)
+   ============================================================ */
+:root {
+  /* ── Brand palette — exact hex codes ───────────────────────
+     Source: Brand Guide color pages + Font Migration Guide
+     ──────────────────────────────────────────────────────── */
+  --color-mist:           #5A656B;   /* PRIMARY neutral — C067/M052/Y047/K019 */
+  --color-mist-accent:    #A656BC;   /* Mist (accent) — purple, per migration guide */
+  --color-deep-sea:       #203235;   /* C082/M063/Y060/K058 — dark teal-black */
+  --color-charcoal:       #36302D;   /* C050/M050/Y051/K073 — warm dark brown-black */
+  --color-cool-grey:      #E6E7E8;   /* C000/M000/Y000/K010 — near white */
+  --color-storm:          #4A4B4C;   /* dark warm grey */
+
+  /* Whites */
+  --color-off-white:      #F6F4F0;   /* page background — warm linen */
+  --color-warm-white:     #FAFAF8;   /* card surfaces */
+  --color-pure-white:     #FFFFFF;
+
+  /* Borders / dividers */
+  --color-border:         #D8D9DA;   /* derived from Cool Grey */
+  --color-border-dark:    #2A3A3E;   /* border on dark bg */
+
+  /* ============================================================
+     SEMANTIC COLOR TOKENS
+     ============================================================ */
+
+  /* Surfaces */
+  --bg-primary:           var(--color-off-white);
+  --bg-elevated:          var(--color-warm-white);
+  --bg-dark:              var(--color-deep-sea);
+  --bg-muted:             var(--color-mist);
+
+  /* Text */
+  --text-primary:         var(--color-deep-sea);
+  --text-secondary:       var(--color-mist);
+  --text-muted:           #8A9299;
+  --text-inverse:         var(--color-warm-white);
+  --text-accent:          var(--color-mist);
+
+  /* Interactive */
+  --link-color:           var(--color-deep-sea);
+  --link-hover:           var(--color-mist);
+  --button-primary-bg:    var(--color-deep-sea);
+  --button-primary-text:  var(--color-warm-white);
+  --button-primary-hover: var(--color-charcoal);
+
+  /* Borders */
+  --border-color:         var(--color-border);
+  --border-dark:          var(--color-border-dark);
+
+  /* ============================================================
+     TYPOGRAPHY TOKENS
+     ============================================================ */
+
+  /* ── Font families ─────────────────────────────────────────
+     Generic role names so swapping placeholders for licensed
+     fonts later is a values-only change. Do NOT add Inter,
+     Roboto, or system fonts as fallbacks — use only the
+     sans-serif / monospace generic stacks shown.
+     ──────────────────────────────────────────────────────── */
+  --font-primary:         'Plus Jakarta Sans', sans-serif;   /* UI, nav, labels, buttons (500) */
+  --font-header:          'DM Mono', monospace;              /* Section headers, accent callouts (400) */
+  --font-body:            'Space Grotesk', sans-serif;       /* Body copy, post content (400) */
+
+  /* Legacy aliases — keep older files rendering until migrated.
+     New work should use --font-primary / --font-header / --font-body. */
+  --font-display:         var(--font-header);
+  --font-serif:           var(--font-body);
+  --font-body-alt:        var(--font-primary);
+
+  /* Font sizes — fluid scale */
+  --text-xs:    0.75rem;    /*  12px */
+  --text-sm:    0.875rem;   /*  14px */
+  --text-base:  1rem;       /*  16px */
+  --text-md:    1.125rem;   /*  18px */
+  --text-lg:    1.25rem;    /*  20px */
+  --text-xl:    1.5rem;     /*  24px */
+  --text-2xl:   2rem;       /*  32px */
+  --text-3xl:   2.5rem;     /*  40px */
+  --text-4xl:   3.25rem;    /*  52px */
+  --text-5xl:   4.5rem;     /*  72px */
+
+  /* Font weights */
+  --weight-light:   300;
+  --weight-regular: 400;
+  --weight-medium:  500;
+  --weight-semibold:600;
+
+  /* Line heights */
+  --leading-tight:  1.15;
+  --leading-snug:   1.35;
+  --leading-normal: 1.6;
+  --leading-loose:  1.8;
+
+  /* Letter spacing */
+  --tracking-tight:  -0.02em;
+  --tracking-normal:  0em;
+  --tracking-wide:    0.06em;
+  --tracking-wider:   0.12em;
+  --tracking-widest:  0.22em;
+
+  /* ============================================================
+     SPACING TOKENS
+     ============================================================ */
+  --space-1:    0.25rem;   /*  4px */
+  --space-2:    0.5rem;    /*  8px */
+  --space-3:    0.75rem;   /* 12px */
+  --space-4:    1rem;      /* 16px */
+  --space-5:    1.25rem;   /* 20px */
+  --space-6:    1.5rem;    /* 24px */
+  --space-8:    2rem;      /* 32px */
+  --space-10:   2.5rem;    /* 40px */
+  --space-12:   3rem;      /* 48px */
+  --space-16:   4rem;      /* 64px */
+  --space-20:   5rem;      /* 80px */
+  --space-24:   6rem;      /* 96px */
+  --space-32:   8rem;      /* 128px */
+
+  /* ============================================================
+     BORDER RADIUS
+     ============================================================ */
+  --radius-none:   0px;
+  --radius-sm:     2px;    /* minimal; brand is almost straight-edged */
+  --radius-md:     4px;
+  --radius-full:   9999px; /* pills only — rare */
+
+  /* ============================================================
+     SHADOWS
+     ============================================================ */
+  --shadow-sm:   0 1px 3px rgba(0,0,0,0.08);
+  --shadow-md:   0 4px 16px rgba(0,0,0,0.10);
+  --shadow-lg:   0 12px 40px rgba(0,0,0,0.14);
+
+  /* ============================================================
+     TRANSITIONS
+     ============================================================ */
+  --transition-fast:   150ms ease;
+  --transition-base:   300ms ease;
+  --transition-slow:   600ms ease;   /* brand favors slow, calm fades */
+}
+
+/* ============================================================
+   SEMANTIC ELEMENT DEFAULTS
+   Per Font Migration Guide — Usage Rules:
+     Body copy / post text   → --font-body    400
+     Section headers         → --font-header  400
+     Navigation / buttons    → --font-primary 500
+     Labels / tags / utility → --font-primary 500
+     Accent callouts / quotes→ --font-header  400
+   ============================================================ */
+body {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
+  -webkit-font-smoothing: antialiased;
+  text-wrap: pretty;
+}
+
+h1, .h1 {
+  font-family: var(--font-header);
+  font-size: var(--text-4xl);
+  font-weight: var(--weight-regular);
+  letter-spacing: var(--tracking-wide);
+  line-height: var(--leading-tight);
+  text-transform: uppercase;
+  color: var(--text-primary);
+}
+
+h2, .h2 {
+  font-family: var(--font-header);
+  font-size: var(--text-3xl);
+  font-weight: var(--weight-regular);
+  letter-spacing: var(--tracking-normal);
+  line-height: var(--leading-snug);
+  color: var(--text-primary);
+}
+
+h3, .h3 {
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  font-weight: var(--weight-medium);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+h4, .h4 {
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  font-weight: var(--weight-medium);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+p {
+  font-family: var(--font-body);
+  font-size: var(--text-md);
+  line-height: var(--leading-normal);
+  color: var(--text-primary);
+  max-width: 62ch;
+}
+
+blockquote {
+  font-family: var(--font-header);
+  font-size: var(--text-xl);
+  font-style: normal;
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-snug);
+  color: var(--text-secondary);
+  border-left: 1px solid var(--border-color);
+  padding-left: var(--space-6);
+  margin: var(--space-8) 0;
+}
+
+a {
+  color: var(--link-color);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  transition: color var(--transition-fast);
+}
+a:hover { color: var(--link-hover); }
+
+/* Utility: brand monogram / display name lockup */
+.brand-name {
+  font-family: var(--font-header);
+  font-weight: var(--weight-regular);
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+}
+
+/* Utility: small caps label */
+.eyebrow {
+  font-family: var(--font-primary);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-medium);
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* Utility: numbered section marker */
+.section-number {
+  font-family: var(--font-header);
+  font-size: var(--text-2xl);
+  font-weight: var(--weight-regular);
+  color: var(--text-muted);
+  letter-spacing: var(--tracking-wider);
+}

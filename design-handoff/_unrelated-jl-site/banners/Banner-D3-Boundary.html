@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>FB Banner — D Boundary Push</title>
+<link rel="stylesheet" href="banners.css">
+<style>
+  body { display: grid; place-items: center; min-height: 100vh; }
+  .dx { background: #1c2a2d; }
+
+  /* duotone photo on the right, locked to a vertical band */
+  .dx .photo {
+    position: absolute; right: 0; top: 0; bottom: 0; width: 320px;
+    background-image: url('assets/justin-portrait.jpg');
+    background-size: cover; background-position: 50% 18%;
+    filter: contrast(1.08) brightness(0.92) grayscale(0.35);
+    /* soft right-edge vignette */
+  }
+  .dx .photo::after {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(90deg, rgba(32,50,53,0.0) 70%, rgba(32,50,53,0.55) 100%);
+  }
+  .dx .softfade {
+    position: absolute; right: 300px; width: 140px; top: 0; bottom: 0;
+    background: linear-gradient(90deg, rgba(32,50,53,0) 0%, rgba(32,50,53,0.85) 70%, #1c2a2d 100%);
+  }
+
+  /* Oversized type, rotated mono label */
+  .dx .name {
+    position: absolute; left: 56px; bottom: 56px;
+    font-family: 'Galano Grotesque'; font-weight: 500;
+    font-size: 78px; letter-spacing: 0.02em; line-height: 0.92;
+    color: #E6E7E8; margin: 0;
+    text-transform: lowercase;
+    max-width: 560px;
+  }
+  .dx .name .last { color: #8a9298; }
+
+  /* Vertical mono spine on left */
+  .dx .spine {
+    position: absolute; left: 28px; top: 50%;
+    transform: translateY(-50%) rotate(-90deg); transform-origin: left center;
+    font-family: 'Messina Sans Mono'; font-weight: 400;
+    font-size: 11px; letter-spacing: 0.5em; text-transform: uppercase;
+    color: #5A656B; white-space: nowrap;
+  }
+
+  /* JL monogram top left */
+  .dx .jl {
+    position: absolute; left: 56px; top: 36px;
+    width: 32px; height: 32px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .dx .jl img { width: 100%; filter: brightness(0) invert(1); opacity: 0.9; }
+
+  /* Top right meta */
+  .dx .meta {
+    position: absolute; right: 32px; top: 32px;
+    font-family: 'Messina Sans Mono'; font-weight: 400;
+    font-size: 10px; letter-spacing: 0.32em; text-transform: uppercase;
+    color: rgba(230,231,232,0.7);
+    text-align: right; line-height: 1.6;
+  }
+
+  /* Hairline rule between photo column and type */
+  .dx .rule {
+    position: absolute; right: 320px; top: 32px; bottom: 32px;
+    width: 1px; background: rgba(230,231,232,0.12);
+  }
+</style></head><body>
+<div class="banner dx" data-screen-label="D3 Boundary Push">
+  <div class="photo"></div>
+  <div class="softfade"></div>
+  <div class="rule"></div>
+  <div class="jl"><img src="assets/jl-mark.png" alt=""></div>
+  <div class="spine">From the Center · Est. Nashville</div>
+  <div class="meta">Author<br>Speaker<br>Substack</div>
+  <h1 class="name">justin<br><span class="last">levenson.</span></h1>
+</div></body></html>

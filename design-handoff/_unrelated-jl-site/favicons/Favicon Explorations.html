@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Justin Levenson — Favicon Explorations</title>
+<link rel="stylesheet" href="../stories/stories.css" />
+<style>
+  html, body { margin: 0; padding: 0; background: #F6F4F0; color: #203235; font-family: 'Galano Grotesque', sans-serif; }
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 80px 48px; }
+  .eyebrow {
+    font-family: 'Messina Sans Mono', monospace;
+    font-size: 12px; letter-spacing: 0.34em; text-transform: uppercase;
+    color: #8a9298; margin-bottom: 20px;
+  }
+  h1 { font-size: 48px; font-weight: 500; letter-spacing: -0.015em; margin: 0 0 16px; }
+  .lead { font-size: 17px; line-height: 1.55; color: #4A454C; max-width: 68ch; margin: 0 0 56px; }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+  }
+  .card {
+    background: #FAFAF8;
+    border: 1px solid #E6E7E8;
+    padding: 32px;
+  }
+  .card .mono {
+    font-family: 'Messina Sans Mono', monospace;
+    font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase;
+    color: #8a9298; margin-bottom: 6px;
+  }
+  .card .title { font-size: 20px; font-weight: 500; margin: 0 0 4px; }
+  .card .desc { font-size: 14px; color: #5A656B; line-height: 1.5; margin: 0 0 24px; }
+
+  /* The favicon preview swatches */
+  .previews {
+    display: flex; align-items: center; gap: 20px;
+    padding: 24px; background: #fff;
+    border: 1px solid #E6E7E8;
+    margin-bottom: 20px;
+  }
+  .fav {
+    width: 64px; height: 64px;
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  }
+  .fav-sm {
+    width: 32px; height: 32px;
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .fav-xs {
+    width: 16px; height: 16px;
+    border-radius: 3px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .fav img, .fav-sm img, .fav-xs img {
+    display: block;
+    width: 66%; height: auto;
+    image-rendering: -webkit-optimize-contrast;
+  }
+  .fav-xs img { width: 72%; }
+  .sizes {
+    display: flex; flex-direction: column; gap: 8px;
+    font-family: 'Messina Sans Mono', monospace;
+    font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: #8a9298;
+  }
+
+  /* Browser tab mock */
+  .tab-mock {
+    background: #E6E7E8;
+    padding: 8px;
+    border-radius: 6px 6px 0 0;
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: 'Galano Grotesque', sans-serif;
+    font-size: 12px; color: #4A454C;
+    padding-right: 40px;
+  }
+  .tab-mock .tabfav { width: 16px; height: 16px; display:flex; align-items:center; justify-content:center; border-radius: 3px; }
+  .tab-mock .tabfav img { width: 100%; height: auto; }
+
+  /* Variant backgrounds */
+  .bg-offwhite { background: #F6F4F0; }
+  .bg-linen    { background: #EFEBE3; }
+  .bg-warm     { background: #EADFD0; }
+  .bg-mist     { background: #C8CDD0; }
+  .bg-gold     { background: #C8A86A; }
+  .bg-seal     { background: #5B6278; }
+  .bg-deepsea  { background: #203235; }
+
+  /* Filters to recolor the black monogram PNG */
+  .ink-deepsea { filter: brightness(0) saturate(100%) invert(15%) sepia(12%) saturate(700%) hue-rotate(150deg); }
+  .ink-mist    { filter: brightness(0) saturate(100%) invert(40%) sepia(8%) saturate(300%) hue-rotate(170deg); }
+  .ink-white   { filter: brightness(0) invert(1); }
+  .ink-gold    { filter: brightness(0) saturate(100%) invert(73%) sepia(22%) saturate(620%) hue-rotate(5deg) brightness(92%); }
+  .ink-seal    { filter: brightness(0) saturate(100%) invert(40%) sepia(14%) saturate(540%) hue-rotate(190deg) brightness(85%); }
+  .ink-charcoal { filter: brightness(0) saturate(100%) invert(25%) sepia(8%) saturate(200%) hue-rotate(0deg); }
+  .ink-none { }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="eyebrow">Favicon · Light Directions</div>
+  <h1>Six lighter favicon directions.</h1>
+  <p class="lead">
+    Six takes on the JL monogram favicon, pulled from the brand palette. All use the existing
+    interlocked-JL mark (Asset 15, outlined version — it holds up best at 16×16). Each card shows
+    64, 32, and 16px previews plus a browser-tab mock so you can feel which reads cleanest in real life.
+  </p>
+
+  <div class="grid">
+
+    <!-- 01 — Linen + Deep Sea -->
+    <div class="card">
+      <div class="mono">Option 01</div>
+      <h2 class="title">Linen on Deep Sea</h2>
+      <p class="desc">Brand off-white ground, Deep Sea ink. The "default" light version — warm but anchored.</p>
+      <div class="previews">
+        <div class="fav bg-offwhite"><img src="assets/jl-outline.png" class="ink-deepsea" alt=""></div>
+        <div class="fav-sm bg-offwhite"><img src="assets/jl-outline.png" class="ink-deepsea" alt=""></div>
+        <div class="fav-xs bg-offwhite"><img src="assets/jl-outline.png" class="ink-deepsea" alt=""></div>
+        <div class="sizes"><span>64</span><span>32</span><span>16</span></div>
+      </div>
+      <div class="tab-mock">
+        <span class="tabfav bg-offwhite"><img src="assets/jl-outline.png" class="ink-deepsea" alt=""></span>
+        <span>justinlevenson.com</span>
+      </div>
+    </div>
+
+    <!-- 02 — Pure white + Mist -->
+    <div class="card">
+      <div class="mono">Option 02</div>
+      <h2 class="title">White on Mist</h2>
+      <p class="desc">Lightest possible. Mist ink on clean white — reads as airy, almost editorial.</p>
+      <div class="previews">
+        <div class="fav" style="background:#fff"><img src="assets/jl-outline.png" class="ink-mist" alt=""></div>
+        <div class="fav-sm" style="background:#fff"><img src="assets/jl-outline.png" class="ink-mist" alt=""></div>
+        <div class="fav-xs" style="background:#fff"><img src="assets/jl-outline.png" class="ink-mist" alt=""></div>
+        <div class="sizes"><span>64</span><span>32</span><span>16</span></div>
+      </div>
+      <div class="tab-mock">
+        <span class="tabfav" style="background:#fff"><img src="assets/jl-outline.png" class="ink-mist" alt=""></span>
+        <span>justinlevenson.com</span>
+      </div>
+    </div>
+
+    <!-- 03 — Warm clay + Deep Sea -->
+    <div class="card">
+      <div class="mono">Option 03</div>
+      <h2 class="title">Clay on Deep Sea</h2>
+      <p class="desc">A warmer, peach-adjacent tone. Feels hand-made. Stands out in a row of blue tabs.</p>
+      <div class="previews">
+        <div class="fav bg-warm"><img src="assets/jl-outline.png" class="ink-deepsea" alt=""></div>
+        <div class="fav-sm bg-warm"><img src="assets/jl-outline.png" class="ink-deepsea" alt=""></div>
+        <div class="fav-xs bg-warm"><img src="assets/jl-outline.png" class="ink-deepsea" alt=""></div>
+        <div class="sizes"><span>64</span><span>32</span><span>16</span></div>
+      </div>
+      <div class="tab-mock">
+        <span class="tabfav bg-warm"><img src="assets/jl-outline.png" class="ink-deepsea" alt=""></span>
+        <span>justinlevenson.com</span>
+      </div>
+    </div>
+
+    <!-- 04 — Gold + Deep Sea (wax seal) -->
+    <div class="card">
+      <div class="mono">Option 04</div>
+      <h2 class="title">Warm Gold</h2>
+      <p class="desc">The wax-seal callback. Gold ground, Deep Sea mark. Signature-feeling.</p>
+      <div class="previews">
+        <div class="fav bg-gold"><img src="assets/jl-outline.png" class="ink-deepsea" alt=""></div>
+        <div class="fav-sm bg-gold"><img src="assets/jl-outline.png" class="ink-deepsea" alt=""></div>
+        <div class="fav-xs bg-gold"><img src="assets/jl-outline.png" class="ink-deepsea" alt=""></div>
+        <div class="sizes"><span>64</span><span>32</span><span>16</span></div>
+      </div>
+      <div class="tab-mock">
+        <span class="tabfav bg-gold"><img src="assets/jl-outline.png" class="ink-deepsea" alt=""></span>
+        <span>justinlevenson.com</span>
+      </div>
+    </div>
+
+    <!-- 05 — Slate Blue (wax seal blue) -->
+    <div class="card">
+      <div class="mono">Option 05</div>
+      <h2 class="title">Slate on White</h2>
+      <p class="desc">Slate Blue mark (the wax-seal blue) on clean white. Distinctive but still light.</p>
+      <div class="previews">
+        <div class="fav" style="background:#fff"><img src="assets/jl-outline.png" class="ink-seal" alt=""></div>
+        <div class="fav-sm" style="background:#fff"><img src="assets/jl-outline.png" class="ink-seal" alt=""></div>
+        <div class="fav-xs" style="background:#fff"><img src="assets/jl-outline.png" class="ink-seal" alt=""></div>
+        <div class="sizes"><span>64</span><span>32</span><span>16</span></div>
+      </div>
+      <div class="tab-mock">
+        <span class="tabfav" style="background:#fff"><img src="assets/jl-outline.png" class="ink-seal" alt=""></span>
+        <span>justinlevenson.com</span>
+      </div>
+    </div>
+
+    <!-- 06 — Circle seal, linen -->
+    <div class="card">
+      <div class="mono">Option 06</div>
+      <h2 class="title">Circle Seal (linen)</h2>
+      <p class="desc">Monogram inside a Deep-Sea circle on a linen ground. The wax-seal lockup, simplified.</p>
+      <div class="previews">
+        <div class="fav bg-offwhite">
+          <div style="width:52px;height:52px;border-radius:50%;background:#203235;display:flex;align-items:center;justify-content:center;">
+            <img src="assets/jl-outline.png" class="ink-white" style="width:62%;" alt="">
+          </div>
+        </div>
+        <div class="fav-sm bg-offwhite">
+          <div style="width:26px;height:26px;border-radius:50%;background:#203235;display:flex;align-items:center;justify-content:center;">
+            <img src="assets/jl-outline.png" class="ink-white" style="width:66%;" alt="">
+          </div>
+        </div>
+        <div class="fav-xs bg-offwhite">
+          <div style="width:13px;height:13px;border-radius:50%;background:#203235;display:flex;align-items:center;justify-content:center;">
+            <img src="assets/jl-outline.png" class="ink-white" style="width:78%;" alt="">
+          </div>
+        </div>
+        <div class="sizes"><span>64</span><span>32</span><span>16</span></div>
+      </div>
+      <div class="tab-mock">
+        <span class="tabfav bg-offwhite">
+          <div style="width:13px;height:13px;border-radius:50%;background:#203235;display:flex;align-items:center;justify-content:center;">
+            <img src="assets/jl-outline.png" class="ink-white" style="width:78%;" alt="">
+          </div>
+        </span>
+        <span>justinlevenson.com</span>
+      </div>
+    </div>
+
+  </div>
+
+  <p style="margin-top: 48px; font-size: 14px; color: #5A656B; line-height: 1.6;">
+    <strong style="color:#203235; font-weight:500;">My picks, service-first:</strong>
+    — <strong>01 (Linen on Deep Sea)</strong> is the safest, most on-brand daily driver.
+    — <strong>05 (Slate on White)</strong> reads lightest without feeling empty.
+    — <strong>06 (Circle Seal)</strong> is the most recognizable at 16px; it has the most "identity".
+    The gold version is beautiful but louder — good for social avatars, possibly too warm for a tab.
+  </p>
+</div>
+</body>
+</html>

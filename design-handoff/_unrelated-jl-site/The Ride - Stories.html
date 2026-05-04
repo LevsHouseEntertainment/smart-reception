@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>The Ride — Story Explorations</title>
+<link rel="stylesheet" href="stories/stories.css" />
+<style>
+  html, body { margin: 0; padding: 0; background: #1a1a1a; }
+  body {
+    font-family: 'Galano Grotesque', 'Helvetica Neue', Arial, sans-serif;
+    color: #e6e7e8;
+  }
+
+  /* The shell of each artboard */
+  .story-frame {
+    position: relative;
+    width: 1080px;
+    height: 1920px;
+    background: #000;
+    overflow: hidden;
+  }
+  .story-frame iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    background: #000;
+  }
+
+  /* Intro notes — shown ABOVE the canvas */
+  .intro {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 80px 48px 40px;
+    color: #e6e7e8;
+  }
+  .intro .eyebrow {
+    font-family: 'Messina Sans Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.34em;
+    text-transform: uppercase;
+    color: #8a9298;
+    margin-bottom: 20px;
+  }
+  .intro h1 {
+    font-family: 'Galano Grotesque', sans-serif;
+    font-weight: 500;
+    font-size: 56px;
+    line-height: 1.05;
+    letter-spacing: -0.015em;
+    margin: 0 0 24px;
+  }
+  .intro p {
+    font-family: 'Galano Grotesque', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.55;
+    color: #b8bdc1;
+    max-width: 68ch;
+    margin: 0 0 14px;
+  }
+  .intro p em { color: #e6e7e8; font-style: normal; }
+  .intro .meta {
+    margin-top: 28px;
+    display: flex;
+    gap: 32px;
+    font-family: 'Messina Sans Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #6f7a80;
+  }
+  .intro .meta span strong {
+    color: #e6e7e8;
+    font-weight: 400;
+    display: block;
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    margin-top: 4px;
+  }
+</style>
+</head>
+<body>
+  <div class="intro">
+    <div class="eyebrow">From the Center · Instagram Story</div>
+    <h1>"The Ride" — two takes.</h1>
+    <p>
+      Two versions of the Story graphic for Justin's new Substack post. Same brand system —
+      <em>Galano Grotesque</em> + <em>Messina Sans Mono</em>, the Deep Sea / Mist / Cool Grey palette, portrait Justin-36.
+      One is a still whisper. The other breathes.
+    </p>
+    <p>
+      <em>Stillness</em> follows the brief to the letter: a single frame, face in the upper two-thirds, quote
+      in the bottom third, subtle gradient, nothing competing. Post as a PNG.
+    </p>
+    <p>
+      <em>The Ride</em> — a 12-second motion loop. Photo breathes in slow Ken-Burns, mist drifts up,
+      the quote reveals word-by-word, typewriter cursor on the callout.
+    </p>
+    <p>
+      <em>Monogram</em> — the JL mark is the hero. It draws itself center-frame, then settles into a
+      wax-seal lockup as the photo resolves behind it. 14-second loop.
+    </p>
+    <p>
+      <em>B&W Editorial</em> — film-still treatment. Grayscale, fine grain, crop marks, a chapter marker.
+      A single frame that reads like a Criterion still. Post as PNG.
+    </p>
+    <p>
+      <em>Feed 1:1</em> — companion square post for the grid. Split layout: portrait on the left, quote
+      and callout on the right panel. Matches the Story system.
+    </p>
+    <div class="meta">
+      <span>Format<strong>1080 × 1920 · 1080 × 1080</strong></span>
+      <span>Photo<strong>Justin-36</strong></span>
+      <span>Takes<strong>4 stories · 1 feed</strong></span>
+      <span>Use<strong>IG / FB</strong></span>
+    </div>
+  </div>
+
+  <design-canvas id="canvas"
+    initial-zoom="0.28"
+    background="#1a1a1a"
+    grid="#2a2a2a">
+
+    <dc-section id="stories" title="Instagram Story — 1080 × 1920">
+
+      <dc-artboard id="stillness" label="01 · Stillness — static (brief-faithful)" width="1080" height="1920">
+        <div class="story-frame">
+          <iframe src="stories/Story-Stillness.html" title="Stillness"></iframe>
+        </div>
+      </dc-artboard>
+
+      <dc-artboard id="the-ride" label="02 · The Ride — motion (12s loop)" width="1080" height="1920">
+        <div class="story-frame">
+          <iframe src="stories/Story-TheRide.html" title="The Ride"></iframe>
+        </div>
+      </dc-artboard>
+
+      <dc-artboard id="monogram" label="03 · Monogram — motion (14s loop)" width="1080" height="1920">
+        <div class="story-frame">
+          <iframe src="stories/Story-Monogram.html" title="Monogram"></iframe>
+        </div>
+      </dc-artboard>
+
+      <dc-artboard id="bw" label="04 · B&W Editorial — static" width="1080" height="1920">
+        <div class="story-frame">
+          <iframe src="stories/Story-BWEditorial.html" title="B&W Editorial"></iframe>
+        </div>
+      </dc-artboard>
+
+    </dc-section>
+
+    <dc-section id="feed" title="Instagram Feed — 1080 × 1080">
+
+      <dc-artboard id="feed-1x1" label="05 · Feed companion — square post" width="1080" height="1080">
+        <div class="story-frame" style="height:1080px;">
+          <iframe src="stories/Feed-Square.html" title="Feed 1x1"></iframe>
+        </div>
+      </dc-artboard>
+
+    </dc-section>
+  </design-canvas>
+
+  <script type="text/babel" src="stories/design-canvas.jsx"></script>
+</body>
+</html>

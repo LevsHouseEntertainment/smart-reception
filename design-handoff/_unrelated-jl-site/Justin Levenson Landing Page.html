@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Think It. See It. Feel It. — A Free Guide from Justin Levenson</title>
+
+<!-- Fonts -->
+<style>
+/* Galano Grotesque */
+@font-face { font-family: 'Galano Grotesque'; src: url('fonts/Fontspring-DEMO-GalanoGrotesque-Light.otf') format('opentype'); font-weight: 300; font-style: normal; }
+@font-face { font-family: 'Galano Grotesque'; src: url('fonts/Fontspring-DEMO-GalanoGrotesque-Regular.otf') format('opentype'); font-weight: 400; font-style: normal; }
+@font-face { font-family: 'Galano Grotesque'; src: url('fonts/Fontspring-DEMO-GalanoGrotesque-Medium.otf') format('opentype'); font-weight: 500; font-style: normal; }
+@font-face { font-family: 'Galano Grotesque'; src: url('fonts/Fontspring-DEMO-GalanoGrotesque-SemiBold.otf') format('opentype'); font-weight: 600; font-style: normal; }
+@font-face { font-family: 'Galano Grotesque'; src: url('fonts/Fontspring-DEMO-GalanoGrotesque-Bold.otf') format('opentype'); font-weight: 700; font-style: normal; }
+/* Messina Sans Mono */
+@font-face { font-family: 'Messina Mono'; src: url('fonts/MessinaSansMonoTrial-Light.otf') format('opentype'); font-weight: 300; font-style: normal; }
+@font-face { font-family: 'Messina Mono'; src: url('fonts/MessinaSansMonoTrial-Regular.otf') format('opentype'); font-weight: 400; font-style: normal; }
+@font-face { font-family: 'Messina Mono'; src: url('fonts/MessinaSansMonoTrial-Book.otf') format('opentype'); font-weight: 450; font-style: normal; }
+@font-face { font-family: 'Messina Mono'; src: url('fonts/MessinaSansMonoTrial-SemiBold.otf') format('opentype'); font-weight: 600; font-style: normal; }
+</style>
+
+<style>
+/* ── Reset ───────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Galano Grotesque', 'Helvetica Neue', sans-serif;
+  background: #F6F4F0;
+  color: #203235;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ── Tokens ──────────────────────────────────────────── */
+:root {
+  --deep-sea:   #203235;
+  --mist:       #5A656B;
+  --charcoal:   #36302D;
+  --storm:      #4A454C;
+  --cool-grey:  #E6E7E8;
+  --off-white:  #F6F4F0;
+  --white:      #FAFAF8;
+  --mono:       'Messina Mono', monospace;
+  --sans:       'Galano Grotesque', sans-serif;
+}
+
+/* ── Scroll animations ───────────────────────────────── */
+.fade-up {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.fade-in {
+  opacity: 0;
+  transition: opacity 0.9s ease;
+}
+.fade-in.visible { opacity: 1; }
+
+/* ── Nav ─────────────────────────────────────────────── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  height: 60px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 48px;
+  background: rgba(246,244,240,0.94);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--cool-grey);
+}
+.nav-logo img { height: 24px; display: block; }
+.nav-book {
+  font-family: var(--mono);
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--mist); text-decoration: none;
+  border-bottom: 1px solid var(--cool-grey);
+  padding-bottom: 1px;
+  transition: color 0.2s, border-color 0.2s;
+}
+.nav-book:hover { color: var(--deep-sea); border-color: var(--deep-sea); }
+
+/* ── Hero ─────────────────────────────────────────────── */
+.hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding-top: 60px;
+}
+.hero-left {
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 80px 64px 80px 72px;
+}
+.hero-eyebrow {
+  font-family: var(--mono);
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--mist);
+  margin-bottom: 28px;
+}
+.hero-headline {
+  font-family: var(--sans);
+  font-size: clamp(32px, 3.2vw, 52px);
+  font-weight: 600;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  color: var(--deep-sea);
+  margin-bottom: 24px;
+}
+.hero-headline em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--mist);
+}
+.hero-body {
+  font-size: 17px;
+  font-weight: 300;
+  line-height: 1.72;
+  color: var(--mist);
+  max-width: 50ch;
+  margin-bottom: 36px;
+}
+.hero-bullets {
+  list-style: none;
+  margin-bottom: 36px;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.hero-bullets li {
+  display: flex; align-items: flex-start; gap: 12px;
+  font-size: 15px; font-weight: 400; color: var(--deep-sea); line-height: 1.5;
+}
+.hero-bullets li::before {
+  content: '';
+  width: 16px; height: 1px;
+  background: var(--mist);
+  margin-top: 10px; flex-shrink: 0;
+}
+.hero-form { display: flex; flex-direction: column; gap: 10px; max-width: 380px; }
+.hero-input {
+  font-family: var(--sans);
+  font-size: 15px; font-weight: 300;
+  padding: 15px 18px;
+  border: 1px solid var(--cool-grey);
+  background: var(--white);
+  color: var(--deep-sea);
+  outline: none;
+  transition: border-color 0.2s;
+  border-radius: 1px;
+}
+.hero-input::placeholder { color: #9aa0a5; }
+.hero-input:focus { border-color: var(--mist); }
+.hero-btn {
+  font-family: var(--mono);
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  background: var(--deep-sea); color: var(--white);
+  border: none; padding: 16px 32px;
+  cursor: pointer; align-self: flex-start;
+  transition: background 0.2s;
+  border-radius: 1px;
+}
+.hero-btn:hover { background: var(--charcoal); }
+.hero-trust {
+  font-family: var(--mono);
+  font-size: 10px; font-weight: 400;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--cool-grey);
+  margin-top: 14px;
+}
+.hero-success {
+  font-size: 16px; font-weight: 300; line-height: 1.7;
+  color: var(--mist); display: none;
+}
+.hero-success a {
+  color: var(--deep-sea); font-weight: 500;
+  text-underline-offset: 3px;
+}
+
+/* Hero right: photo */
+.hero-right {
+  position: relative; overflow: hidden;
+  background: var(--deep-sea);
+}
+.hero-photo {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center top;
+  display: block;
+  mix-blend-mode: luminosity;
+  opacity: 0.6;
+}
+.hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(160deg, rgba(32,50,53,0.3) 0%, rgba(32,50,53,0.8) 100%);
+}
+.hero-quote {
+  position: absolute; bottom: 48px; left: 40px; right: 40px;
+}
+.hero-quote-text {
+  font-family: var(--sans);
+  font-size: clamp(18px, 1.6vw, 24px);
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.45;
+  color: rgba(255,255,255,0.9);
+  margin-bottom: 14px;
+}
+.hero-quote-attr {
+  font-family: var(--mono);
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+}
+.hero-monogram {
+  position: absolute; top: 40px; right: 40px;
+}
+.hero-monogram img { height: 48px; opacity: 0.35; filter: brightness(0) invert(1); }
+
+/* ── Trust strip ─────────────────────────────────────── */
+.trust-strip {
+  background: var(--white);
+  border-top: 1px solid var(--cool-grey);
+  border-bottom: 1px solid var(--cool-grey);
+  display: flex; align-items: center;
+  padding: 20px 72px; gap: 0;
+}
+.trust-item {
+  flex: 1; padding: 0 32px;
+  display: flex; flex-direction: column; gap: 4px;
+}
+.trust-item:first-child { padding-left: 0; }
+.trust-stars {
+  font-size: 14px; color: #C8A534; letter-spacing: 2px;
+}
+.trust-name {
+  font-family: var(--sans);
+  font-size: 13px; font-weight: 500;
+  color: var(--deep-sea);
+}
+.trust-label {
+  font-family: var(--mono);
+  font-size: 10px; font-weight: 400;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--mist);
+}
+.trust-divider {
+  width: 1px; height: 36px; background: var(--cool-grey);
+  flex-shrink: 0;
+}
+@media (max-width: 900px) {
+  .trust-strip { flex-direction: column; padding: 28px 32px; gap: 20px; align-items: flex-start; }
+  .trust-item { padding: 0; }
+  .trust-divider { width: 36px; height: 1px; }
+}
+
+/* ── Stats strip ─────────────────────────────────────── */
+.stats {
+  background: var(--deep-sea);
+  padding: 0;
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.stat {
+  padding: 44px 48px;
+  border-right: 1px solid rgba(255,255,255,0.08);
+}
+.stat:last-child { border-right: none; }
+.stat-num {
+  font-family: var(--sans);
+  font-size: clamp(40px, 4vw, 64px);
+  font-weight: 200;
+  color: rgba(255,255,255,0.9);
+  line-height: 1; margin-bottom: 8px;
+}
+.stat-label {
+  font-family: var(--mono);
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+}
+
+/* ── Story section ───────────────────────────────────── */
+.story {
+  background: var(--off-white);
+  padding: 96px 72px;
+  border-top: 1px solid var(--cool-grey);
+}
+.story-split {
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: 80px;
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.story-photo-wrap {
+  position: relative;
+}
+.story-photo {
+  width: 100%;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  filter: grayscale(15%);
+}
+.story-inner {
+  max-width: 560px;
+}
+@media (max-width: 900px) {
+  .story-split { grid-template-columns: 1fr; gap: 40px; }
+  .story-photo { aspect-ratio: 4/3; }
+}
+.section-eyebrow {
+  font-family: var(--mono);
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--mist);
+  margin-bottom: 32px;
+}
+.story-headline {
+  font-family: var(--sans);
+  font-size: clamp(26px, 2.5vw, 40px);
+  font-weight: 300;
+  line-height: 1.25;
+  color: var(--deep-sea);
+  margin-bottom: 32px;
+  letter-spacing: -0.01em;
+}
+.story-body {
+  font-size: 17px; font-weight: 300;
+  line-height: 1.8; color: var(--mist);
+  margin-bottom: 20px;
+}
+.story-em {
+  font-size: 18px; font-weight: 400;
+  font-style: italic; color: var(--deep-sea);
+  margin-top: 32px; margin-bottom: 0;
+}
+.story-divider {
+  width: 40px; height: 1px;
+  background: var(--cool-grey);
+  margin: 36px auto;
+}
+
+/* ── What's inside ───────────────────────────────────── */
+.inside {
+  background: var(--white);
+  padding: 96px 72px;
+  border-top: 1px solid var(--cool-grey);
+}
+.inside-header { margin-bottom: 48px; }
+.inside-headline {
+  font-family: var(--sans);
+  font-size: clamp(22px, 2vw, 32px);
+  font-weight: 300;
+  color: var(--deep-sea);
+  margin-top: 12px;
+}
+.inside-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: var(--cool-grey);
+  border: 1px solid var(--cool-grey);
+}
+.inside-card {
+  background: var(--white);
+  padding: 40px 36px;
+}
+.inside-num {
+  font-family: var(--mono);
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 0.18em;
+  color: var(--cool-grey);
+  margin-bottom: 20px;
+}
+.inside-title {
+  font-family: var(--sans);
+  font-size: 18px; font-weight: 600;
+  color: var(--deep-sea);
+  margin-bottom: 10px; line-height: 1.3;
+}
+.inside-body {
+  font-size: 15px; font-weight: 300;
+  line-height: 1.65; color: var(--mist);
+}
+
+/* ── Book bar ────────────────────────────────────────── */
+.book-bar {
+  background: var(--charcoal);
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  overflow: hidden;
+  align-items: stretch;
+}
+.book-bar-content {
+  padding: 64px 72px;
+  display: flex; flex-direction: column;
+  justify-content: center; gap: 20px;
+}
+.book-bar-photo {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center top;
+  display: block;
+  filter: grayscale(20%) brightness(0.8);
+  mix-blend-mode: luminosity;
+  opacity: 0.7;
+}
+@media (max-width: 900px) {
+  .book-bar { grid-template-columns: 1fr; }
+  .book-bar-photo { display: none; }
+  .book-bar-content { padding: 48px 32px; }
+}
+.book-bar-left { max-width: 540px; }
+.book-bar-eyebrow {
+  font-family: var(--mono);
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: rgba(255,255,255,0.3);
+  margin-bottom: 14px;
+}
+.book-bar-title {
+  font-family: var(--sans);
+  font-size: clamp(20px, 2vw, 30px);
+  font-weight: 300;
+  color: rgba(255,255,255,0.9);
+  line-height: 1.3;
+}
+.book-bar-sub {
+  font-size: 15px; font-weight: 300;
+  color: rgba(255,255,255,0.5);
+  margin-top: 10px; line-height: 1.6;
+}
+.book-btn {
+  font-family: var(--mono);
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  background: var(--white); color: var(--deep-sea);
+  border: none; padding: 16px 36px;
+  cursor: pointer; white-space: nowrap;
+  text-decoration: none; display: inline-block;
+  border-radius: 1px;
+  transition: opacity 0.2s;
+}
+.book-btn:hover { opacity: 0.85; }
+
+/* ── Bottom CTA ──────────────────────────────────────── */
+.bottom-cta {
+  background: var(--off-white);
+  padding: 96px 72px;
+  border-top: 1px solid var(--cool-grey);
+}
+.bottom-cta-inner {
+  max-width: 560px; margin: 0 auto; text-align: center;
+}
+.bottom-headline {
+  font-family: var(--sans);
+  font-size: clamp(24px, 2.5vw, 38px);
+  font-weight: 300;
+  color: var(--deep-sea);
+  line-height: 1.25;
+  margin-bottom: 16px;
+  letter-spacing: -0.01em;
+}
+.bottom-sub {
+  font-size: 16px; font-weight: 300;
+  color: var(--mist); line-height: 1.7;
+  margin-bottom: 36px;
+}
+.bottom-form {
+  display: flex; gap: 0; max-width: 420px; margin: 0 auto;
+}
+.bottom-input {
+  font-family: var(--sans);
+  font-size: 15px; font-weight: 300;
+  padding: 15px 18px; flex: 1;
+  border: 1px solid var(--cool-grey);
+  border-right: none;
+  background: var(--white);
+  color: var(--deep-sea); outline: none;
+  border-radius: 1px 0 0 1px;
+  transition: border-color 0.2s;
+}
+.bottom-input:focus { border-color: var(--mist); }
+.bottom-btn {
+  font-family: var(--mono);
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  background: var(--deep-sea); color: var(--white);
+  border: none; padding: 15px 24px;
+  cursor: pointer; border-radius: 0 1px 1px 0;
+  transition: background 0.2s; white-space: nowrap;
+}
+.bottom-btn:hover { background: var(--mist); }
+
+/* ── Footer ──────────────────────────────────────────── */
+footer {
+  background: var(--deep-sea);
+  padding: 48px 72px;
+  display: flex; justify-content: space-between; align-items: center;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.footer-left { display: flex; flex-direction: column; gap: 6px; }
+.footer-logo img { height: 20px; opacity: 0.7; filter: brightness(0) invert(1); }
+.footer-copy {
+  font-family: var(--mono);
+  font-size: 10px; letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.25);
+}
+.footer-links { display: flex; gap: 28px; }
+.footer-link {
+  font-family: var(--mono);
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-link:hover { color: rgba(255,255,255,0.7); }
+
+/* ── Responsive ──────────────────────────────────────── */
+@media (max-width: 900px) {
+  .hero { grid-template-columns: 1fr; }
+  .hero-right { min-height: 380px; }
+  .hero-left { padding: 60px 32px; }
+  .stats { grid-template-columns: 1fr; }
+  .stat { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); padding: 32px 40px; }
+  .story, .inside, .book-bar, .bottom-cta, footer { padding: 64px 32px; }
+  .inside-grid { grid-template-columns: 1fr; }
+  .book-bar { flex-direction: column; align-items: flex-start; }
+  .bottom-form { flex-direction: column; }
+  .bottom-input { border-right: 1px solid var(--cool-grey); border-radius: 1px; }
+  .bottom-btn { border-radius: 1px; }
+  nav { padding: 0 24px; }
+  footer { flex-direction: column; gap: 24px; align-items: flex-start; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── Nav ──────────────────────────────────────────── -->
+<nav>
+  <div class="nav-logo">
+    <img src="assets/logos/Asset 20.png" alt="Justin Levenson">
+  </div>
+  <a class="nav-book" href="https://www.amazon.com/You-Are-Stronger-Than-THINK/dp/1733764313" target="_blank" rel="noopener">
+    Get the book →
+  </a>
+</nav>
+
+<!-- ── Hero ─────────────────────────────────────────── -->
+<section class="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow fade-up" style="transition-delay:0.1s">Free guide · AVF Framework · Justin Levenson</p>
+    <h1 class="hero-headline fade-up" style="transition-delay:0.2s">
+      If you just got<br>
+      the diagnosis —<br>
+      <em>this is where I'd start.</em>
+    </h1>
+    <p class="hero-body fade-up" style="transition-delay:0.3s">
+      I was 35. Brain cancer. Brain surgery. What I'm giving you is the exact practice I used through 33 radiation sessions — Affirm, Visualize, Feel. Simple enough to do in two minutes. Real enough to matter.
+    </p>
+    <ul class="hero-bullets fade-up" style="transition-delay:0.35s">
+      <li>The AVF Framework — Affirm, Visualize, Feel — under two minutes</li>
+      <li>A healing affirmation practice from inside treatment</li>
+      <li>A breathing technique for the moments fear gets loud</li>
+    </ul>
+
+    <!-- Form -->
+    <div id="hero-form-wrap" class="fade-up" style="transition-delay:0.4s">
+      <form class="hero-form" id="hero-form" onsubmit="handleSubmit(event, 'hero')">
+        <input class="hero-input" type="text" placeholder="First name" required autocomplete="given-name">
+        <input class="hero-input" type="email" placeholder="Email address" required autocomplete="email">
+        <button class="hero-btn" type="submit">Send me the free guide — it's free</button>
+        <p class="hero-trust">Free. No credit card. No spam. Unsubscribe anytime.</p>
+      </form>
+      <div class="hero-success" id="hero-success">
+        <p>You're in. Check your inbox — the guide is on its way.<br><br>
+        While you're here: <a href="https://www.amazon.com/You-Are-Stronger-Than-THINK/dp/1733764313" target="_blank">read the full book on Amazon →</a></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-right fade-in" style="transition-delay:0.15s">
+    <img class="hero-photo" src="assets/photos/Justin-02-WEB.jpg" alt="Justin Levenson"
+      style="object-position: center 20%">
+    <div class="hero-overlay"></div>
+    <div class="hero-monogram">
+      <img src="assets/logos/Asset 15.png" alt="">
+    </div>
+    <div class="hero-quote">
+      <p class="hero-quote-text">"This is going to be the most positive experience of my life."</p>
+      <p class="hero-quote-attr">Justin's first words upon diagnosis · February 2014</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── Trust strip ──────────────────────────────────── -->
+<div class="trust-strip fade-in">
+  <div class="trust-item">
+    <div class="trust-stars">★★★★★</div>
+    <div class="trust-label">On Amazon</div>
+  </div>
+  <div class="trust-divider"></div>
+  <div class="trust-item">
+    <div class="trust-name">Foreword by Dr. Yanjun Ma, M.D., Ph.D.</div>
+    <div class="trust-label">& Dr. Stephen W. Clark, M.D., Ph.D.</div>
+  </div>
+  <div class="trust-divider"></div>
+  <div class="trust-item">
+    <div class="trust-name">You Are Stronger Than You THINK</div>
+    <div class="trust-label">How to Awaken the Superhero Within</div>
+  </div>
+</div>
+
+<!-- ── Stats ─────────────────────────────────────────── -->
+<div class="stats">
+  <div class="stat fade-up">
+    <div class="stat-num">35</div>
+    <div class="stat-label">Age at diagnosis</div>
+  </div>
+  <div class="stat fade-up" style="transition-delay:0.1s">
+    <div class="stat-num">33</div>
+    <div class="stat-label">Radiation treatments</div>
+  </div>
+  <div class="stat fade-up" style="transition-delay:0.2s">
+    <div class="stat-num">1</div>
+    <div class="stat-label">Core practice. Still using it.</div>
+  </div>
+</div>
+
+<!-- ── Story ─────────────────────────────────────────── -->
+<section class="story">
+  <div class="story-split">
+    <div class="story-photo-wrap fade-in">
+      <img src="assets/photos/Justin-49-WEB.jpg" alt="Justin Levenson" class="story-photo">
+    </div>
+    <div class="story-inner">
+      <p class="section-eyebrow fade-up">The short version</p>
+      <h2 class="story-headline fade-up" style="transition-delay:0.1s">
+        I was at my desk in Nashville when I had a seizure. Five doctors walked into my ER room.
+      </h2>
+      <div class="story-divider fade-in" style="transition-delay:0.2s"></div>
+      <p class="story-body fade-up" style="transition-delay:0.15s">
+        Brain cancer. Brain surgery. Fifteen months of chemotherapy and radiation. I was 35. I had been studying mind-body tools for years — and suddenly they weren't theoretical anymore. They were the difference between surviving and not.
+      </p>
+      <p class="story-body fade-up" style="transition-delay:0.2s">
+        I'm not writing from the other side of that experience. I'm writing from inside it. The practices in this guide are exactly what I did — on the table, at home, in the fear and the quiet and the long days of treatment.
+      </p>
+      <p class="story-em fade-up" style="transition-delay:0.25s">
+        They work. I want to share them with you.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ── What's inside ─────────────────────────────────── -->
+<section class="inside">
+  <div class="inside-header fade-up">
+    <p class="section-eyebrow">What you'll receive</p>
+    <h2 class="inside-headline">Four tools. Zero fluff.</h2>
+  </div>
+  <div class="inside-grid">
+    <div class="inside-card fade-up" style="transition-delay:0.05s">
+      <div class="inside-num">01</div>
+      <div class="inside-title">The AVF Framework</div>
+      <div class="inside-body">Affirm. Visualize. Feel. The three-step practice I built everything around. Simple enough to do in two minutes — in a waiting room, in a hospital bed, in the quiet before sleep.</div>
+    </div>
+    <div class="inside-card fade-up" style="transition-delay:0.1s">
+      <div class="inside-num">02</div>
+      <div class="inside-title">A healing affirmation practice</div>
+      <div class="inside-body">The exact words I repeated before every radiation session. Not positive thinking — something more specific and more honest than that. Chapter by chapter.</div>
+    </div>
+    <div class="inside-card fade-up" style="transition-delay:0.15s">
+      <div class="inside-num">03</div>
+      <div class="inside-title">A calming breathing technique</div>
+      <div class="inside-body">I was strapped to a table by a mesh mask for 33 treatments. My breath was the one thing I could control. This is what I did with it.</div>
+    </div>
+    <div class="inside-card fade-up" style="transition-delay:0.2s">
+      <div class="inside-num">04</div>
+      <div class="inside-title">Notes from the center</div>
+      <div class="inside-body">Occasional emails written the way I write everything — warm, real, never preachy. You can unsubscribe anytime. Most people don't.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Book bar ───────────────────────────────────────── -->
+<div class="book-bar fade-in" style="background:var(--charcoal);display:grid;grid-template-columns:1fr 320px;overflow:hidden;">
+  <div style="padding:64px 72px;display:flex;flex-direction:column;justify-content:center;gap:20px;">
+    <p class="book-bar-eyebrow">Now available on Amazon</p>
+    <h3 class="book-bar-title">You Are Stronger Than You THINK</h3>
+    <p class="book-bar-sub">How to Awaken the Superhero Within — with a foreword by Dr. Yanjun Ma, M.D., Ph.D. and Dr. Stephen W. Clark, M.D., Ph.D. Paperback and Kindle.</p>
+    <a class="book-btn" href="https://www.amazon.com/You-Are-Stronger-Than-THINK/dp/1733764313" target="_blank" rel="noopener" style="align-self:flex-start">Read it on Amazon</a>
+  </div>
+  <img src="assets/photos/Justin-47-WEB.jpg" alt="Justin Levenson" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;opacity:0.7;mix-blend-mode:luminosity;">
+</div>
+
+<!-- ── Bottom CTA ────────────────────────────────────── -->
+<section class="bottom-cta">
+  <div class="bottom-cta-inner fade-up">
+    <h2 class="bottom-headline">Start tonight. It takes two minutes.</h2>
+    <p class="bottom-sub">The AVF Framework — Affirm, Visualize, Feel — plus a breathing practice you can use the moment you close this tab.</p>
+    <form class="bottom-form" id="bottom-form" onsubmit="handleSubmit(event, 'bottom')" style="flex-direction:column;gap:10px;max-width:380px;margin:0 auto;">
+      <input class="bottom-input" type="text" placeholder="First name" required autocomplete="given-name" style="border-right:1px solid var(--cool-grey);border-radius:1px;">
+      <div style="display:flex;gap:0">
+        <input class="bottom-input" type="email" placeholder="Email address" required autocomplete="email" style="border-radius:1px 0 0 1px;border-right:none;flex:1;">
+        <button class="bottom-btn" type="submit">Send it →</button>
+      </div>
+    </form>
+    <p id="bottom-success" style="display:none;margin-top:16px;font-size:15px;font-weight:300;color:var(--mist);">You're in. Check your inbox.</p>
+  </div>
+</section>
+
+<!-- ── Footer ────────────────────────────────────────── -->
+<footer>
+  <div class="footer-left">
+    <div class="footer-logo"><img src="assets/logos/Asset 4.png" alt="Justin Levenson" style="filter:brightness(0) invert(1);opacity:0.5"></div>
+    <p class="footer-copy">© 2026 · Nashville, Tennessee</p>
+  </div>
+  <div class="footer-links">
+    <a class="footer-link" href="https://substack.com/@fromthecenterwithjustin" target="_blank">From the Center</a>
+    <a class="footer-link" href="https://www.amazon.com/You-Are-Stronger-Than-THINK/dp/1733764313" target="_blank">The Book</a>
+  </div>
+</footer>
+
+<script>
+// ── Scroll animations ──────────────────────────────────
+// Initialize all above-fold elements as visible immediately
+document.querySelectorAll('.hero .fade-up, .hero .fade-in').forEach(el => {
+  el.classList.add('visible');
+});
+
+// For below-fold, use IntersectionObserver with permissive settings
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0, rootMargin: '0px 0px 0px 0px' });
+
+document.querySelectorAll('.fade-up, .fade-in').forEach(el => {
+  if (!el.classList.contains('visible')) {
+    observer.observe(el);
+  }
+});
+
+// Hard fallback — ensure everything is visible after 800ms no matter what
+setTimeout(() => {
+  document.querySelectorAll('.fade-up, .fade-in').forEach(el => {
+    el.classList.add('visible');
+  });
+}, 800);
+
+// ── Form handling ──────────────────────────────────────
+function handleSubmit(e, which) {
+  e.preventDefault();
+  if (which === 'hero') {
+    document.getElementById('hero-form').style.display = 'none';
+    document.getElementById('hero-success').style.display = 'block';
+  } else {
+    document.getElementById('bottom-form').style.display = 'none';
+    document.getElementById('bottom-success').style.display = 'block';
+  }
+}
+</script>
+</body>
+</html>

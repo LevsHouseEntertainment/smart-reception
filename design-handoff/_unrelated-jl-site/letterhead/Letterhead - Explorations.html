@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Letterhead — Explorations</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; padding: 0; height: 100%; background: #ece9e2; }
+  body {
+    font-family: 'Galano Grotesque', 'Helvetica Neue', Arial, sans-serif;
+    color: #1a1d22;
+  }
+
+  /* iframe wrapper: the source HTML files render an 816x1056 .sheet inside;
+     we letterbox-scale that into the artboard via an iframe so the original
+     files remain the canonical source of truth. */
+  .sheet-frame {
+    width: 816px;
+    height: 1056px;
+    border: 0;
+    display: block;
+    background: #fbfaf6;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.04), 0 18px 40px -18px rgba(20,25,32,0.18);
+  }
+
+  /* Artboards inside DCArtboard get their own scroll container by default;
+     we want the sheet to render at full size, no scroll, with a soft shadow. */
+  .artboard-shell {
+    width: 816px;
+    height: 1056px;
+    overflow: hidden;
+    background: #fbfaf6;
+    position: relative;
+  }
+
+  /* Designer's note card */
+  .dc-note {
+    width: 720px;
+    padding: 36px 44px;
+    background: #fbfaf6;
+    border: 1px solid #d8d6cf;
+    color: #2e3138;
+  }
+  .dc-note h2 {
+    font-family: 'Cormorant', Georgia, serif;
+    font-weight: 400;
+    font-size: 22pt;
+    margin: 0 0 14px;
+    letter-spacing: -0.005em;
+    color: #1a1d22;
+  }
+  .dc-note p {
+    font-size: 11pt;
+    line-height: 1.6;
+    margin: 0 0 12px;
+    max-width: 60ch;
+    color: #3a3f47;
+  }
+  .dc-note .eyebrow {
+    font-size: 8.5pt;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #8a8f96;
+    margin: 0 0 18px;
+  }
+  .dc-note ul {
+    margin: 0 0 12px;
+    padding-left: 18px;
+    font-size: 11pt;
+    line-height: 1.7;
+    color: #3a3f47;
+  }
+  .dc-note li { margin-bottom: 4px; }
+  .dc-note .meta-row {
+    display: flex;
+    gap: 28px;
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 1px solid #e2dfd8;
+    font-size: 9pt;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #6e747c;
+  }
+  .dc-note .meta-row span strong {
+    display: block;
+    font-weight: 500;
+    color: #1a1d22;
+    letter-spacing: 0.14em;
+    margin-bottom: 2px;
+  }
+
+  /* Per-variant caption tile (sits under each sheet inside the artboard if used) */
+  .caption-tile {
+    width: 540px;
+    padding: 22px 26px;
+    background: #fbfaf6;
+    border: 1px solid #e2dfd8;
+  }
+  .caption-tile h3 {
+    font-family: 'Cormorant', Georgia, serif;
+    font-weight: 500;
+    font-size: 15pt;
+    margin: 0 0 6px;
+    color: #1a1d22;
+  }
+  .caption-tile p {
+    margin: 0;
+    font-size: 10pt;
+    line-height: 1.55;
+    color: #4a4f57;
+  }
+
+  #app { width: 100vw; height: 100vh; }
+</style>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="design-canvas.jsx"></script>
+</head>
+<body>
+<div id="app"></div>
+
+<script type="text/babel">
+const { DesignCanvas, DCSection, DCArtboard } = window;
+
+function Sheet({ src }) {
+  return (
+    <div className="artboard-shell">
+      <iframe className="sheet-frame" src={src} title={src} loading="lazy" />
+    </div>
+  );
+}
+
+function Brief() {
+  return (
+    <div className="dc-note">
+      <p className="eyebrow">Design brief — Levenson Family Letterhead</p>
+      <h2>Six directions for personal stationery.</h2>
+      <p>
+        Personal letterhead for Justin &amp; Judith Levenson. The brief asks for
+        something warm, grounded, and a little understated — taking themselves
+        seriously without taking themselves too seriously. Greyscale only, no
+        flourishes, restraint as the design move.
+      </p>
+      <p>
+        The six explorations below cover the two layouts (centered and
+        left-aligned) and the two type pairings (classic-warm serif and
+        modern-quiet serif/sans), plus three optional flourishes — a single
+        initial mark, a two-column header, and a faint watermark.
+      </p>
+      <p>
+        Pick a direction, or one element from each, and we'll lock it into the
+        full deliverable system: <em>.docx</em>, Google Docs, PDF, an email
+        signature variant, and the source file.
+      </p>
+      <div className="meta-row">
+        <span><strong>Sheet</strong>US Letter · 8.5 × 11 in</span>
+        <span><strong>Type</strong>Cormorant + Galano Grotesque</span>
+        <span><strong>Color</strong>Greyscale on warm linen</span>
+      </div>
+    </div>
+  );
+}
+
+function Caption({ title, body }) {
+  return (
+    <div className="caption-tile">
+      <h3>{title}</h3>
+      <p>{body}</p>
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <DesignCanvas
+      title="Levenson Family Letterhead"
+      subtitle="Six explorations · pan, zoom, drag-reorder, click any sheet to focus"
+      initialZoom={0.42}
+    >
+      <DCSection id="brief" title="Brief">
+        <DCArtboard id="brief-card" label="The brief" width={720} height={460} background="transparent">
+          <Brief />
+        </DCArtboard>
+      </DCSection>
+
+      <DCSection id="layouts" title="Two core layouts">
+        <DCArtboard id="v01" label="01 — Centered, classic" width={816} height={1056} background="transparent">
+          <Sheet src="01-Centered-Classic.html" />
+        </DCArtboard>
+        <DCArtboard id="v01-cap" label="Notes" width={540} height={220} background="transparent">
+          <Caption
+            title="Centered, classic-warm"
+            body="The Levensons set in tracked-out small caps (Cormorant SC), centered above an uppercase contact line in Galano Grotesque. A short rule below pins the lockup. Reads like printed stationery — formal, but warm because of the warm-linen paper and the serif's softness."
+          />
+        </DCArtboard>
+
+        <DCArtboard id="v02" label="02 — Left-aligned, modern-quiet" width={816} height={1056} background="transparent">
+          <Sheet src="02-Left-ModernQuiet.html" />
+        </DCArtboard>
+        <DCArtboard id="v02-cap" label="Notes" width={540} height={220} background="transparent">
+          <Caption
+            title="Left-aligned, modern-quiet"
+            body="Justin &amp; Judith Levenson set in Cormorant Garamond (mixed case, medium weight), left-flush. Two compact contact lines beneath, then a full-width hairline. The quietest and most contemporary of the set; reads less ceremonial."
+          />
+        </DCArtboard>
+      </DCSection>
+
+      <DCSection id="flourishes" title="Optional flourishes">
+        <DCArtboard id="v03" label="03 — Initial mark, centered" width={816} height={1056} background="transparent">
+          <Sheet src="03-Monogram-Centered.html" />
+        </DCArtboard>
+        <DCArtboard id="v03-cap" label="Notes" width={540} height={220} background="transparent">
+          <Caption
+            title="Single-letter mark"
+            body="A solitary italic L sits above the name as the lightest possible flourish — no constructed monogram, just a typographic gesture. The short rule below acts as a closing tick. Use this if you want a hint of ceremony without a custom mark."
+          />
+        </DCArtboard>
+
+        <DCArtboard id="v04" label="04 — Two-column header" width={816} height={1056} background="transparent">
+          <Sheet src="04-TwoColumn.html" />
+        </DCArtboard>
+        <DCArtboard id="v04-cap" label="Notes" width={540} height={220} background="transparent">
+          <Caption
+            title="Two-column lockup"
+            body="Italic name on the left, contact stack right-aligned across from it, joined by a hairline. The most editorial of the layouts — borrows from masthead conventions. Holds longer letters well because the header is shallow."
+          />
+        </DCArtboard>
+
+        <DCArtboard id="v05" label="05 — Lowercase italic" width={816} height={1056} background="transparent">
+          <Sheet src="05-Lowercase-Italic.html" />
+        </DCArtboard>
+        <DCArtboard id="v05-cap" label="Notes" width={540} height={220} background="transparent">
+          <Caption
+            title="Lowercase italic, two people"
+            body="Reads as the most personal: lowercase italic 'justin & judith levenson', the ampersand picked out in a quiet warm gold. Closer to a handwritten signature than a letterhead — appropriate for warmer correspondence, less so for HOA letters."
+          />
+        </DCArtboard>
+
+        <DCArtboard id="v06" label="06 — Faint watermark" width={816} height={1056} background="transparent">
+          <Sheet src="06-Watermark.html" />
+        </DCArtboard>
+        <DCArtboard id="v06-cap" label="Notes" width={540} height={220} background="transparent">
+          <Caption
+            title="Watermark L behind the body"
+            body="A very large, very faint italic L sits centered behind the page (≈4.5% opacity). The header itself is a small SC lockup with no rule. Beautiful when printed on real paper; risks looking like a print artifact at lower DPI. Use sparingly."
+          />
+        </DCArtboard>
+      </DCSection>
+    </DesignCanvas>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('app')).render(<App />);
+</script>
+</body>
+</html>

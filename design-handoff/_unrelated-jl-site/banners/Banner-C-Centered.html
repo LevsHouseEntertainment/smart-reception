@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>FB Banner — Centered Editorial</title>
+<link rel="stylesheet" href="banners.css">
+<style>
+  body { display: grid; place-items: center; min-height: 100vh; background: #1a1a1a; }
+
+  .ce {
+    background: linear-gradient(180deg, #203235 0%, #1a2528 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Inner content is a fixed-width lockup centered in the 820px canvas */
+  .ce .inner {
+    display: flex;
+    align-items: center;
+    column-gap: 40px;
+  }
+
+  .ce .photo {
+    width: 140px;
+    height: 140px;
+    background-image: url('assets/justin-portrait.jpg');
+    background-size: cover;
+    background-position: 50% 22%;
+    border-radius: 50%;
+    filter: grayscale(0.15) contrast(1.05) brightness(0.92);
+    box-shadow: 0 0 0 1px rgba(230,231,232,0.2);
+    flex: 0 0 auto;
+  }
+
+  .ce .col {
+    display: grid;
+    row-gap: 12px;
+    justify-items: start;
+  }
+
+  .ce .eyebrow {
+    font-family: 'Messina Sans Mono', monospace;
+    font-weight: 400;
+    font-size: 11px;
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    color: #8a9298;
+    margin: 0;
+  }
+
+  .ce .name {
+    font-family: 'Galano Grotesque', sans-serif;
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 1;
+    letter-spacing: 0.12em;
+    color: #E6E7E8;
+    margin: 0;
+  }
+
+  .ce .rule {
+    width: 56px;
+    height: 1px;
+    background: rgba(230,231,232,0.3);
+  }
+
+  .ce .tagline {
+    font-family: 'Messina Sans Mono', monospace;
+    font-weight: 400;
+    font-size: 12px;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    color: #8a9298;
+    margin: 0;
+  }
+</style></head><body>
+<div class="banner ce" data-screen-label="C Centered Editorial">
+  <div class="inner">
+    <div class="photo"></div>
+    <div class="col">
+      <div class="eyebrow">— Author · Speaker —</div>
+      <div class="name">JUSTIN&nbsp;LEVENSON</div>
+      <div class="rule"></div>
+      <div class="tagline">From the Center</div>
+    </div>
+  </div>
+</div>
+</body></html>

@@ -1,0 +1,41 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Twitter/X — D2</title>
+<link rel="stylesheet" href="banners.css">
+<style>
+  html, body { margin:0; padding:0; background:#203235; width:1500px; height:500px; overflow:hidden; }
+  .frame { position:relative; width:1500px; height:500px; background:#203235; color:#E6E7E8; font-family:'Galano Grotesque', sans-serif; -webkit-font-smoothing:antialiased; }
+  .photo {
+    position:absolute; right:0; top:0; bottom:0; width:840px;
+    background-image:url('assets/justin-portrait.jpg');
+    background-size:cover; background-position:50% 18%;
+    filter:contrast(1.05) brightness(0.96);
+  }
+  .scrim { position:absolute; right:0; top:0; bottom:0; width:840px;
+    background: linear-gradient(90deg, #203235 0%, rgba(32,50,53,0.9) 18%, rgba(32,50,53,0.35) 55%, rgba(32,50,53,0) 100%); }
+  .jl { position:absolute; left:64px; top:60px; width:60px; height:60px;
+    display:flex; align-items:center; justify-content:center; }
+  .jl img { width:100%; filter:brightness(0) invert(1); opacity:0.85; }
+  .text { position:absolute; left:110px; top:50%; transform:translateY(-50%); }
+  .eyebrow { font-family:'Messina Sans Mono'; font-weight:400;
+    font-size:18px; letter-spacing:0.42em; text-transform:uppercase;
+    color:#8a9298; margin:0 0 26px; }
+  .name { font-family:'Galano Grotesque'; font-weight:500;
+    font-size:84px; letter-spacing:0.08em; line-height:1;
+    color:#E6E7E8; margin:0; }
+  .tick { width:88px; height:1px; background:#5A656B; margin:32px 0 22px; }
+  .sub { font-family:'Messina Sans Mono'; font-weight:400;
+    font-size:20px; letter-spacing:0.34em; text-transform:uppercase;
+    color:#9aa2a8; margin:0; }
+</style></head><body>
+<div class="frame">
+  <div class="photo"></div>
+  <div class="scrim"></div>
+  <div class="jl"><img src="assets/jl-mark.png" alt=""></div>
+  <div class="text">
+    <p class="eyebrow">— From the Center</p>
+    <h1 class="name">JUSTIN LEVENSON</h1>
+    <div class="tick"></div>
+    <p class="sub">Author · Speaker · Nashville</p>
+  </div>
+</div>
+</body></html>

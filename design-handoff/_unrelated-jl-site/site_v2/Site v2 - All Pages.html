@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Justin Levenson — Site v2 (Multi-page Prototype)</title>
+<link rel="icon" type="image/png" href="../favicons/exports/01-jl-linen-256.png">
+<link rel="stylesheet" href="site.css">
+<style>
+  /* Page switcher (prototype only — Framer/Webflow gives this for free) */
+  .pageshell { display: none; }
+  .pageshell.active { display: block; }
+
+  /* Floating page indicator (visible in prototype only) */
+  .proto-flag {
+    position: fixed; bottom: 20px; left: 20px; z-index: 200;
+    font-family: var(--mono);
+    font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+    background: var(--deep-sea); color: var(--linen);
+    padding: 8px 12px; border-radius: 1px;
+    opacity: 0.7;
+    pointer-events: none;
+  }
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════════════════════
+     HOME ( = the landing page, evolved as home)
+     ════════════════════════════════════════════════════════════ -->
+<div class="pageshell active" data-page="home" data-screen-label="Home">
+
+  <nav class="site-nav">
+    <a class="nav-mark" href="#" data-nav="home">
+      <img src="../favicons/exports/02-jl-mark-transparent-512.png" alt="JL">
+      <span class="nav-name">Justin Levenson</span>
+    </a>
+    <ul class="nav-links">
+      <li><a class="nav-link active" href="#" data-nav="home">Home</a></li>
+      <li><a class="nav-link" href="#" data-nav="about">About</a></li>
+      <li><a class="nav-link" href="#" data-nav="book">Book</a></li>
+      <li><a class="nav-link" href="#" data-nav="speaking">Speaking</a></li>
+      <li><a class="nav-link" href="#" data-nav="course">Course</a></li>
+      <li><a class="nav-link" href="#" data-nav="writing">Writing</a></li>
+    </ul>
+    <a class="nav-cta" href="#subscribe">Subscribe</a>
+  </nav>
+
+  <!-- HERO ─ same job as the live landing page: subscribe -->
+  <section class="page-hero" style="border:0; padding-bottom: 0;">
+    <div class="container" style="max-width: 1240px; display: grid; grid-template-columns: 1.1fr 1fr; gap: 80px; align-items: center;">
+      <div>
+        <p class="eyebrow" style="margin-bottom: 28px;">Free guide · AVF Framework</p>
+        <h1 style="font-family: var(--sans); font-size: clamp(40px, 4.6vw, 64px); font-weight: 600; line-height: 1.08; letter-spacing: -0.025em; margin-bottom: 24px;">
+          This is not a<br>mindfulness program.<br>
+          <em>It's what I actually used.</em>
+        </h1>
+        <p class="lede" style="margin-bottom: 36px;">
+          On a radiation table. In the silence after everyone went home. The exact practice — Affirm, Visualize, Feel — that got me through 33 treatments. Yours, free.
+        </p>
+
+        <form class="email-form" onsubmit="event.preventDefault();">
+          <input type="text" placeholder="First name" autocomplete="given-name">
+          <input type="email" placeholder="Email address" autocomplete="email">
+          <button class="btn btn-primary" type="submit">Send me the free guide</button>
+          <p class="email-form-trust">Free · No spam · Unsubscribe anytime</p>
+        </form>
+      </div>
+
+      <div class="photo-frame photo-tint" style="aspect-ratio: 4/5; border-radius: 1px;">
+        <img src="../assets/photos/Justin-02-WEB.jpg" alt="Justin Levenson" data-hero-photo style="object-position: center 22%;">
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST STRIP -->
+  <section class="section-sm" style="padding-top: 80px; padding-bottom: 0;">
+    <div class="container" style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 48px; align-items: end; padding-bottom: 56px; border-bottom: 1px solid var(--rule);">
+      <div>
+        <p class="eyebrow" style="margin-bottom: 10px;">As featured in</p>
+        <p style="font-family: var(--serif); font-size: 22px; font-style: italic; color: var(--deep-sea);">Forewords by Dr. Yanjun Ma &amp; Dr. Stephen W. Clark</p>
+      </div>
+      <div>
+        <p class="eyebrow" style="margin-bottom: 10px;">Reviews</p>
+        <p style="font-size: 14px; letter-spacing: 4px; color: var(--gold); margin-bottom: 4px;">★★★★★</p>
+        <p style="font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; color: var(--mist); text-transform: uppercase;">Amazon · 5.0</p>
+      </div>
+      <div>
+        <p class="eyebrow" style="margin-bottom: 10px;">Newsletter</p>
+        <p style="font-family: var(--serif); font-size: 22px; font-style: italic; color: var(--deep-sea);">From the Center</p>
+      </div>
+      <div>
+        <p class="eyebrow" style="margin-bottom: 10px;">Audience</p>
+        <p style="font-family: var(--serif); font-size: 22px; font-style: italic; color: var(--deep-sea);">Quietly growing.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS / NUMBERS -->
+  <section class="section dark" style="padding: 0;">
+    <div style="display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid rgba(255,255,255,0.06);">
+      <div style="padding: 60px 48px; border-right: 1px solid rgba(255,255,255,0.08);">
+        <div style="font-size: 56px; font-weight: 200; color: rgba(255,255,255,0.92); line-height: 1; margin-bottom: 12px;">35</div>
+        <p class="eyebrow eyebrow-light">Age at diagnosis</p>
+      </div>
+      <div style="padding: 60px 48px; border-right: 1px solid rgba(255,255,255,0.08);">
+        <div style="font-size: 56px; font-weight: 200; color: rgba(255,255,255,0.92); line-height: 1; margin-bottom: 12px;">15</div>
+        <p class="eyebrow eyebrow-light">Months of treatment</p>
+      </div>
+      <div style="padding: 60px 48px; border-right: 1px solid rgba(255,255,255,0.08);">
+        <div style="font-size: 56px; font-weight: 200; color: rgba(255,255,255,0.92); line-height: 1; margin-bottom: 12px;">33</div>
+        <p class="eyebrow eyebrow-light">Radiation sessions</p>
+      </div>
+      <div style="padding: 60px 48px;">
+        <div style="font-size: 56px; font-weight: 200; color: rgba(255,255,255,0.92); line-height: 1; margin-bottom: 12px;">1</div>
+        <p class="eyebrow eyebrow-light">Practice. Still using it.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- STORY (mini-about) -->
+  <section class="section linen">
+    <div class="container" style="display: grid; grid-template-columns: 380px 1fr; gap: 80px; align-items: center;">
+      <div class="photo-frame photo-mono" style="aspect-ratio: 3/4;">
+        <img src="../assets/photos/Justin-49-WEB.jpg" alt="Justin Levenson" style="object-position: center top;">
+      </div>
+      <div>
+        <p class="eyebrow" style="margin-bottom: 28px;">The short version</p>
+        <h2 class="h-display" style="font-size: clamp(28px, 2.8vw, 42px); margin-bottom: 28px;">
+          I was at my desk in Nashville when I had a seizure. Five doctors walked in. <em>I'm writing from inside it — not the other side.</em>
+        </h2>
+        <hr class="rule-short">
+        <p class="body-text">
+          Brain cancer. Brain surgery. Fifteen months of chemo and radiation. I had been studying mind-body tools for years. Suddenly they weren't theoretical.
+        </p>
+        <p class="body-text">
+          The practices in this guide are exactly what I did — on the table, at home, in the quiet, in the long days of treatment. <strong>They work.</strong> I want to share them.
+        </p>
+        <a href="#" data-nav="about" class="btn btn-ghost" style="margin-top: 36px;">Read the full story →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT'S INSIDE -->
+  <section class="section warm">
+    <div class="container">
+      <div style="max-width: 720px; margin-bottom: 64px;">
+        <p class="eyebrow" style="margin-bottom: 16px;">What you'll receive</p>
+        <h2 class="h-display" style="font-size: clamp(36px, 4vw, 56px);">
+          Four tools. <em>Zero fluff.</em>
+        </h2>
+      </div>
+      <div class="num-grid">
+        <div class="num-cell">
+          <span class="section-num">01 / The Framework</span>
+          <h3>The AVF Framework</h3>
+          <p>Affirm. Visualize. Feel. The three-step practice I built everything around — under two minutes, doable in a waiting room.</p>
+        </div>
+        <div class="num-cell">
+          <span class="section-num">02 / Practice</span>
+          <h3>A healing affirmation practice</h3>
+          <p>The exact words I repeated before every radiation session. Not positive thinking — something more specific and more honest.</p>
+        </div>
+        <div class="num-cell">
+          <span class="section-num">03 / Breathing</span>
+          <h3>A calming breathing technique</h3>
+          <p>I was strapped to a table by a mesh mask for 33 treatments. My breath was the one thing I could control. This is what I did with it.</p>
+        </div>
+        <div class="num-cell">
+          <span class="section-num">04 / Letters</span>
+          <h3>Notes from the center</h3>
+          <p>Occasional emails. Warm, real, never preachy. You can unsubscribe anytime. Most people don't.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PULL QUOTE -->
+  <section class="section linen" style="padding: 96px var(--gutter);">
+    <div class="container" style="text-align: center;">
+      <p class="pull-quote" style="margin: 0 auto; max-width: 22ch;">
+        "If you can think it, you can have it."
+      </p>
+      <p class="pull-quote-attr">The ethos · AVF</p>
+    </div>
+  </section>
+
+  <!-- BOOK BAR -->
+  <section class="section charcoal" style="padding: 0;">
+    <div style="display: grid; grid-template-columns: 1fr 360px;">
+      <div style="padding: 88px var(--gutter); display: flex; flex-direction: column; justify-content: center; gap: 20px;">
+        <p class="eyebrow eyebrow-light" style="margin-bottom: 4px;">Now available on Amazon</p>
+        <h3 class="h-display" style="font-size: clamp(28px, 2.6vw, 40px); color: var(--linen); max-width: 18ch;">
+          You Are Stronger Than You THINK
+        </h3>
+        <p class="body-text" style="color: rgba(255,255,255,0.7); max-width: 56ch;">
+          How to Awaken the Superhero Within. Forewords by Dr. Yanjun Ma, M.D., Ph.D. and Dr. Stephen W. Clark, M.D., Ph.D. Paperback and Kindle.
+        </p>
+        <div style="display: flex; gap: 16px; margin-top: 12px;">
+          <a class="btn btn-light" href="#">Read it on Amazon</a>
+          <a class="btn btn-ghost" href="#" data-nav="book" style="border-color: rgba(255,255,255,0.4); color: var(--linen);">More about the book</a>
+        </div>
+      </div>
+      <img src="../assets/photos/Justin-47-WEB.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.55; mix-blend-mode: luminosity;">
+    </div>
+  </section>
+
+  <!-- BOTTOM CTA -->
+  <section id="subscribe" class="section linen" style="text-align: center;">
+    <div class="container" style="max-width: 600px;">
+      <p class="eyebrow" style="margin-bottom: 16px;">Start tonight</p>
+      <h2 class="h-display" style="font-size: clamp(32px, 3.6vw, 52px); margin-bottom: 20px;">
+        It takes two minutes.<br><em>The rest is yours.</em>
+      </h2>
+      <p class="lede" style="margin: 0 auto 40px;">
+        AVF — Affirm, Visualize, Feel — plus a breathing practice you can use the moment you close this tab.
+      </p>
+      <form class="email-form" style="margin: 0 auto;" onsubmit="event.preventDefault();">
+        <input type="email" placeholder="Your email" autocomplete="email">
+        <button class="btn btn-primary" type="submit" style="align-self: center;">Send the guide →</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER (shared partial appended by JS to avoid repetition) -->
+  <div class="footer-mount"></div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════════════════
+     ABOUT
+     ════════════════════════════════════════════════════════════ -->
+<div class="pageshell" data-page="about" data-screen-label="About">
+
+  <nav class="site-nav">
+    <a class="nav-mark" href="#" data-nav="home">
+      <img src="../favicons/exports/02-jl-mark-transparent-512.png" alt="JL">
+      <span class="nav-name">Justin Levenson</span>
+    </a>
+    <ul class="nav-links">
+      <li><a class="nav-link" href="#" data-nav="home">Home</a></li>
+      <li><a class="nav-link active" href="#" data-nav="about">About</a></li>
+      <li><a class="nav-link" href="#" data-nav="book">Book</a></li>
+      <li><a class="nav-link" href="#" data-nav="speaking">Speaking</a></li>
+      <li><a class="nav-link" href="#" data-nav="course">Course</a></li>
+      <li><a class="nav-link" href="#" data-nav="writing">Writing</a></li>
+    </ul>
+    <a class="nav-cta" href="#" data-nav="home">Subscribe</a>
+  </nav>
+
+  <section class="page-hero linen">
+    <div class="container">
+      <p class="eyebrow">About · Justin Levenson</p>
+      <h1>I'm not writing from the other side.<br><em>I'm writing from inside it.</em></h1>
+      <p class="lede">Author. Speaker. Personal guide. Currently in active brain cancer treatment — and grateful for all of it.</p>
+    </div>
+  </section>
+
+  <!-- BIG PORTRAIT BAND -->
+  <section style="padding: 0; background: var(--deep-sea);">
+    <div style="display: grid; grid-template-columns: 1.2fr 1fr;">
+      <div class="photo-frame" style="aspect-ratio: 5/4;">
+        <img src="../assets/photos/Justin-11-WEB.jpg" alt="Justin Levenson" style="object-position: center 30%;">
+      </div>
+      <div style="padding: 80px var(--gutter); display: flex; flex-direction: column; justify-content: center; color: var(--linen);">
+        <p class="eyebrow eyebrow-light" style="margin-bottom: 24px;">01 / The diagnosis</p>
+        <p class="pull-quote" style="color: var(--linen); max-width: 22ch;">
+          "This is going to be the most positive experience of my life."
+        </p>
+        <p class="pull-quote-attr eyebrow-light" style="color: rgba(255,255,255,0.45);">Justin's first words upon diagnosis · February 2014</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- LONG FORM STORY -->
+  <section class="section linen">
+    <div class="container" style="max-width: 720px;">
+      <p class="eyebrow" style="margin-bottom: 24px;">02 / The full story</p>
+      <h2 class="h-display" style="font-size: clamp(32px, 3.4vw, 48px); margin-bottom: 40px;">
+        I was 35. At my desk in Nashville. <em>Then there was a seizure.</em>
+      </h2>
+      <p class="body-text">
+        Five doctors walked into my ER room. The scan showed a mass. Within days I was in surgery. Then chemotherapy. Then 33 sessions of radiation, each one strapped to a table by a mesh mask molded to my face.
+      </p>
+      <p class="body-text">
+        I had been studying mind-body tools for years. Quiet study — books, breathwork, meditation, a curiosity about why some people walk through impossible things and stay themselves. <strong>Suddenly the study wasn't theoretical.</strong>
+      </p>
+      <p class="body-text">
+        I built a practice from what worked. Three steps. Affirm. Visualize. Feel. I used it on the radiation table. I used it in the silence after everyone went home. I used it when fear got loud — which was often.
+      </p>
+      <p class="body-text">
+        I wrote the book during treatment. <em>You Are Stronger Than You THINK.</em> Not from the other side of the experience. From inside it. That matters. The reader gets to make the story about themselves.
+      </p>
+      <hr class="rule-short" style="margin: 56px 0;">
+      <p class="body-text" style="font-size: 19px;">
+        I'm still in active treatment. Still using the practice. Still beautifully imperfect. <strong>Grateful for all of it.</strong>
+      </p>
+    </div>
+  </section>
+
+  <!-- AVF FRAMEWORK CARD -->
+  <section class="section warm">
+    <div class="container">
+      <p class="eyebrow" style="margin-bottom: 16px;">03 / The framework</p>
+      <h2 class="h-display" style="font-size: clamp(32px, 3.4vw, 48px); margin-bottom: 64px; max-width: 18ch;">
+        AVF — <em>Affirm. Visualize. Feel.</em>
+      </h2>
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule);">
+        <div style="background: var(--warm-white); padding: 56px 40px;">
+          <div style="font-family: var(--serif); font-size: 88px; font-weight: 300; color: var(--deep-sea); line-height: 1; margin-bottom: 24px;">A</div>
+          <p class="eyebrow" style="margin-bottom: 12px;">Affirm</p>
+          <p style="font-family: var(--sans); font-size: 16px; line-height: 1.6; color: var(--mist); font-weight: 300;">
+            Speak it. Specifically. Out loud or in your head — whatever the moment allows. Not generic positivity. Words that match what you actually need to hear.
+          </p>
+        </div>
+        <div style="background: var(--warm-white); padding: 56px 40px;">
+          <div style="font-family: var(--serif); font-size: 88px; font-weight: 300; color: var(--deep-sea); line-height: 1; margin-bottom: 24px;">V</div>
+          <p class="eyebrow" style="margin-bottom: 12px;">Visualize</p>
+          <p style="font-family: var(--sans); font-size: 16px; line-height: 1.6; color: var(--mist); font-weight: 300;">
+            See it. Hold the image. Your body responds to the picture in your mind before it responds to the room.
+          </p>
+        </div>
+        <div style="background: var(--warm-white); padding: 56px 40px;">
+          <div style="font-family: var(--serif); font-size: 88px; font-weight: 300; color: var(--deep-sea); line-height: 1; margin-bottom: 24px;">F</div>
+          <p class="eyebrow" style="margin-bottom: 12px;">Feel</p>
+          <p style="font-family: var(--sans); font-size: 16px; line-height: 1.6; color: var(--mist); font-weight: 300;">
+            Drop into the feeling already. Not pretending — practicing. The feeling is the destination and the path at the same time.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THREE LANES -->
+  <section class="section linen">
+    <div class="container">
+      <p class="eyebrow" style="margin-bottom: 16px;">04 / How to work with me</p>
+      <h2 class="h-display" style="font-size: clamp(32px, 3.4vw, 48px); margin-bottom: 56px;">
+        Three doors. <em>Same room.</em>
+      </h2>
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px;">
+        <div>
+          <p class="section-num" style="margin-bottom: 16px;">01 / READ</p>
+          <h3 style="font-family: var(--sans); font-size: 24px; font-weight: 500; color: var(--deep-sea); margin-bottom: 12px;">The book</h3>
+          <p style="font-size: 16px; line-height: 1.65; color: var(--mist); font-weight: 300; margin-bottom: 20px;">
+            <em>You Are Stronger Than You THINK.</em> The whole story, the whole framework, in your hands.
+          </p>
+          <a href="#" data-nav="book" class="nav-link" style="color: var(--deep-sea); border-bottom-color: var(--deep-sea);">Visit the book →</a>
+        </div>
+        <div>
+          <p class="section-num" style="margin-bottom: 16px;">02 / GATHER</p>
+          <h3 style="font-family: var(--sans); font-size: 24px; font-weight: 500; color: var(--deep-sea); margin-bottom: 12px;">The course</h3>
+          <p style="font-size: 16px; line-height: 1.65; color: var(--mist); font-weight: 300; margin-bottom: 20px;">
+            A guided practice cohort. The book made participatory. Launching soon — join the waitlist.
+          </p>
+          <a href="#" data-nav="course" class="nav-link" style="color: var(--deep-sea); border-bottom-color: var(--deep-sea);">Join the waitlist →</a>
+        </div>
+        <div>
+          <p class="section-num" style="margin-bottom: 16px;">03 / HEAR</p>
+          <h3 style="font-family: var(--sans); font-size: 24px; font-weight: 500; color: var(--deep-sea); margin-bottom: 12px;">Speaking</h3>
+          <p style="font-size: 16px; line-height: 1.65; color: var(--mist); font-weight: 300; margin-bottom: 20px;">
+            Healthcare, faith, corporate. The story as the talk. Quiet, specific, never preachy.
+          </p>
+          <a href="#" data-nav="speaking" class="nav-link" style="color: var(--deep-sea); border-bottom-color: var(--deep-sea);">Inquire →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark" style="text-align: center;">
+    <div class="container" style="max-width: 600px;">
+      <p class="eyebrow eyebrow-light" style="margin-bottom: 16px;">From the Center</p>
+      <h2 class="h-display" style="font-size: clamp(28px, 3vw, 44px); margin-bottom: 20px;">
+        The newsletter is where I write to you directly.
+      </h2>
+      <p class="lede" style="color: rgba(255,255,255,0.7); margin: 0 auto 36px;">
+        Quiet, occasional. Beautifully imperfect. Start with the free guide and decide if you want to stay.
+      </p>
+      <a class="btn btn-light" href="#" data-nav="home">Get the free guide</a>
+    </div>
+  </section>
+
+  <div class="footer-mount"></div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════════════════
+     BOOK
+     ════════════════════════════════════════════════════════════ -->
+<div class="pageshell" data-page="book" data-screen-label="Book">
+
+  <nav class="site-nav">
+    <a class="nav-mark" href="#" data-nav="home">
+      <img src="../favicons/exports/02-jl-mark-transparent-512.png" alt="JL">
+      <span class="nav-name">Justin Levenson</span>
+    </a>
+    <ul class="nav-links">
+      <li><a class="nav-link" href="#" data-nav="home">Home</a></li>
+      <li><a class="nav-link" href="#" data-nav="about">About</a></li>
+      <li><a class="nav-link active" href="#" data-nav="book">Book</a></li>
+      <li><a class="nav-link" href="#" data-nav="speaking">Speaking</a></li>
+      <li><a class="nav-link" href="#" data-nav="course">Course</a></li>
+      <li><a class="nav-link" href="#" data-nav="writing">Writing</a></li>
+    </ul>
+    <a class="nav-cta" href="#" data-nav="home">Subscribe</a>
+  </nav>
+
+  <!-- BOOK HERO: cover-led -->
+  <section class="page-hero" style="padding-bottom: 0; border: 0;">
+    <div class="container" style="max-width: 1240px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;">
+      <div>
+        <p class="eyebrow" style="margin-bottom: 24px;">The book · Now available</p>
+        <h1 style="font-size: clamp(36px, 4.2vw, 60px); line-height: 1.05;">
+          You Are Stronger<br>Than You <span style="font-weight: 700;">THINK</span>.
+        </h1>
+        <p class="lede" style="margin: 24px 0 12px;">
+          How to Awaken the Superhero Within.
+        </p>
+        <p style="font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; color: var(--mist); text-transform: uppercase; margin-bottom: 36px;">
+          Forewords by Dr. Yanjun Ma · Dr. Stephen W. Clark
+        </p>
+        <div style="display: flex; gap: 16px;">
+          <a class="btn btn-primary" href="#">Read on Amazon →</a>
+          <a class="btn btn-ghost" href="#">Read a sample</a>
+        </div>
+        <div style="display: flex; gap: 32px; margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--rule);">
+          <div>
+            <p style="font-size: 14px; letter-spacing: 4px; color: var(--gold); margin-bottom: 4px;">★★★★★</p>
+            <p class="eyebrow">5.0 on Amazon</p>
+          </div>
+          <div>
+            <p style="font-family: var(--serif); font-style: italic; font-size: 18px; color: var(--deep-sea); margin-bottom: 4px;">Paperback &amp; Kindle</p>
+            <p class="eyebrow">Two formats</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Book cover placeholder -->
+      <div style="display: flex; justify-content: center; align-items: center; padding: 40px 0;">
+        <div style="position: relative; width: 360px; aspect-ratio: 2/3; box-shadow: 0 30px 80px rgba(32,50,53,0.25), 0 8px 24px rgba(32,50,53,0.15); background: linear-gradient(135deg, #2A3E42 0%, #1A2A2D 100%); display: flex; flex-direction: column; justify-content: space-between; padding: 40px 32px; color: var(--linen);">
+          <div>
+            <p style="font-family: var(--mono); font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 4px;">Justin Levenson</p>
+          </div>
+          <div>
+            <h2 style="font-family: var(--serif); font-size: 38px; font-weight: 300; line-height: 1.05; letter-spacing: -0.01em; margin-bottom: 16px;">
+              You Are<br>Stronger<br>Than You<br><span style="font-weight: 600; letter-spacing: 0.04em;">THINK</span>
+            </h2>
+            <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.3); margin: 16px 0;">
+            <p style="font-family: var(--mono); font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.5);">
+              How to Awaken the<br>Superhero Within
+            </p>
+          </div>
+          <div style="text-align: right;">
+            <img src="../favicons/exports/02-jl-mark-transparent-512.png" alt="JL" style="width: 36px; opacity: 0.5; filter: brightness(0) invert(1); display: inline-block;">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section linen">
+    <div class="container" style="max-width: 880px;">
+      <p class="eyebrow" style="margin-bottom: 16px;">What it is</p>
+      <h2 class="h-display" style="font-size: clamp(28px, 3vw, 42px); margin-bottom: 40px;">
+        A short, honest book written from inside the experience — <em>not from the other side of it.</em>
+      </h2>
+      <p class="body-text">
+        Most books on resilience are written by people looking back. This one is different. I wrote it during chemotherapy and radiation, with the framework I was using daily on the radiation table.
+      </p>
+      <p class="body-text">
+        Three short parts. The story, the framework, the practice. Designed to be re-read in pieces, not consumed all at once. <strong>Built to live in your hands.</strong>
+      </p>
+    </div>
+  </section>
+
+  <!-- WHO IT'S FOR -->
+  <section class="section warm">
+    <div class="container">
+      <p class="eyebrow" style="margin-bottom: 16px;">Who it's for</p>
+      <h2 class="h-display" style="font-size: clamp(28px, 3vw, 42px); margin-bottom: 56px; max-width: 22ch;">
+        Anyone facing something hard.
+      </h2>
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule);">
+        <div style="background: var(--warm-white); padding: 44px 36px;">
+          <p class="section-num" style="margin-bottom: 20px;">01</p>
+          <p style="font-size: 17px; line-height: 1.6; color: var(--deep-sea); font-weight: 300;">
+            <em>Newly diagnosed</em> — looking for a starting point that's specific, not vague.
+          </p>
+        </div>
+        <div style="background: var(--warm-white); padding: 44px 36px;">
+          <p class="section-num" style="margin-bottom: 20px;">02</p>
+          <p style="font-size: 17px; line-height: 1.6; color: var(--deep-sea); font-weight: 300;">
+            <em>In the middle of treatment</em> — needing tools that work in two minutes, not a weekend retreat.
+          </p>
+        </div>
+        <div style="background: var(--warm-white); padding: 44px 36px;">
+          <p class="section-num" style="margin-bottom: 20px;">03</p>
+          <p style="font-size: 17px; line-height: 1.6; color: var(--deep-sea); font-weight: 300;">
+            <em>Walking with someone</em> — wanting to understand what the practice actually looks like.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section linen">
+    <div class="container">
+      <p class="eyebrow" style="margin-bottom: 16px;">What readers are saying</p>
+      <h2 class="h-display" style="font-size: clamp(28px, 3vw, 42px); margin-bottom: 56px;">
+        <em>Five-star reviews on Amazon.</em>
+      </h2>
+
+      <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px;">
+        <article style="padding: 40px; border: 1px solid var(--rule); background: var(--warm-white);">
+          <p style="font-size: 14px; letter-spacing: 4px; color: var(--gold); margin-bottom: 20px;">★★★★★</p>
+          <p style="font-family: var(--serif); font-size: 22px; font-style: italic; line-height: 1.45; color: var(--deep-sea); font-weight: 400; margin-bottom: 24px;">
+            "I read this in one sitting and then read it again the next morning, slowly. Justin writes the way you'd want a friend to write to you in a hard moment."
+          </p>
+          <p class="eyebrow">Amazon Reviewer · Verified Purchase</p>
+        </article>
+        <article style="padding: 40px; border: 1px solid var(--rule); background: var(--warm-white);">
+          <p style="font-size: 14px; letter-spacing: 4px; color: var(--gold); margin-bottom: 20px;">★★★★★</p>
+          <p style="font-family: var(--serif); font-size: 22px; font-style: italic; line-height: 1.45; color: var(--deep-sea); font-weight: 400; margin-bottom: 24px;">
+            "The AVF framework is so simple I underestimated it. Two months in and it's the only practice that's stuck."
+          </p>
+          <p class="eyebrow">Amazon Reviewer · Verified Purchase</p>
+        </article>
+        <article style="padding: 40px; border: 1px solid var(--rule); background: var(--warm-white);">
+          <p style="font-size: 14px; letter-spacing: 4px; color: var(--gold); margin-bottom: 20px;">★★★★★</p>
+          <p style="font-family: var(--serif); font-size: 22px; font-style: italic; line-height: 1.45; color: var(--deep-sea); font-weight: 400; margin-bottom: 24px;">
+            "Specific. Honest. Not preachy. I don't usually like books in this category. I love this one."
+          </p>
+          <p class="eyebrow">Amazon Reviewer · Verified Purchase</p>
+        </article>
+        <article style="padding: 40px; border: 1px solid var(--rule); background: var(--warm-white);">
+          <p style="font-size: 14px; letter-spacing: 4px; color: var(--gold); margin-bottom: 20px;">★★★★★</p>
+          <p style="font-family: var(--serif); font-size: 22px; font-style: italic; line-height: 1.45; color: var(--deep-sea); font-weight: 400; margin-bottom: 24px;">
+            "Bought five copies for friends and family. The kind of book you want around when life gets quiet."
+          </p>
+          <p class="eyebrow">Amazon Reviewer · Verified Purchase</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLOSING CTA -->
+  <section class="section dark" style="text-align: center;">
+    <div class="container" style="max-width: 640px;">
+      <p class="eyebrow eyebrow-light" style="margin-bottom: 16px;">Ready when you are</p>
+      <h2 class="h-display" style="font-size: clamp(36px, 4vw, 56px); margin-bottom: 36px;">
+        Bring it home.
+      </h2>
+      <a class="btn btn-light" href="#">Read it on Amazon →</a>
+    </div>
+  </section>
+
+  <div class="footer-mount"></div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════════════════
+     SPEAKING
+     ════════════════════════════════════════════════════════════ -->
+<div class="pageshell" data-page="speaking" data-screen-label="Speaking">
+
+  <nav class="site-nav">
+    <a class="nav-mark" href="#" data-nav="home">
+      <img src="../favicons/exports/02-jl-mark-transparent-512.png" alt="JL">
+      <span class="nav-name">Justin Levenson</span>
+    </a>
+    <ul class="nav-links">
+      <li><a class="nav-link" href="#" data-nav="home">Home</a></li>
+      <li><a class="nav-link" href="#" data-nav="about">About</a></li>
+      <li><a class="nav-link" href="#" data-nav="book">Book</a></li>
+      <li><a class="nav-link active" href="#" data-nav="speaking">Speaking</a></li>
+      <li><a class="nav-link" href="#" data-nav="course">Course</a></li>
+      <li><a class="nav-link" href="#" data-nav="writing">Writing</a></li>
+    </ul>
+    <a class="nav-cta" href="#inquire">Inquire</a>
+  </nav>
+
+  <!-- HERO: full-bleed dark portrait -->
+  <section style="padding: 0; background: var(--deep-sea); color: var(--linen); position: relative; min-height: 88vh; display: grid; grid-template-columns: 1fr 1fr; align-items: stretch;">
+    <div style="padding: 120px var(--gutter); display: flex; flex-direction: column; justify-content: center; gap: 24px;">
+      <p class="eyebrow eyebrow-light">Speaking · Healthcare · Faith · Corporate</p>
+      <h1 style="font-family: var(--sans); font-size: clamp(40px, 4.6vw, 68px); font-weight: 600; line-height: 1.05; letter-spacing: -0.025em; color: var(--linen);">
+        The story is the talk.<br><em style="font-family: var(--serif); font-weight: 400; font-style: italic; color: rgba(255,255,255,0.6); letter-spacing: 0;">Quiet, specific, real.</em>
+      </h1>
+      <p class="lede" style="color: rgba(255,255,255,0.7);">
+        Twenty- to sixty-minute keynotes for hospitals, faith communities, and teams navigating change. Built around the AVF framework and the lived experience that birthed it.
+      </p>
+      <div style="display: flex; gap: 16px; margin-top: 16px;">
+        <a class="btn btn-light" href="#inquire">Inquire about a date</a>
+        <a class="btn btn-ghost" href="#" style="border-color: rgba(255,255,255,0.4); color: var(--linen);">Watch the demo reel</a>
+      </div>
+    </div>
+    <div class="photo-frame" style="height: 100%;">
+      <img src="../assets/photos/Justin-04-WEB.jpg" alt="Justin Levenson speaking" style="object-position: center 30%;">
+    </div>
+  </section>
+
+  <!-- THREE VERTICALS -->
+  <section class="section linen">
+    <div class="container">
+      <p class="eyebrow" style="margin-bottom: 16px;">Where I speak</p>
+      <h2 class="h-display" style="font-size: clamp(32px, 3.4vw, 48px); margin-bottom: 64px;">
+        Three rooms. <em>One message.</em>
+      </h2>
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule);">
+        <div style="background: var(--warm-white); padding: 48px 40px;">
+          <p class="section-num" style="margin-bottom: 28px;">01 / Healthcare</p>
+          <h3 style="font-family: var(--sans); font-size: 22px; font-weight: 500; color: var(--deep-sea); margin-bottom: 16px;">For caregivers and clinicians</h3>
+          <p style="font-size: 15px; line-height: 1.65; color: var(--mist); font-weight: 300; margin-bottom: 20px;">
+            What patients need that we rarely say. The two-minute practice. What it looked like from the table.
+          </p>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 6px;">
+            <li class="eyebrow" style="text-transform: none; letter-spacing: 0.06em; font-weight: 400; color: var(--mist);">Hospital systems · Oncology teams · Med schools</li>
+          </ul>
+        </div>
+        <div style="background: var(--warm-white); padding: 48px 40px;">
+          <p class="section-num" style="margin-bottom: 28px;">02 / Faith</p>
+          <h3 style="font-family: var(--sans); font-size: 22px; font-weight: 500; color: var(--deep-sea); margin-bottom: 16px;">For congregations and groups</h3>
+          <p style="font-size: 15px; line-height: 1.65; color: var(--mist); font-weight: 300; margin-bottom: 20px;">
+            The mind as a place where faith is practiced. Specific, non-denominational, beautifully imperfect.
+          </p>
+          <ul style="list-style: none;">
+            <li class="eyebrow" style="text-transform: none; letter-spacing: 0.06em; font-weight: 400; color: var(--mist);">Sunday services · Retreats · Small groups</li>
+          </ul>
+        </div>
+        <div style="background: var(--warm-white); padding: 48px 40px;">
+          <p class="section-num" style="margin-bottom: 28px;">03 / Corporate</p>
+          <h3 style="font-family: var(--sans); font-size: 22px; font-weight: 500; color: var(--deep-sea); margin-bottom: 16px;">For teams in change</h3>
+          <p style="font-size: 15px; line-height: 1.65; color: var(--mist); font-weight: 300; margin-bottom: 20px;">
+            Resilience without the corporate-wellness gloss. Tools your people will actually use on a Monday.
+          </p>
+          <ul style="list-style: none;">
+            <li class="eyebrow" style="text-transform: none; letter-spacing: 0.06em; font-weight: 400; color: var(--mist);">All-hands · Leadership offsites · ERGs</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOPIC + TEDx note -->
+  <section class="section warm">
+    <div class="container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;">
+      <div>
+        <p class="eyebrow" style="margin-bottom: 16px;">Signature talk</p>
+        <h2 class="h-display" style="font-size: clamp(28px, 3vw, 42px); margin-bottom: 24px;">
+          <em>"This is going to be the most positive experience of my life."</em>
+        </h2>
+        <p class="body-text">
+          A 25-minute keynote on the seven words that came out of my mouth in the moments after a brain cancer diagnosis — and what they revealed about how the mind builds reality.
+        </p>
+        <p class="body-text">
+          <strong>Includes:</strong> the AVF framework demonstrated live, three audience-specific takeaways, and an optional 15-minute Q&amp;A.
+        </p>
+      </div>
+      <div>
+        <div style="border: 1px solid var(--rule); background: var(--warm-white); padding: 36px;">
+          <p class="eyebrow" style="margin-bottom: 16px;">Currently in development</p>
+          <h3 style="font-family: var(--serif); font-size: 28px; font-style: italic; font-weight: 400; color: var(--deep-sea); margin-bottom: 16px; line-height: 1.25;">
+            TEDx talk in submission — Spring 2026.
+          </h3>
+          <p style="font-size: 15px; line-height: 1.65; color: var(--mist); font-weight: 300;">
+            If you're a curator looking at this page: I'd love to talk.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INQUIRE -->
+  <section id="inquire" class="section dark">
+    <div class="container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;">
+      <div>
+        <p class="eyebrow eyebrow-light" style="margin-bottom: 16px;">Inquire</p>
+        <h2 class="h-display" style="font-size: clamp(32px, 3.4vw, 48px); margin-bottom: 24px;">
+          Tell me about your event.
+        </h2>
+        <p class="lede" style="color: rgba(255,255,255,0.7);">
+          A few details and I'll come back personally — usually within two business days.
+        </p>
+      </div>
+      <form onsubmit="event.preventDefault();" style="display: flex; flex-direction: column; gap: 14px;">
+        <input type="text" placeholder="Your name" style="font-family: var(--sans); font-size: 15px; padding: 16px 18px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.18); color: var(--linen); border-radius: 1px;">
+        <input type="email" placeholder="Your email" style="font-family: var(--sans); font-size: 15px; padding: 16px 18px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.18); color: var(--linen); border-radius: 1px;">
+        <input type="text" placeholder="Organization · event name" style="font-family: var(--sans); font-size: 15px; padding: 16px 18px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.18); color: var(--linen); border-radius: 1px;">
+        <textarea placeholder="Date, audience, what you're hoping for…" rows="4" style="font-family: var(--sans); font-size: 15px; padding: 16px 18px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.18); color: var(--linen); border-radius: 1px; resize: vertical;"></textarea>
+        <button type="submit" class="btn btn-light" style="align-self: flex-start; margin-top: 8px;">Send inquiry →</button>
+      </form>
+    </div>
+  </section>
+
+  <div class="footer-mount"></div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════════════════
+     COURSE (waitlist)
+     ════════════════════════════════════════════════════════════ -->
+<div class="pageshell" data-page="course" data-screen-label="Course">
+
+  <nav class="site-nav">
+    <a class="nav-mark" href="#" data-nav="home">
+      <img src="../favicons/exports/02-jl-mark-transparent-512.png" alt="JL">
+      <span class="nav-name">Justin Levenson</span>
+    </a>
+    <ul class="nav-links">
+      <li><a class="nav-link" href="#" data-nav="home">Home</a></li>
+      <li><a class="nav-link" href="#" data-nav="about">About</a></li>
+      <li><a class="nav-link" href="#" data-nav="book">Book</a></li>
+      <li><a class="nav-link" href="#" data-nav="speaking">Speaking</a></li>
+      <li><a class="nav-link active" href="#" data-nav="course">Course</a></li>
+      <li><a class="nav-link" href="#" data-nav="writing">Writing</a></li>
+    </ul>
+    <a class="nav-cta" href="#waitlist">Join waitlist</a>
+  </nav>
+
+  <section class="page-hero" style="padding: 80px var(--gutter) 0; border: 0;">
+    <div class="container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; max-width: 1240px;">
+      <div>
+        <p class="eyebrow" style="margin-bottom: 24px;">
+          <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--gold); margin-right: 10px; vertical-align: middle;"></span>
+          Coming soon · 2026
+        </p>
+        <h1 style="font-size: clamp(40px, 4.4vw, 64px); line-height: 1.05;">
+          The course built around the book.<br><em>Practice, not theory.</em>
+        </h1>
+        <p class="lede" style="margin: 24px 0 36px;">
+          A guided cohort experience — the AVF framework taught the way I actually used it. Title and platform finalizing now. Doors open later this year.
+        </p>
+        <form onsubmit="event.preventDefault();" class="email-form" style="max-width: 460px;">
+          <input type="text" placeholder="First name">
+          <input type="email" placeholder="Email">
+          <button class="btn btn-primary" type="submit">Join the waitlist</button>
+          <p class="email-form-trust">Early access · Founding-member pricing · No spam</p>
+        </form>
+      </div>
+      <div style="position: relative;">
+        <div class="photo-frame" style="aspect-ratio: 4/5;">
+          <img src="../assets/photos/Justin-14-WEB.jpg" alt="" style="filter: grayscale(20%);">
+        </div>
+        <!-- "Soon" stamp overlay -->
+        <div style="position: absolute; top: 28px; right: 28px; padding: 14px 18px; background: var(--linen); border: 1px solid var(--rule); display: flex; align-items: center; gap: 10px;">
+          <img src="../favicons/exports/02-jl-mark-transparent-512.png" alt="" style="height: 22px;">
+          <div style="text-align: left;">
+            <p style="font-family: var(--mono); font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--mist); margin-bottom: 2px;">Status</p>
+            <p style="font-family: var(--serif); font-size: 16px; font-style: italic; color: var(--deep-sea); line-height: 1;">In development</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT IT IS / WHAT IT ISN'T -->
+  <section class="section linen">
+    <div class="container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 64px;">
+      <div style="padding: 48px; border: 1px solid var(--rule); background: var(--warm-white);">
+        <p class="eyebrow" style="margin-bottom: 28px;">What it is</p>
+        <ul style="list-style: none; display: flex; flex-direction: column; gap: 18px;">
+          <li style="display: flex; gap: 16px; align-items: flex-start;">
+            <span style="font-family: var(--serif); font-size: 28px; font-style: italic; color: var(--mist); line-height: 1; min-width: 32px;">01</span>
+            <p style="font-size: 16px; line-height: 1.6; color: var(--deep-sea); font-weight: 300;">A guided cohort. Real-time, with other people walking similar roads.</p>
+          </li>
+          <li style="display: flex; gap: 16px; align-items: flex-start;">
+            <span style="font-family: var(--serif); font-size: 28px; font-style: italic; color: var(--mist); line-height: 1; min-width: 32px;">02</span>
+            <p style="font-size: 16px; line-height: 1.6; color: var(--deep-sea); font-weight: 300;">Built around the book — chapter by chapter, made participatory.</p>
+          </li>
+          <li style="display: flex; gap: 16px; align-items: flex-start;">
+            <span style="font-family: var(--serif); font-size: 28px; font-style: italic; color: var(--mist); line-height: 1; min-width: 32px;">03</span>
+            <p style="font-size: 16px; line-height: 1.6; color: var(--deep-sea); font-weight: 300;">Short, practical sessions. The kind of thing that fits inside a real life.</p>
+          </li>
+        </ul>
+      </div>
+      <div style="padding: 48px; border: 1px solid var(--rule); background: var(--warm-white);">
+        <p class="eyebrow" style="margin-bottom: 28px;">What it isn't</p>
+        <ul style="list-style: none; display: flex; flex-direction: column; gap: 18px;">
+          <li style="display: flex; gap: 16px; align-items: flex-start;">
+            <span style="font-family: var(--serif); font-size: 28px; font-style: italic; color: var(--mist); line-height: 1; min-width: 32px;">—</span>
+            <p style="font-size: 16px; line-height: 1.6; color: var(--mist); font-weight: 300;">Not generic mindfulness. Not a productized retreat.</p>
+          </li>
+          <li style="display: flex; gap: 16px; align-items: flex-start;">
+            <span style="font-family: var(--serif); font-size: 28px; font-style: italic; color: var(--mist); line-height: 1; min-width: 32px;">—</span>
+            <p style="font-size: 16px; line-height: 1.6; color: var(--mist); font-weight: 300;">Not 60 hours of homework. Two-minute practices, taken seriously.</p>
+          </li>
+          <li style="display: flex; gap: 16px; align-items: flex-start;">
+            <span style="font-family: var(--serif); font-size: 28px; font-style: italic; color: var(--mist); line-height: 1; min-width: 32px;">—</span>
+            <p style="font-size: 16px; line-height: 1.6; color: var(--mist); font-weight: 300;">Not a replacement for medical care. A companion to whatever you're already doing.</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIMELINE -->
+  <section class="section warm">
+    <div class="container">
+      <p class="eyebrow" style="margin-bottom: 16px;">Roadmap</p>
+      <h2 class="h-display" style="font-size: clamp(28px, 3vw, 42px); margin-bottom: 56px;">
+        Where things stand.
+      </h2>
+      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; position: relative;">
+        <div style="position: absolute; top: 14px; left: 0; right: 0; height: 1px; background: var(--rule);"></div>
+
+        <div style="padding-top: 0;">
+          <div style="width: 28px; height: 28px; border-radius: 50%; background: var(--deep-sea); border: 4px solid var(--warm-white); margin-bottom: 24px; position: relative; z-index: 1;"></div>
+          <p class="eyebrow" style="margin-bottom: 8px;">Now</p>
+          <p style="font-size: 16px; line-height: 1.55; color: var(--deep-sea); font-weight: 400;">Curriculum design.</p>
+        </div>
+        <div>
+          <div style="width: 28px; height: 28px; border-radius: 50%; background: var(--deep-sea); border: 4px solid var(--warm-white); margin-bottom: 24px; position: relative; z-index: 1;"></div>
+          <p class="eyebrow" style="margin-bottom: 8px;">Q3 2026</p>
+          <p style="font-size: 16px; line-height: 1.55; color: var(--deep-sea); font-weight: 400;">Founding cohort opens — limited seats, lower price.</p>
+        </div>
+        <div>
+          <div style="width: 28px; height: 28px; border-radius: 50%; background: var(--linen); border: 1px solid var(--rule); margin-bottom: 24px; position: relative; z-index: 1;"></div>
+          <p class="eyebrow" style="margin-bottom: 8px;">Q4 2026</p>
+          <p style="font-size: 16px; line-height: 1.55; color: var(--mist); font-weight: 300;">Full launch.</p>
+        </div>
+        <div>
+          <div style="width: 28px; height: 28px; border-radius: 50%; background: var(--linen); border: 1px solid var(--rule); margin-bottom: 24px; position: relative; z-index: 1;"></div>
+          <p class="eyebrow" style="margin-bottom: 8px;">Beyond</p>
+          <p style="font-size: 16px; line-height: 1.55; color: var(--mist); font-weight: 300;">Community + alumni cohorts.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WAITLIST CTA -->
+  <section id="waitlist" class="section dark" style="text-align: center;">
+    <div class="container" style="max-width: 600px;">
+      <p class="eyebrow eyebrow-light" style="margin-bottom: 16px;">Join the waitlist</p>
+      <h2 class="h-display" style="font-size: clamp(32px, 3.6vw, 52px); margin-bottom: 20px;">
+        Be first when doors open.
+      </h2>
+      <p class="lede" style="color: rgba(255,255,255,0.7); margin: 0 auto 36px;">
+        Founding-member pricing for the first 50. You'll hear from me before anyone else does.
+      </p>
+      <form class="email-form" style="margin: 0 auto;" onsubmit="event.preventDefault();">
+        <input type="email" placeholder="Your email">
+        <button class="btn btn-light" type="submit" style="align-self: center;">Add me to the list →</button>
+      </form>
+    </div>
+  </section>
+
+  <div class="footer-mount"></div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════════════════
+     WRITING (lightweight Substack bridge)
+     ════════════════════════════════════════════════════════════ -->
+<div class="pageshell" data-page="writing" data-screen-label="Writing">
+
+  <nav class="site-nav">
+    <a class="nav-mark" href="#" data-nav="home">
+      <img src="../favicons/exports/02-jl-mark-transparent-512.png" alt="JL">
+      <span class="nav-name">Justin Levenson</span>
+    </a>
+    <ul class="nav-links">
+      <li><a class="nav-link" href="#" data-nav="home">Home</a></li>
+      <li><a class="nav-link" href="#" data-nav="about">About</a></li>
+      <li><a class="nav-link" href="#" data-nav="book">Book</a></li>
+      <li><a class="nav-link" href="#" data-nav="speaking">Speaking</a></li>
+      <li><a class="nav-link" href="#" data-nav="course">Course</a></li>
+      <li><a class="nav-link active" href="#" data-nav="writing">Writing</a></li>
+    </ul>
+    <a class="nav-cta" href="#" data-nav="home">Subscribe</a>
+  </nav>
+
+  <section class="page-hero">
+    <div class="container">
+      <p class="eyebrow">Writing · From the Center on Substack</p>
+      <h1>Long-form notes from inside the practice.<br><em>I write where I can be slow.</em></h1>
+      <p class="lede">My essays live on Substack. This page is a bridge — a curated entry point. Click any piece to read it where it belongs.</p>
+      <a class="btn btn-primary" href="https://substack.com/@fromthecenterwithjustin" target="_blank" rel="noopener" style="margin-top: 24px;">
+        Read on Substack →
+      </a>
+    </div>
+  </section>
+
+  <section class="section linen">
+    <div class="container">
+      <div style="display: grid; grid-template-columns: 1fr; gap: 0; border-top: 1px solid var(--rule);">
+
+        <article style="display: grid; grid-template-columns: 80px 1fr 200px; gap: 32px; padding: 36px 0; border-bottom: 1px solid var(--rule); align-items: center;">
+          <p style="font-family: var(--mono); font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mist);">04 / 18</p>
+          <div>
+            <h3 style="font-family: var(--serif); font-size: 28px; font-style: italic; font-weight: 400; color: var(--deep-sea); margin-bottom: 8px; line-height: 1.25;">
+              The mesh mask, and other small altars.
+            </h3>
+            <p style="font-size: 15px; color: var(--mist); font-weight: 300; line-height: 1.55;">A short essay on the objects I came to love during 33 sessions of radiation.</p>
+          </div>
+          <p class="eyebrow" style="text-align: right;">8 min read →</p>
+        </article>
+
+        <article style="display: grid; grid-template-columns: 80px 1fr 200px; gap: 32px; padding: 36px 0; border-bottom: 1px solid var(--rule); align-items: center;">
+          <p style="font-family: var(--mono); font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mist);">04 / 04</p>
+          <div>
+            <h3 style="font-family: var(--serif); font-size: 28px; font-style: italic; font-weight: 400; color: var(--deep-sea); margin-bottom: 8px; line-height: 1.25;">
+              On the difference between hope and hoping.
+            </h3>
+            <p style="font-size: 15px; color: var(--mist); font-weight: 300; line-height: 1.55;">Why one is a posture and the other is just a wish in nicer clothes.</p>
+          </div>
+          <p class="eyebrow" style="text-align: right;">6 min read →</p>
+        </article>
+
+        <article style="display: grid; grid-template-columns: 80px 1fr 200px; gap: 32px; padding: 36px 0; border-bottom: 1px solid var(--rule); align-items: center;">
+          <p style="font-family: var(--mono); font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mist);">03 / 21</p>
+          <div>
+            <h3 style="font-family: var(--serif); font-size: 28px; font-style: italic; font-weight: 400; color: var(--deep-sea); margin-bottom: 8px; line-height: 1.25;">
+              The seven words that changed everything.
+            </h3>
+            <p style="font-size: 15px; color: var(--mist); font-weight: 300; line-height: 1.55;">"This is going to be the most positive experience of my life." — and where they came from.</p>
+          </div>
+          <p class="eyebrow" style="text-align: right;">9 min read →</p>
+        </article>
+
+        <article style="display: grid; grid-template-columns: 80px 1fr 200px; gap: 32px; padding: 36px 0; border-bottom: 1px solid var(--rule); align-items: center;">
+          <p style="font-family: var(--mono); font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mist);">03 / 07</p>
+          <div>
+            <h3 style="font-family: var(--serif); font-size: 28px; font-style: italic; font-weight: 400; color: var(--deep-sea); margin-bottom: 8px; line-height: 1.25;">
+              Beautifully imperfect, defined.
+            </h3>
+            <p style="font-size: 15px; color: var(--mist); font-weight: 300; line-height: 1.55;">A phrase I lean on and what I actually mean by it. Not a brand line — a way of being.</p>
+          </div>
+          <p class="eyebrow" style="text-align: right;">5 min read →</p>
+        </article>
+
+      </div>
+
+      <div style="display: flex; justify-content: center; margin-top: 56px;">
+        <a class="btn btn-ghost" href="https://substack.com/@fromthecenterwithjustin" target="_blank" rel="noopener">All essays on Substack →</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="footer-mount"></div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════════════════
+     SHARED FOOTER TEMPLATE (cloned via JS)
+     ════════════════════════════════════════════════════════════ -->
+<template id="tpl-footer">
+  <footer class="site-footer">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a class="nav-mark" href="#" data-nav="home" style="color: var(--linen);">
+          <img src="../favicons/exports/02-jl-mark-transparent-512.png" alt="JL">
+          <span class="nav-name">Justin Levenson</span>
+        </a>
+        <p class="footer-tag">Author, speaker, personal guide. Writing from inside the experience — never from the other side.</p>
+      </div>
+      <div class="footer-col">
+        <h4>The site</h4>
+        <ul>
+          <li><a href="#" data-nav="home">Home</a></li>
+          <li><a href="#" data-nav="about">About</a></li>
+          <li><a href="#" data-nav="book">Book</a></li>
+          <li><a href="#" data-nav="speaking">Speaking</a></li>
+          <li><a href="#" data-nav="course">Course</a></li>
+          <li><a href="#" data-nav="writing">Writing</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>The work</h4>
+        <ul>
+          <li><a href="https://www.amazon.com/You-Are-Stronger-Than-THINK/dp/1733764313" target="_blank">The book on Amazon</a></li>
+          <li><a href="https://substack.com/@fromthecenterwithjustin" target="_blank">From the Center · Substack</a></li>
+          <li><a href="#" data-nav="home">Free guide · Think It. See It. Feel It.</a></li>
+          <li><a href="#" data-nav="course">The course (waitlist)</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="#">LinkedIn</a></li>
+          <li><a href="#">YouTube</a></li>
+          <li><a href="#" data-nav="speaking">Speaking inquiry</a></li>
+          <li><a href="mailto:hi@justinlevenson.com">hi@justinlevenson.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Justin Levenson · Nashville, TN</span>
+      <span>Beautifully imperfect.</span>
+    </div>
+  </footer>
+</template>
+
+<div class="proto-flag" id="proto-flag">Page: Home</div>
+
+<script>
+  // Mount footer template into every page
+  const tpl = document.getElementById('tpl-footer');
+  document.querySelectorAll('.footer-mount').forEach(mount => {
+    mount.appendChild(tpl.content.cloneNode(true));
+  });
+
+  // Page switching for prototype
+  function showPage(name) {
+    document.querySelectorAll('.pageshell').forEach(el => {
+      el.classList.toggle('active', el.dataset.page === name);
+    });
+    document.getElementById('proto-flag').textContent = 'Page: ' + name.charAt(0).toUpperCase() + name.slice(1);
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest('[data-nav]');
+    if (!a) return;
+    if (a.target === '_blank') return;
+    e.preventDefault();
+    showPage(a.dataset.nav);
+  });
+
+  // ── TWEAKS PROTOCOL ──
+  const TWEAKS = /*EDITMODE-BEGIN*/{
+    "heroPhoto": "Justin-02-WEB.jpg",
+    "typeDirection": "sans-led",
+    "accent": "#C8A86A"
+  }/*EDITMODE-END*/;
+
+  function applyTweaks(t) {
+    // Hero photo
+    document.querySelectorAll('[data-hero-photo]').forEach(img => {
+      img.src = '../assets/photos/' + t.heroPhoto;
+    });
+    // Type direction — when serif-led, swap display headlines to serif
+    const root = document.documentElement;
+    if (t.typeDirection === 'serif-led') {
+      root.style.setProperty('--display-family', "'Cormorant', Georgia, serif");
+      document.body.classList.add('serif-led');
+    } else {
+      root.style.removeProperty('--display-family');
+      document.body.classList.remove('serif-led');
+    }
+    // Accent
+    root.style.setProperty('--gold', t.accent);
+  }
+  applyTweaks(TWEAKS);
+
+  // Edit-mode listener (host integration)
+  let panelEl = null;
+  window.addEventListener('message', (e) => {
+    if (!e.data || typeof e.data !== 'object') return;
+    if (e.data.type === '__activate_edit_mode') openPanel();
+    if (e.data.type === '__deactivate_edit_mode') closePanel();
+  });
+  window.parent.postMessage({type: '__edit_mode_available'}, '*');
+
+  function openPanel() {
+    if (panelEl) { panelEl.style.display = 'block'; return; }
+    panelEl = document.createElement('div');
+    panelEl.style.cssText = 'position:fixed;bottom:24px;right:24px;z-index:999;width:300px;background:var(--linen);border:1px solid var(--rule);box-shadow:0 12px 40px rgba(32,50,53,0.18);padding:20px;font-family:var(--sans);';
+    panelEl.innerHTML = `
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;">
+        <p style="font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--mist);">Tweaks</p>
+        <button id="tw-close" style="border:0;background:none;cursor:pointer;color:var(--mist);font-size:16px;">×</button>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:18px;">
+        <div>
+          <label style="font-family:var(--mono);font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--mist);display:block;margin-bottom:8px;">Hero photo</label>
+          <select id="tw-photo" style="width:100%;padding:10px;font-family:var(--sans);font-size:13px;border:1px solid var(--rule);background:var(--warm-white);color:var(--deep-sea);">
+            <option value="Justin-02-WEB.jpg">Justin-02 — Leather, couch (current)</option>
+            <option value="Justin-11-WEB.jpg">Justin-11 — Editorial / couch</option>
+            <option value="Justin-49-WEB.jpg">Justin-49 — White shirt, standing</option>
+            <option value="Justin-47-WEB.jpg">Justin-47 — Warm seated</option>
+            <option value="Justin-04-WEB.jpg">Justin-04 — Studio</option>
+          </select>
+        </div>
+        <div>
+          <label style="font-family:var(--mono);font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--mist);display:block;margin-bottom:8px;">Type direction</label>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">
+            <button data-td="sans-led" class="tw-td" style="padding:10px;font-family:var(--sans);font-size:12px;border:1px solid var(--rule);background:var(--warm-white);cursor:pointer;">Sans-led</button>
+            <button data-td="serif-led" class="tw-td" style="padding:10px;font-family:var(--serif);font-size:14px;font-style:italic;border:1px solid var(--rule);background:var(--warm-white);cursor:pointer;">Serif-led</button>
+          </div>
+        </div>
+        <div>
+          <label style="font-family:var(--mono);font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--mist);display:block;margin-bottom:8px;">Accent (stars/dots)</label>
+          <div style="display:flex;gap:8px;">
+            <button data-ac="#C8A86A" class="tw-ac" style="width:32px;height:32px;background:#C8A86A;border:1px solid var(--rule);cursor:pointer;"></button>
+            <button data-ac="#5B6278" class="tw-ac" style="width:32px;height:32px;background:#5B6278;border:1px solid var(--rule);cursor:pointer;"></button>
+            <button data-ac="#36302D" class="tw-ac" style="width:32px;height:32px;background:#36302D;border:1px solid var(--rule);cursor:pointer;"></button>
+            <button data-ac="#A8453A" class="tw-ac" style="width:32px;height:32px;background:#A8453A;border:1px solid var(--rule);cursor:pointer;"></button>
+          </div>
+        </div>
+        <hr style="border:0;border-top:1px solid var(--rule);">
+        <div>
+          <label style="font-family:var(--mono);font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--mist);display:block;margin-bottom:8px;">Jump to page</label>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;">
+            <button data-pg="home" class="tw-pg" style="padding:8px;font-family:var(--mono);font-size:10px;letter-spacing:0.16em;text-transform:uppercase;border:1px solid var(--rule);background:var(--warm-white);cursor:pointer;">Home</button>
+            <button data-pg="about" class="tw-pg" style="padding:8px;font-family:var(--mono);font-size:10px;letter-spacing:0.16em;text-transform:uppercase;border:1px solid var(--rule);background:var(--warm-white);cursor:pointer;">About</button>
+            <button data-pg="book" class="tw-pg" style="padding:8px;font-family:var(--mono);font-size:10px;letter-spacing:0.16em;text-transform:uppercase;border:1px solid var(--rule);background:var(--warm-white);cursor:pointer;">Book</button>
+            <button data-pg="speaking" class="tw-pg" style="padding:8px;font-family:var(--mono);font-size:10px;letter-spacing:0.16em;text-transform:uppercase;border:1px solid var(--rule);background:var(--warm-white);cursor:pointer;">Speaking</button>
+            <button data-pg="course" class="tw-pg" style="padding:8px;font-family:var(--mono);font-size:10px;letter-spacing:0.16em;text-transform:uppercase;border:1px solid var(--rule);background:var(--warm-white);cursor:pointer;">Course</button>
+            <button data-pg="writing" class="tw-pg" style="padding:8px;font-family:var(--mono);font-size:10px;letter-spacing:0.16em;text-transform:uppercase;border:1px solid var(--rule);background:var(--warm-white);cursor:pointer;">Writing</button>
+          </div>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(panelEl);
+
+    panelEl.querySelector('#tw-close').onclick = () => {
+      closePanel();
+      window.parent.postMessage({type: '__edit_mode_dismissed'}, '*');
+    };
+    const photoSel = panelEl.querySelector('#tw-photo');
+    photoSel.value = TWEAKS.heroPhoto;
+    photoSel.onchange = (e) => {
+      TWEAKS.heroPhoto = e.target.value;
+      applyTweaks(TWEAKS);
+      window.parent.postMessage({type: '__edit_mode_set_keys', edits: {heroPhoto: e.target.value}}, '*');
+    };
+    panelEl.querySelectorAll('.tw-td').forEach(b => b.onclick = () => {
+      TWEAKS.typeDirection = b.dataset.td;
+      applyTweaks(TWEAKS);
+      window.parent.postMessage({type: '__edit_mode_set_keys', edits: {typeDirection: b.dataset.td}}, '*');
+    });
+    panelEl.querySelectorAll('.tw-ac').forEach(b => b.onclick = () => {
+      TWEAKS.accent = b.dataset.ac;
+      applyTweaks(TWEAKS);
+      window.parent.postMessage({type: '__edit_mode_set_keys', edits: {accent: b.dataset.ac}}, '*');
+    });
+    panelEl.querySelectorAll('.tw-pg').forEach(b => b.onclick = () => showPage(b.dataset.pg));
+  }
+  function closePanel() {
+    if (panelEl) panelEl.style.display = 'none';
+  }
+</script>
+
+<style>
+  /* Serif-led mode — swap display family on h1/h2 */
+  body.serif-led .h-display,
+  body.serif-led .page-hero h1,
+  body.serif-led .pull-quote {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-style: italic;
+    letter-spacing: -0.005em;
+  }
+  body.serif-led .h-display em,
+  body.serif-led .page-hero h1 em {
+    font-family: var(--sans);
+    font-weight: 600;
+    font-style: normal;
+    color: var(--deep-sea);
+  }
+  /* Star color uses --gold for accent */
+  .trust-stars, [style*="color: var(--gold)"] { color: var(--gold) !important; }
+</style>
+
+</body>
+</html>

@@ -39,3 +39,16 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# design handoff — heavy binaries (fonts, photos, exported pngs, pdfs)
+# keep the html/css/jsx/md source files; ignore everything else
+/design-handoff/**/*.jpg
+/design-handoff/**/*.jpeg
+/design-handoff/**/*.png
+/design-handoff/**/*.gif
+/design-handoff/**/*.pdf
+/design-handoff/**/*.otf
+/design-handoff/**/*.ttf
+/design-handoff/**/*.woff
+/design-handoff/**/*.woff2
+/design-handoff/**/*.zip

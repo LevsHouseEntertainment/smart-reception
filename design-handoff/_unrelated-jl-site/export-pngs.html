@@ -1,0 +1,109 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Export stories as PNGs</title>
+<link rel="stylesheet" href="stories/stories.css">
+<script src="https://unpkg.com/html-to-image@1.11.11/dist/html-to-image.js"></script>
+<style>
+  html, body { margin: 0; padding: 0; background: #1a1a1a; color: #e6e7e8;
+    font-family: 'Galano Grotesque', sans-serif; }
+  .shell { max-width: 600px; margin: 40px auto; padding: 24px; }
+  h1 { font-size: 28px; font-weight: 500; margin: 0 0 8px; }
+  p { color: #b8bdc1; line-height: 1.5; margin: 0 0 20px; }
+  button {
+    background: #E6E7E8; color: #0b0e10; border: 0; padding: 14px 22px;
+    font-family: 'Messina Sans Mono', monospace;
+    font-size: 13px; letter-spacing: 0.22em; text-transform: uppercase;
+    cursor: pointer; border-radius: 2px;
+  }
+  button:hover { background: #fff; }
+  .status { margin-top: 24px; font-family: 'Messina Sans Mono', monospace; font-size: 14px; color: #9aa2a8; white-space: pre-line; }
+  .stage {
+    position: fixed; top: 0; left: -10000px;
+    /* offscreen render stage */
+  }
+  .frame {
+    width: 1080px; height: 1920px;
+    background: #000;
+    position: relative; overflow: hidden;
+  }
+  .frame.sq { height: 1080px; }
+  .frame iframe {
+    width: 100%; height: 100%; border: 0; background: #000;
+    position: absolute; inset: 0;
+  }
+</style>
+</head>
+<body>
+  <div class="shell">
+    <h1>Export stories as PNGs</h1>
+    <p>Click below to render each story at full 1080×1920 (and 1080×1080 for the feed post) and download them as PNGs. Each will download individually — accept the browser's "download multiple files" prompt.</p>
+    <button id="go">Generate &amp; download PNGs</button>
+    <div class="status" id="status"></div>
+  </div>
+
+  <div class="stage" id="stage"></div>
+
+<script>
+const FILES = [
+  { name: '01-Stillness.png',   src: 'stories/Story-Stillness.html',   w: 1080, h: 1920, wait: 800 },
+  { name: '02-TheRide.png',     src: 'stories/Story-TheRide.html',     w: 1080, h: 1920, wait: 5500 }, // wait for quote words
+  { name: '03-Monogram.png',    src: 'stories/Story-Monogram.html',    w: 1080, h: 1920, wait: 8000 }, // wait for monogram to settle + text
+  { name: '04-BWEditorial.png', src: 'stories/Story-BWEditorial.html', w: 1080, h: 1920, wait: 800 },
+  { name: '05-Feed-Square.png', src: 'stories/Feed-Square.html',       w: 1080, h: 1080, wait: 800 },
+];
+
+const status = document.getElementById('status');
+const stage = document.getElementById('stage');
+function log(msg) { status.textContent += msg + '\n'; }
+
+async function renderOne(file) {
+  log('Rendering ' + file.name + '…');
+  const frame = document.createElement('div');
+  frame.className = 'frame' + (file.h === 1080 ? ' sq' : '');
+  frame.style.width = file.w + 'px';
+  frame.style.height = file.h + 'px';
+  const iframe = document.createElement('iframe');
+  iframe.src = file.src;
+  frame.appendChild(iframe);
+  stage.appendChild(frame);
+
+  await new Promise(res => iframe.addEventListener('load', res, {once: true}));
+  // Wait for fonts inside the iframe
+  try { if (iframe.contentDocument.fonts) await iframe.contentDocument.fonts.ready; } catch(e){}
+  await new Promise(r => setTimeout(r, file.wait));
+
+  const dataUrl = await htmlToImage.toPng(frame, {
+    width: file.w, height: file.h,
+    pixelRatio: 1,
+    backgroundColor: '#000',
+    cacheBust: true,
+  });
+
+  // Trigger download
+  const a = document.createElement('a');
+  a.href = dataUrl;
+  a.download = file.name;
+  document.body.appendChild(a); a.click(); a.remove();
+
+  stage.removeChild(frame);
+  log('  ✓ ' + file.name);
+}
+
+document.getElementById('go').addEventListener('click', async () => {
+  status.textContent = '';
+  try {
+    for (const f of FILES) {
+      await renderOne(f);
+      await new Promise(r => setTimeout(r, 400));
+    }
+    log('\nAll done! Check your Downloads folder.');
+  } catch (e) {
+    log('ERROR: ' + e.message);
+    console.error(e);
+  }
+});
+</script>
+</body>
+</html>

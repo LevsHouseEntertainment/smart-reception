@@ -1,0 +1,26 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--color-off-white); padding: 24px 28px; font-family: var(--font-body); }
+.row { display: flex; gap: 12px; align-items: center; margin-bottom: 10px; }
+.chip { height: 20px; width: 20px; border-radius: 1px; background: var(--color-charcoal); flex-shrink: 0; }
+.label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); min-width: 110px; }
+.val { font-size: 11px; font-family: monospace; color: var(--text-secondary); }
+.divider { border: none; border-top: 1px solid var(--color-border); margin: 10px 0; }
+</style></head><body>
+  <div class="row"><div class="chip" style="height:4px;width:4px;border-radius:50%"></div><div class="label">Space-1 / 4px</div><div style="background:var(--color-slate-blue);height:8px;width:4px;border-radius:1px"></div></div>
+  <div class="row"><div class="chip" style="height:4px;width:8px;border-radius:1px"></div><div class="label">Space-2 / 8px</div><div style="background:var(--color-slate-blue);height:8px;width:8px;border-radius:1px"></div></div>
+  <div class="row"><div class="chip" style="height:4px;width:16px;border-radius:1px"></div><div class="label">Space-4 / 16px</div><div style="background:var(--color-slate-blue);height:8px;width:16px;border-radius:1px"></div></div>
+  <div class="row"><div class="chip" style="height:4px;width:32px;border-radius:1px"></div><div class="label">Space-8 / 32px</div><div style="background:var(--color-slate-blue);height:8px;width:32px;border-radius:1px"></div></div>
+  <div class="row"><div class="chip" style="height:4px;width:48px;border-radius:1px"></div><div class="label">Space-12 / 48px</div><div style="background:var(--color-slate-blue);height:8px;width:48px;border-radius:1px"></div></div>
+  <div class="row"><div class="chip" style="height:4px;width:64px;border-radius:1px"></div><div class="label">Space-16 / 64px</div><div style="background:var(--color-slate-blue);height:8px;width:64px;border-radius:1px"></div></div>
+  <div class="row"><div class="chip" style="height:4px;width:96px;border-radius:1px"></div><div class="label">Space-24 / 96px</div><div style="background:var(--color-slate-blue);height:8px;width:96px;border-radius:1px"></div></div>
+  <hr class="divider">
+  <div style="display:flex;gap:16px;align-items:center;margin-top:6px;">
+    <div style="text-align:center"><div style="width:40px;height:40px;border-radius:0px;border:1px solid var(--color-border);background:var(--bg-elevated)"></div><div style="font-size:9px;color:var(--text-muted);margin-top:4px;letter-spacing:0.08em">radius-none</div></div>
+    <div style="text-align:center"><div style="width:40px;height:40px;border-radius:2px;border:1px solid var(--color-border);background:var(--bg-elevated)"></div><div style="font-size:9px;color:var(--text-muted);margin-top:4px;letter-spacing:0.08em">radius-sm</div></div>
+    <div style="text-align:center"><div style="width:40px;height:40px;border-radius:4px;border:1px solid var(--color-border);background:var(--bg-elevated)"></div><div style="font-size:9px;color:var(--text-muted);margin-top:4px;letter-spacing:0.08em">radius-md</div></div>
+    <div style="text-align:center"><div style="width:40px;height:20px;border-radius:9999px;border:1px solid var(--color-border);background:var(--bg-elevated)"></div><div style="font-size:9px;color:var(--text-muted);margin-top:4px;letter-spacing:0.08em">radius-full</div></div>
+  </div>
+</body></html>

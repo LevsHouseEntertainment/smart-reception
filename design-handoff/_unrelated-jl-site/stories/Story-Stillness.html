@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>The Ride — Story (Stillness)</title>
+<link rel="stylesheet" href="stories.css" />
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: #0b0b0b;
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+  }
+
+  /* The Stillness story */
+  .stillness {
+    /* Full-bleed portrait */
+  }
+  .stillness .photo {
+    position: absolute;
+    inset: 0;
+    background-image: url('assets/justin-portrait.jpg');
+    background-size: cover;
+    /* Portrait is 1333x2000, our canvas is 1080x1920.
+       Position keeps his face in the upper 60% of the frame. */
+    background-position: 50% 22%;
+    z-index: 0;
+  }
+
+  /* A very subtle dark gradient from bottom third down, for legibility */
+  .stillness .scrim {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 55%;
+    bottom: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(0,0,0,0.00) 0%,
+      rgba(10,14,16,0.35) 35%,
+      rgba(10,14,16,0.78) 75%,
+      rgba(10,14,16,0.92) 100%
+    );
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  /* Bottom-third text block — starts below y=1280 */
+  .stillness .text {
+    position: absolute;
+    left: 60px;
+    right: 60px;
+    bottom: 110px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 44px;
+  }
+
+  .stillness .quote {
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 78px;
+    line-height: 1.08;
+    letter-spacing: -0.015em;
+    color: var(--cool-grey);
+    margin: 0;
+  }
+  .stillness .quote .second {
+    display: block;
+    color: rgba(230, 231, 232, 0.78);
+    font-weight: 400;
+    margin-top: 14px;
+  }
+
+  .stillness .rule {
+    width: 64px;
+    height: 1px;
+    background: var(--mist);
+    opacity: 0.55;
+  }
+
+  .stillness .callout {
+    font-family: var(--font-mono);
+    font-weight: 400;
+    font-size: 26px;
+    letter-spacing: 0.02em;
+    color: #a8b1b6;
+    line-height: 1.4;
+    margin: 0;
+  }
+  .stillness .callout em {
+    font-style: normal;
+    color: var(--cool-grey);
+  }
+
+  .stillness .brand {
+    margin-top: 12px;
+    font-family: var(--font-mono);
+    font-weight: 400;
+    font-size: 20px;
+    letter-spacing: 0.42em;
+    color: #6f7a80;
+    text-transform: uppercase;
+  }
+  .stillness .brand::before {
+    content: "";
+    display: inline-block;
+    width: 28px;
+    height: 1px;
+    background: #6f7a80;
+    vertical-align: middle;
+    margin-right: 18px;
+    transform: translateY(-3px);
+  }
+
+  /* Tiny date chip, top-left — VERY subtle, well above y=1280 is fine because
+     brief says "no text above y=1280". Keep it out.
+     → we omit it for fidelity to brief. */
+
+</style>
+</head>
+<body>
+  <div class="story stillness" data-screen-label="01 Stillness">
+    <div class="photo"></div>
+    <div class="scrim"></div>
+
+    <div class="text">
+      <p class="quote">
+        Be here now.
+        <span class="second">Even here. Especially here.</span>
+      </p>
+
+      <div class="rule"></div>
+
+      <p class="callout"><em>The Ride</em> — new post up today</p>
+
+      <div class="brand">From the Center</div>
+    </div>
+  </div>
+</body>
+</html>

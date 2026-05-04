@@ -1,0 +1,259 @@
+/* Smart Reception — Design System Page Layout
+   Page chrome only; component styles are colocated in components.jsx via inline tags. */
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--sr-color-bg);
+  color: var(--sr-color-text);
+  font-family: var(--sr-font-body);
+  font-size: var(--sr-text-base);
+  line-height: var(--sr-leading-normal);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: "ss01", "cv11";
+  text-rendering: optimizeLegibility;
+}
+
+/* Typography defaults */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--sr-font-display);
+  font-weight: var(--sr-weight-semibold);
+  letter-spacing: var(--sr-tracking-tight);
+  line-height: var(--sr-leading-tight);
+  margin: 0;
+  color: var(--sr-color-text);
+}
+
+p { margin: 0; }
+
+a {
+  color: var(--sr-color-brand);
+  text-decoration: none;
+  text-underline-offset: 3px;
+}
+a:hover { text-decoration: underline; }
+
+code, pre, .sr-mono {
+  font-family: var(--sr-font-mono);
+  font-size: 0.92em;
+}
+
+/* ── Page shell ─────────────────────────────────────────────────────────── */
+.sr-page {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 64px 48px 120px;
+}
+
+@media (max-width: 800px) {
+  .sr-page { padding: 32px 20px 80px; }
+}
+
+.sr-hero {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 64px;
+  align-items: end;
+  padding-bottom: 64px;
+  border-bottom: 1px solid var(--sr-color-border-subtle);
+  margin-bottom: 64px;
+}
+@media (max-width: 800px) {
+  .sr-hero { grid-template-columns: 1fr; gap: 32px; padding-bottom: 40px; margin-bottom: 40px; }
+}
+
+.sr-hero-eyebrow {
+  font-family: var(--sr-font-mono);
+  font-size: var(--sr-text-xs);
+  letter-spacing: var(--sr-tracking-wider);
+  text-transform: uppercase;
+  color: var(--sr-color-text-subtle);
+  margin-bottom: 24px;
+}
+
+.sr-hero h1 {
+  font-size: clamp(40px, 6vw, 64px);
+  letter-spacing: -0.025em;
+  line-height: 1.05;
+  margin-bottom: 20px;
+}
+
+.sr-hero-lead {
+  font-size: var(--sr-text-lg);
+  color: var(--sr-color-text-muted);
+  line-height: var(--sr-leading-relaxed);
+  max-width: 52ch;
+}
+
+.sr-hero-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.sr-hero-meta-row {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 16px;
+  align-items: baseline;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--sr-color-border-subtle);
+  font-size: var(--sr-text-sm);
+}
+
+.sr-hero-meta-label {
+  font-family: var(--sr-font-mono);
+  font-size: var(--sr-text-xs);
+  letter-spacing: var(--sr-tracking-wide);
+  text-transform: uppercase;
+  color: var(--sr-color-text-subtle);
+}
+
+/* Section blocks */
+.sr-section {
+  padding: 48px 0 72px;
+  border-top: 1px solid var(--sr-color-border-subtle);
+}
+.sr-section:first-of-type { border-top: 0; padding-top: 0; }
+
+.sr-section-head {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 48px;
+  margin-bottom: 40px;
+  align-items: start;
+}
+@media (max-width: 800px) {
+  .sr-section-head { grid-template-columns: 1fr; gap: 16px; margin-bottom: 28px; }
+}
+
+.sr-section-num {
+  font-family: var(--sr-font-mono);
+  font-size: var(--sr-text-xs);
+  letter-spacing: var(--sr-tracking-wider);
+  text-transform: uppercase;
+  color: var(--sr-color-text-subtle);
+}
+
+.sr-section h2 {
+  font-size: var(--sr-text-3xl);
+  letter-spacing: -0.02em;
+}
+
+.sr-section-blurb {
+  color: var(--sr-color-text-muted);
+  font-size: var(--sr-text-md);
+  line-height: var(--sr-leading-relaxed);
+  max-width: 60ch;
+}
+
+.sr-section-title {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+
+.sr-subsection-head {
+  font-family: var(--sr-font-mono);
+  font-size: var(--sr-text-xs);
+  letter-spacing: var(--sr-tracking-wider);
+  text-transform: uppercase;
+  color: var(--sr-color-text-subtle);
+  margin: 32px 0 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--sr-color-border-subtle);
+}
+
+/* Specimen card — generic frame for showing a component */
+.sr-spec {
+  background: var(--sr-color-surface);
+  border: 1px solid var(--sr-color-border);
+  border-radius: var(--sr-radius-lg);
+  overflow: hidden;
+}
+
+.sr-spec-stage {
+  padding: 32px;
+  background:
+    linear-gradient(var(--sr-color-bg-sunken), var(--sr-color-bg-sunken)) padding-box;
+  background-size: 24px 24px;
+  background-image:
+    radial-gradient(circle, var(--sr-color-border) 1px, transparent 1px);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.sr-spec-stage--column {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.sr-spec-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  border-top: 1px solid var(--sr-color-border-subtle);
+  background: var(--sr-color-bg-elevated);
+  font-family: var(--sr-font-mono);
+  font-size: var(--sr-text-xs);
+  color: var(--sr-color-text-subtle);
+  letter-spacing: var(--sr-tracking-wide);
+}
+
+/* Grid helpers */
+.sr-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+.sr-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.sr-grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+@media (max-width: 800px) {
+  .sr-grid-2, .sr-grid-3, .sr-grid-4 { grid-template-columns: 1fr; }
+}
+
+/* Top nav — tab-of-contents */
+.sr-toc {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(246, 243, 236, 0.78);
+  backdrop-filter: blur(20px) saturate(150%);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
+  border-bottom: 1px solid var(--sr-color-border-subtle);
+  margin: 0 -48px 0;
+  padding: 14px 48px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  font-family: var(--sr-font-mono);
+  font-size: var(--sr-text-xs);
+  letter-spacing: var(--sr-tracking-wide);
+  text-transform: uppercase;
+  color: var(--sr-color-text-subtle);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.sr-toc::-webkit-scrollbar { display: none; }
+.sr-toc a { color: inherit; white-space: nowrap; }
+.sr-toc a:hover { color: var(--sr-color-text); text-decoration: none; }
+.sr-toc-brand { color: var(--sr-color-text); font-weight: 600; letter-spacing: 0.02em; }
+@media (max-width: 800px) {
+  .sr-toc { margin: 0 -20px; padding: 12px 20px; }
+}

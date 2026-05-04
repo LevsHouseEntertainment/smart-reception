@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>The Ride — Feed Post (1080×1080)</title>
+<link rel="stylesheet" href="stories.css" />
+<style>
+  html, body { margin: 0; padding: 0; background: #0b0b0b; min-height: 100vh; display: grid; place-items: center; }
+
+  .feed {
+    width: 1080px;
+    height: 1080px;
+    position: relative;
+    overflow: hidden;
+    background: #0b0e10;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    font-family: var(--font-body);
+    color: var(--cool-grey);
+  }
+  .feed * { box-sizing: border-box; }
+
+  /* Left: photo */
+  .feed .left {
+    position: relative;
+    overflow: hidden;
+    background: #000;
+  }
+  .feed .left .photo {
+    position: absolute; inset: 0;
+    background-image: url('assets/justin-portrait.jpg');
+    background-size: cover;
+    background-position: 58% 20%;
+    filter: contrast(1.03) brightness(0.96);
+  }
+  .feed .left .fade {
+    position: absolute; inset: 0;
+    background: linear-gradient(90deg, rgba(0,0,0,0) 70%, #0b0e10 100%);
+  }
+
+  /* Right: text panel */
+  .feed .right {
+    position: relative;
+    padding: 80px 80px 70px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: #0b0e10;
+  }
+
+  .feed .right .top {
+    display: flex; align-items: center; justify-content: space-between;
+    font-family: var(--font-mono);
+    font-size: 18px;
+    letter-spacing: 0.34em;
+    text-transform: uppercase;
+    color: #9aa2a8;
+  }
+  .feed .right .top .dot { width: 7px; height: 7px; border-radius: 50%; background: #9aa2a8; display: inline-block; margin-right: 12px; vertical-align: middle; }
+  .feed .right .top .vol { font-size: 14px; letter-spacing: 0.22em; color: #6f7a80; }
+
+  .feed .right .body {
+    margin-top: 40px;
+  }
+  .feed .right .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 18px;
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    color: #9aa2a8;
+    margin-bottom: 28px;
+    display: flex; align-items: center; gap: 14px;
+  }
+  .feed .right .eyebrow .tick { width: 36px; height: 1px; background: #9aa2a8; }
+
+  .feed .right .quote {
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 64px;
+    line-height: 1.06;
+    letter-spacing: -0.018em;
+    color: #F2F3F4;
+    margin: 0 0 20px 0;
+  }
+  .feed .right .quote .second {
+    display: block;
+    font-weight: 400;
+    color: rgba(242,243,244,0.72);
+    margin-top: 6px;
+  }
+
+  .feed .right .rule {
+    width: 56px; height: 1px;
+    background: var(--mist);
+    opacity: 0.7;
+    margin: 30px 0 24px;
+  }
+
+  .feed .right .callout {
+    font-family: var(--font-mono);
+    font-size: 20px;
+    letter-spacing: 0.02em;
+    color: #c8cdd0;
+    line-height: 1.45;
+    margin: 0;
+  }
+  .feed .right .callout em { font-style: normal; color: #F2F3F4; }
+
+  .feed .right .foot {
+    display: flex; align-items: baseline; justify-content: space-between;
+    font-family: var(--font-mono);
+    font-size: 16px;
+    letter-spacing: 0.38em;
+    text-transform: uppercase;
+    color: #8a9298;
+  }
+  .feed .right .foot .mark { display: inline-block; width: 28px; height: 1px; background: #8a9298; vertical-align: middle; margin-right: 14px; }
+  .feed .right .foot .page { font-size: 13px; letter-spacing: 0.28em; color: #606a70; }
+</style>
+</head>
+<body>
+  <div class="feed" data-screen-label="05 Feed 1:1">
+    <div class="left">
+      <div class="photo"></div>
+      <div class="fade"></div>
+    </div>
+
+    <div class="right">
+      <div class="top">
+        <span><span class="dot"></span>From the Center</span>
+        <span class="vol">Thoughts from the Center</span>
+      </div>
+
+      <div class="body">
+        <div class="eyebrow"><span class="tick"></span><span>The Ride · New post</span></div>
+        <h1 class="quote">
+          Be here now.
+          <span class="second">Even here. Especially here.</span>
+        </h1>
+        <div class="rule"></div>
+        <p class="callout"><em>A short read</em> on what to do with the days that won't hold still.</p>
+      </div>
+
+      <div class="foot">
+        <span><span class="mark"></span>Justin Levenson</span>
+        <span class="page">Read on Substack →</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

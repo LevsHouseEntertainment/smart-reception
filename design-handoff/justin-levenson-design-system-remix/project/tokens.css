@@ -1,46 +1,48 @@
-@import "tailwindcss";
-
-/* ─────────────────────────────────────────────────────────────────────────
-   Smart Reception — design tokens
-   Linen & Slate palette · Plus Jakarta Sans / Figtree / JetBrains Mono
-   ─────────────────────────────────────────────────────────────────────── */
+/* Smart Reception — design tokens (v0.1)
+   Linen & Slate palette • Plus Jakarta Sans / Figtree / JetBrains Mono */
 
 :root {
-  --sr-color-brand:    #2D3E4F;
-  --sr-color-accent:   #C49A2A;
-  --sr-color-success:  #3A6B4A;
-  --sr-color-warning:  #C49A2A;
-  --sr-color-danger:   #8B3A3A;
-  --sr-color-info:     #2D3E4F;
+  /* Brand */
+  --sr-color-brand:    #2D3E4F;  /* Slate blue — primary brand surface */
+  --sr-color-accent:   #C49A2A;  /* Amber — all CTAs and actions */
+  --sr-color-success:  #3A6B4A;  /* Agent live, booked */
+  --sr-color-warning:  #C49A2A;  /* Calendar not connected (muted amber) */
+  --sr-color-danger:   #8B3A3A;  /* Escalated, error */
+  --sr-color-info:     #2D3E4F;  /* Heads up, neutral alert */
 
+  /* Linen canvas — warm off-white field */
   --sr-canvas:         #F4EFE6;
   --sr-canvas-2:       #EAE3D6;
   --sr-canvas-3:       #DDD3C2;
   --sr-paper:          #FBF8F2;
   --sr-paper-edge:     #E6DFD0;
 
+  /* Ink — warm slate */
   --sr-ink:            #1A2530;
   --sr-ink-2:          #3C4855;
   --sr-ink-3:          #6B7682;
   --sr-ink-4:          #97A0AA;
 
+  /* Hairlines */
   --sr-rule:           rgba(26, 37, 48, 0.12);
   --sr-rule-strong:    rgba(26, 37, 48, 0.22);
 
-  --sr-display: var(--font-display), ui-sans-serif, system-ui, sans-serif;
-  --sr-text:    var(--font-text), ui-sans-serif, system-ui, sans-serif;
-  --sr-mono:    var(--font-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+  /* Type */
+  --sr-display: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --sr-text:    "Figtree", ui-sans-serif, system-ui, sans-serif;
+  --sr-mono:    "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
 
+  /* Radii — gentle, never bubbly */
   --sr-r-sm: 4px;
   --sr-r:    8px;
   --sr-r-lg: 12px;
 
+  /* Density (overridden via tweaks) */
   --sr-row-h: 64px;
   --sr-pad:   20px;
 }
 
 * { box-sizing: border-box; }
-
 html, body {
   margin: 0;
   background: var(--sr-canvas);
@@ -95,7 +97,6 @@ button { font-family: inherit; }
   border-radius: var(--sr-r);
   cursor: pointer;
   transition: background .12s ease, border-color .12s ease, transform .04s ease;
-  text-decoration: none;
 }
 .sr-btn:hover { background: #fff; }
 .sr-btn:active { transform: translateY(1px); }
@@ -121,7 +122,6 @@ button { font-family: inherit; }
   border: 1px solid var(--sr-rule);
   background: var(--sr-paper);
   color: var(--sr-ink-2);
-  white-space: nowrap;
 }
 .sr-pill .dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
 .sr-pill[data-tone="live"]    { color: var(--sr-color-success); border-color: rgba(58,107,74,0.3); background: rgba(58,107,74,0.08); }
@@ -129,62 +129,3 @@ button { font-family: inherit; }
 .sr-pill[data-tone="escalated"]{ color: var(--sr-color-danger); border-color: rgba(139,58,58,0.3); background: rgba(139,58,58,0.08); }
 .sr-pill[data-tone="warn"]    { color: #8A6A14; border-color: rgba(196,154,42,0.4); background: rgba(196,154,42,0.12); }
 .sr-pill[data-tone="info"]    { color: var(--sr-color-brand); border-color: rgba(45,62,79,0.25); background: rgba(45,62,79,0.06); }
-
-/* App shell */
-.sr-app {
-  max-width: 1480px;
-  margin: 0 auto;
-}
-.sr-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 360px;
-  gap: 24px;
-  padding: 0 28px 60px;
-}
-@media (max-width: 1180px) {
-  .sr-grid { grid-template-columns: 1fr; }
-}
-@media (max-width: 768px) {
-  .sr-grid { padding: 0 16px 40px; gap: 16px; }
-}
-
-/* Mobile nav visibility helpers */
-.sr-mobile-only { display: none; }
-@media (max-width: 768px) {
-  .sr-topnav { display: none !important; }
-  .sr-mobile-only { display: inline-flex; }
-}
-
-/* Hero/stat grid responsive */
-@media (max-width: 768px) {
-  .sr-hero-strip { padding: 20px 16px 16px !important; }
-  .sr-stat-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
-  .sr-stat-grid .sr-stat:nth-child(2n) { border-right: 0 !important; }
-  .sr-stat-grid .sr-stat:nth-child(-n+2) { border-bottom: 1px solid var(--sr-rule); }
-}
-
-/* Live call card responsive */
-@media (max-width: 600px) {
-  .sr-live-head { grid-template-columns: auto 1fr !important; }
-  .sr-live-wave { grid-column: 1 / -1; min-width: 0 !important; }
-}
-
-/* Page headers responsive */
-@media (max-width: 768px) {
-  .sr-page-header { padding: 20px 16px 16px !important; }
-  .sr-customers-pad { padding: 0 16px 40px !important; }
-}
-
-/* Customer row responsive */
-@media (max-width: 600px) {
-  .sr-customer-row { grid-template-columns: 40px minmax(0, 1fr) auto !important; }
-  .sr-customer-meta { display: none; }
-}
-
-/* Call row responsive */
-@media (max-width: 600px) {
-  .sr-call-row { grid-template-columns: 36px minmax(0, 1fr) auto !important; padding: 12px 16px !important; }
-  .sr-call-row > :nth-child(1) { grid-row: 2; grid-column: 2 / -1; }
-  .sr-call-row > :nth-child(4) { grid-row: 1; grid-column: 3; }
-  .sr-call-row > :nth-child(5) { display: none; }
-}

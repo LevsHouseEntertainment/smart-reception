@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<style>
+body { margin: 0; background: #222; }
+canvas { display: block; margin: 4px auto; border: 1px solid #555; }
+#status { color: white; font-family: monospace; padding: 8px; font-size: 12px; }
+</style>
+</head>
+<body>
+<div id="status">Loading PDF...</div>
+<div id="pages"></div>
+<script>
+pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+async function renderPDF() {
+  const response = await fetch('../uploads/BRAND GUIDE copy.pdf');
+  const arrayBuffer = await response.arrayBuffer();
+  const pdf = await pdfjsLib.getDocument({data: arrayBuffer}).promise;
+  document.getElementById('status').textContent = `PDF loaded: ${pdf.numPages} pages`;
+  
+  for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
+    const page = await pdf.getPage(pageNum);
+    const scale = 1.5;
+    const viewport = page.getViewport({scale});
+    const canvas = document.createElement('canvas');
+    canvas.width = viewport.width;
+    canvas.height = viewport.height;
+    canvas.id = `page${pageNum}`;
+    const label = document.createElement('div');
+    label.style.cssText = 'color:white;font-family:monospace;font-size:11px;text-align:center;margin:2px 0 -2px';
+    label.textContent = `Page ${pageNum}`;
+    document.getElementById('pages').appendChild(label);
+    document.getElementById('pages').appendChild(canvas);
+    await page.render({canvasContext: canvas.getContext('2d'), viewport}).promise;
+  }
+  document.getElementById('status').textContent = `Done — ${pdf.numPages} pages rendered`;
+}
+renderPDF().catch(e => { document.getElementById('status').textContent = 'Error: ' + e.message; });
+</script>
+</body></html>

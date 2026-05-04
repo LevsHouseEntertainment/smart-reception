@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Type System — May 2026 Placeholders</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { padding: 64px 80px; max-width: none; }
+  .wrap { max-width: 1100px; margin: 0 auto; }
+  .status {
+    font-family: var(--font-header);
+    font-size: 11px;
+    letter-spacing: var(--tracking-widest);
+    text-transform: uppercase;
+    color: var(--text-muted);
+    border: 1px solid var(--border-color);
+    padding: 8px 14px;
+    display: inline-block;
+    margin-bottom: 48px;
+  }
+  hr { border: 0; border-top: 1px solid var(--border-color); margin: 64px 0; }
+
+  .role-row {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 56px;
+    margin: 56px 0;
+    align-items: start;
+  }
+  .role-meta {
+    font-family: var(--font-header);
+    font-size: 12px;
+    line-height: 1.7;
+    color: var(--text-secondary);
+  }
+  .role-meta b {
+    display: block;
+    color: var(--text-primary);
+    font-weight: 400;
+    font-size: 13px;
+    margin-bottom: 8px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .role-meta .future {
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px dashed var(--border-color);
+    color: var(--text-muted);
+  }
+
+  .specimen-primary {
+    font-family: var(--font-primary);
+    font-weight: 500;
+  }
+  .specimen-header {
+    font-family: var(--font-header);
+    font-weight: 400;
+  }
+  .specimen-body {
+    font-family: var(--font-body);
+    font-weight: 400;
+  }
+
+  .big   { font-size: 56px; line-height: 1.05; letter-spacing: -0.01em; margin: 0 0 12px; color: var(--text-primary); }
+  .mid   { font-size: 22px; line-height: 1.4;  margin: 0 0 12px; color: var(--text-secondary); }
+  .small { font-size: 13px; line-height: 1.6;  letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-muted); margin: 0; }
+
+  .body-lede { font-size: 19px; line-height: 1.6; max-width: 60ch; color: var(--text-primary); margin: 0 0 18px; }
+  .body-text { font-size: 16px; line-height: 1.7; max-width: 60ch; color: var(--text-secondary); margin: 0; }
+
+  .swatches {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+    margin-top: 24px;
+  }
+  .swatch {
+    border: 1px solid var(--border-color);
+    background: var(--bg-elevated);
+  }
+  .swatch .chip {
+    height: 110px;
+  }
+  .swatch .label {
+    font-family: var(--font-header);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    padding: 12px 14px 4px;
+    color: var(--text-primary);
+    text-transform: uppercase;
+  }
+  .swatch .hex {
+    font-family: var(--font-header);
+    font-size: 11px;
+    color: var(--text-muted);
+    padding: 0 14px 12px;
+    letter-spacing: 0.04em;
+  }
+
+  .usage {
+    border: 1px solid var(--border-color);
+    background: var(--bg-elevated);
+    margin-top: 24px;
+  }
+  .usage table { width: 100%; border-collapse: collapse; }
+  .usage th, .usage td {
+    text-align: left;
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 14px;
+  }
+  .usage th {
+    font-family: var(--font-header);
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 11px;
+    color: var(--text-muted);
+    background: transparent;
+  }
+  .usage td:nth-child(1) { font-family: var(--font-body); color: var(--text-primary); }
+  .usage td:nth-child(2) { font-family: var(--font-header); color: var(--text-secondary); font-size: 13px; }
+  .usage td:nth-child(3) { font-family: var(--font-primary); font-weight: 500; color: var(--text-primary); }
+  .usage tr:last-child td { border-bottom: 0; }
+
+  .section-title {
+    font-family: var(--font-header);
+    font-weight: 400;
+    font-size: 13px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin: 0 0 12px;
+  }
+  .h-display {
+    font-family: var(--font-header);
+    font-weight: 400;
+    font-size: 44px;
+    line-height: 1.1;
+    color: var(--text-primary);
+    margin: 0 0 8px;
+    letter-spacing: 0.02em;
+  }
+  .h-sub {
+    font-family: var(--font-body);
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 1.55;
+    color: var(--text-secondary);
+    max-width: 64ch;
+    margin: 0 0 32px;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="status">Type System · May 2026 · Placeholder Phase</div>
+
+  <h1 class="h-display">From the Center — Font System</h1>
+  <p class="h-sub">Free Google Fonts standing in for the licensed brand families until purchase. Reference the role variables (<code style="font-family:var(--font-header)">--font-primary</code>, <code style="font-family:var(--font-header)">--font-header</code>, <code style="font-family:var(--font-header)">--font-body</code>) — never the family names directly — so the eventual swap to Galano Grotesque, Messina Sans Mono, and Halyard Display is values-only.</p>
+
+  <hr>
+
+  <!-- PRIMARY -->
+  <div class="role-row">
+    <div class="role-meta">
+      <b>Primary</b>
+      --font-primary<br>
+      Plus Jakarta Sans · 500<br>
+      UI · nav · labels · buttons
+      <div class="future">Future:<br>Galano Grotesque Medium</div>
+    </div>
+    <div class="specimen-primary">
+      <p class="big">You are stronger than you THINK.</p>
+      <p class="mid">Subscribe · Read the book · About Justin</p>
+      <p class="small">From the Center · Justin Levenson</p>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- HEADER -->
+  <div class="role-row">
+    <div class="role-meta">
+      <b>Header</b>
+      --font-header<br>
+      DM Mono · 400<br>
+      Section headers · accent callouts · pull quotes
+      <div class="future">Future:<br>Messina Sans Mono Regular</div>
+    </div>
+    <div class="specimen-header">
+      <p class="big">The short version.</p>
+      <p class="mid">01 — What you'll receive</p>
+      <p class="small">An essay every Sunday morning</p>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- BODY -->
+  <div class="role-row">
+    <div class="role-meta">
+      <b>Body</b>
+      --font-body<br>
+      Space Grotesk · 400<br>
+      Long-form text · post content
+      <div class="future">Future:<br>Halyard Display Regular</div>
+    </div>
+    <div class="specimen-body">
+      <p class="body-lede">This is not a mindfulness program. It's what I actually used — on a radiation table, in the silence after everyone went home and I was sitting alone with all of it.</p>
+      <p class="body-text">I'm not writing from the other side of that experience. I'm writing from inside it. Short, declarative sentences. Em dashes for rhythm. Fragments used intentionally. Paragraph breaks are generous — white space is part of the message.</p>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- USAGE -->
+  <p class="section-title">Usage rules</p>
+  <div class="usage">
+    <table>
+      <thead>
+        <tr><th>Element</th><th>Variable</th><th>Weight</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Body copy / post text</td><td>--font-body</td><td>400</td></tr>
+        <tr><td>Section headers</td><td>--font-header</td><td>400</td></tr>
+        <tr><td>Navigation</td><td>--font-primary</td><td>500</td></tr>
+        <tr><td>Buttons</td><td>--font-primary</td><td>500</td></tr>
+        <tr><td>Labels / tags / utility text</td><td>--font-primary</td><td>500</td></tr>
+        <tr><td>Accent callouts / pull quotes</td><td>--font-header</td><td>400</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr>
+
+  <!-- COLORS -->
+  <p class="section-title">Brand color reference</p>
+  <div class="swatches">
+    <div class="swatch">
+      <div class="chip" style="background:#A656BC"></div>
+      <div class="label">Mist (accent)</div>
+      <div class="hex">#A656BC</div>
+    </div>
+    <div class="swatch">
+      <div class="chip" style="background:#36302D"></div>
+      <div class="label">Charcoal</div>
+      <div class="hex">#36302D</div>
+    </div>
+    <div class="swatch">
+      <div class="chip" style="background:#203235"></div>
+      <div class="label">Deep Sea</div>
+      <div class="hex">#203235</div>
+    </div>
+    <div class="swatch">
+      <div class="chip" style="background:#4A4B4C"></div>
+      <div class="label">Storm</div>
+      <div class="hex">#4A4B4C</div>
+    </div>
+    <div class="swatch">
+      <div class="chip" style="background:#E6E7E8;border-right:1px solid var(--border-color)"></div>
+      <div class="label">Cool Grey</div>
+      <div class="hex">#E6E7E8</div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

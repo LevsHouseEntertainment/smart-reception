@@ -1,0 +1,52 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>YouTube — D1</title>
+<link rel="stylesheet" href="banners.css">
+<style>
+  /* Designed at 1600x900 (16:9). Upload as 2560x1440 by exporting and upscaling, or render directly. */
+  html, body { margin:0; padding:0; background:#203235; width:1600px; height:900px; overflow:hidden; }
+  .frame { position:relative; width:1600px; height:900px; background:#203235; color:#E6E7E8; font-family:'Galano Grotesque', sans-serif; -webkit-font-smoothing:antialiased; }
+
+  /* SAFE ZONE: 1546x423 centered, scaled here proportionally to ~966x264 centered in 1600x900.
+     Critical content fits within this band. */
+  .photo {
+    position:absolute; right:0; top:0; bottom:0; width:780px;
+    background-image:url('assets/justin-portrait.jpg');
+    background-size:cover; background-position:50% 18%;
+    filter:contrast(1.04);
+  }
+  .fade { position:absolute; right:720px; width:240px; top:0; bottom:0;
+    background: linear-gradient(90deg, #203235 0%, rgba(32,50,53,0) 100%); }
+
+  /* Safe-band content: keep within central 966 wide, 264 tall */
+  .center {
+    position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
+    width:966px; height:264px;
+    display:flex; flex-direction:column; justify-content:center;
+    padding-left:0;
+  }
+  .jl { position:absolute; left:0; top:0; width:48px; height:48px;
+    display:flex; align-items:center; justify-content:center; }
+  .jl img { width:100%; filter:brightness(0) invert(1); opacity:0.85; }
+  .eyebrow { font-family:'Messina Sans Mono'; font-weight:400;
+    font-size:14px; letter-spacing:0.42em; text-transform:uppercase;
+    color:#8a9298; margin:60px 0 18px; }
+  .name { font-family:'Galano Grotesque'; font-weight:500;
+    font-size:64px; letter-spacing:0.08em; line-height:1;
+    color:#E6E7E8; margin:0; }
+  .tick { width:72px; height:1px; background:#5A656B; margin:24px 0 16px; }
+  .sub { font-family:'Messina Sans Mono'; font-weight:400;
+    font-size:15px; letter-spacing:0.34em; text-transform:uppercase;
+    color:#9aa2a8; margin:0; }
+</style></head><body>
+<div class="frame">
+  <div class="photo"></div>
+  <div class="fade"></div>
+  <div class="center">
+    <div class="jl"><img src="assets/jl-mark.png" alt=""></div>
+    <p class="eyebrow">— From the Center</p>
+    <h1 class="name">JUSTIN LEVENSON</h1>
+    <div class="tick"></div>
+    <p class="sub">Author · Speaker · Nashville</p>
+  </div>
+</div>
+</body></html>

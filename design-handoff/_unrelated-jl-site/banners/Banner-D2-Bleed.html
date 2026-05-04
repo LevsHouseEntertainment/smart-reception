@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>FB Banner — D Bleed</title>
+<link rel="stylesheet" href="banners.css">
+<style>
+  body { display: grid; place-items: center; min-height: 100vh; }
+  .db { background: #203235; }
+  .db .photo {
+    position: absolute; right: 0; top: 0; bottom: 0; width: 460px;
+    background-image: url('assets/justin-portrait.jpg');
+    background-size: cover; background-position: 50% 18%;
+    filter: contrast(1.05) brightness(0.96);
+  }
+  .db .scrim {
+    position: absolute; right: 0; top: 0; bottom: 0; width: 460px;
+    background: linear-gradient(90deg, #203235 0%, rgba(32,50,53,0.9) 18%, rgba(32,50,53,0.35) 55%, rgba(32,50,53,0) 100%);
+  }
+  .db .jl {
+    position: absolute; left: 36px; top: 32px;
+    width: 38px; height: 38px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .db .jl img { width: 100%; filter: brightness(0) invert(1); opacity: 0.85; }
+  .db .text { position: absolute; left: 60px; top: 50%; transform: translateY(-50%); }
+  .db .eyebrow {
+    font-family: 'Messina Sans Mono'; font-weight: 400;
+    font-size: 12px; letter-spacing: 0.42em; text-transform: uppercase;
+    color: #8a9298; margin: 0 0 16px;
+  }
+  .db .name {
+    font-family: 'Galano Grotesque'; font-weight: 500;
+    font-size: 52px; letter-spacing: 0.08em; line-height: 1;
+    color: #E6E7E8; margin: 0;
+  }
+  .db .tick { width: 56px; height: 1px; background: #5A656B; margin: 20px 0 14px; }
+  .db .sub {
+    font-family: 'Messina Sans Mono'; font-weight: 400;
+    font-size: 13px; letter-spacing: 0.34em; text-transform: uppercase;
+    color: #9aa2a8; margin: 0;
+  }
+</style></head><body>
+<div class="banner db" data-screen-label="D2 Bleed">
+  <div class="photo"></div>
+  <div class="scrim"></div>
+  <div class="jl"><img src="assets/jl-mark.png" alt=""></div>
+  <div class="text">
+    <p class="eyebrow">— From the Center</p>
+    <h1 class="name">JUSTIN LEVENSON</h1>
+    <div class="tick"></div>
+    <p class="sub">Author · Speaker · Nashville</p>
+  </div>
+</div></body></html>
